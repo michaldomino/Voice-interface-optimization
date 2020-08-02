@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_interface_optimization/settings.dart';
 
 void main() => runApp(MyApp());
 
@@ -75,14 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (context) {
               var list = List<PopupMenuEntry>();
               list.add(PopupMenuItem(
-                  child: Row(
-                children: <Widget>[
-                  Text("Settings"),
-                  Icon(
-                    Icons.account_balance,
-                    color: Colors.black,
-                  )
-                ],
+                  child: RaisedButton(
+                child: Text("Settings"),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Settings()));
+                },
               )));
               return list;
             },

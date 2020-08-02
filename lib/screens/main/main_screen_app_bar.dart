@@ -3,7 +3,7 @@ import 'package:voice_interface_optimization/main.dart';
 import 'package:voice_interface_optimization/screens/main/main_screen.dart';
 
 class MainScreenAppBar extends StatelessWidget {
-  final MyHomePage widget;
+  final MainScreen widget;
 
   const MainScreenAppBar(this.widget);
 

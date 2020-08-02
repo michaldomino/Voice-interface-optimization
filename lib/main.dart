@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ],
       routes: {
         RoutesModel.MAIN_SCREEN: (context) =>
-            MyHomePage(title: 'Flutter Demo Home Page'),
+            MainScreen(title: 'Flutter Demo Home Page'),
         RoutesModel.SETTINGS: (context) => Settings()
       },
       initialRoute: RoutesModel.MAIN_SCREEN,

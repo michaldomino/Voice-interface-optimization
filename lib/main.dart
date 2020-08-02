@@ -74,17 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           PopupMenuButton(
             itemBuilder: (context) {
-              var list = List<PopupMenuEntry>();
-              list.add(PopupMenuItem(
-                  child: RaisedButton(
-                child: Text("Settings"),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Settings()));
-                },
-              )));
-              return list;
+              return appBarButtonChoices.map((e) {
+                return PopupMenuItem<AppBarButtonChoice>(
+                  value: e,
+                  child: Text(e.value),
+                );
+              }).toList();
             },
+            onSelected: _select,
           )
         ],
       ),
@@ -128,4 +125,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  void _select(AppBarButtonChoice value) {
+    switch (value.value) {
+      case "Settings":
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Settings()));
+    }
+  }
 }
+
+class AppBarButtonChoice {
+  const AppBarButtonChoice({this.value});
+
+  final String value;
+}
+
+const List<AppBarButtonChoice> appBarButtonChoices = const <AppBarButtonChoice>[
+  const AppBarButtonChoice(value: "Settings")
+];

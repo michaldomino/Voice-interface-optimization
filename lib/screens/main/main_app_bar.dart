@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_interface_optimization/main.dart';
 import 'package:voice_interface_optimization/screens/main/main_screen.dart';
 
 class MainScreenAppBar extends StatelessWidget {
@@ -31,7 +32,7 @@ class MainScreenAppBar extends StatelessWidget {
   void _select(BuildContext context, AppBarButtonChoice value) {
     switch (value.text) {
       case "Settings":
-        Navigator.pushNamed(context, '/settings');
+        Navigator.pushNamed(context, RoutesModel.SETTINGS);
 //            context, MaterialPageRoute(builder: (context) => Settings()));
     }
   }

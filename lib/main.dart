@@ -24,12 +24,16 @@ class MyApp extends StatelessWidget {
       ),
 //      home: MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
-        '/': (context) => MyHomePage(title: 'Flutter Demo Home Page'),
-        '/settings': (context) => Settings()
+        RoutesModel.MAIN_SCREEN: (context) =>
+            MyHomePage(title: 'Flutter Demo Home Page'),
+        RoutesModel.SETTINGS: (context) => Settings()
       },
-      initialRoute: '/',
+      initialRoute: RoutesModel.MAIN_SCREEN,
     );
   }
 }
 
-
+class RoutesModel {
+  static const String MAIN_SCREEN = '/';
+  static const String SETTINGS = '/settings';
+}

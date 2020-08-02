@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voice_interface_optimization/main.dart';
-import 'package:voice_interface_optimization/settings.dart';
+import 'package:voice_interface_optimization/screens/main/main_screen.dart';
 
 class MainScreenAppBar extends StatelessWidget {
   final MyHomePage widget;
@@ -16,10 +15,10 @@ class MainScreenAppBar extends StatelessWidget {
       actions: <Widget>[
         PopupMenuButton(
           itemBuilder: (context) {
-            return appBarButtonChoices.map((e) {
+            return appBarButtonChoices.map((choice) {
               return PopupMenuItem<AppBarButtonChoice>(
-                value: e,
-                child: Text(e.value),
+                value: choice,
+                child: Text(choice.text),
               );
             }).toList();
           },
@@ -30,20 +29,20 @@ class MainScreenAppBar extends StatelessWidget {
   }
 
   void _select(BuildContext context, AppBarButtonChoice value) {
-    switch (value.value) {
+    switch (value.text) {
       case "Settings":
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Settings()));
+        Navigator.pushNamed(context, '/settings');
+//            context, MaterialPageRoute(builder: (context) => Settings()));
     }
   }
 }
 
 class AppBarButtonChoice {
-  const AppBarButtonChoice({this.value});
+  const AppBarButtonChoice({this.text});
 
-  final String value;
+  final String text;
 }
 
 const List<AppBarButtonChoice> appBarButtonChoices = const <AppBarButtonChoice>[
-  const AppBarButtonChoice(value: "Settings")
+  const AppBarButtonChoice(text: "Settings")
 ];

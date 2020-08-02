@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voice_interface_optimization/settings.dart';
+import 'package:voice_interface_optimization/screens/main/main_app_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -67,24 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        actions: <Widget>[
-          PopupMenuButton(
-            itemBuilder: (context) {
-              return appBarButtonChoices.map((e) {
-                return PopupMenuItem<AppBarButtonChoice>(
-                  value: e,
-                  child: Text(e.value),
-                );
-              }).toList();
-            },
-            onSelected: _select,
-          )
-        ],
-      ),
+      appBar: MainScreenAppBar(widget).build(context),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -126,21 +109,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _select(AppBarButtonChoice value) {
-    switch (value.value) {
-      case "Settings":
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Settings()));
-    }
-  }
 }
 
-class AppBarButtonChoice {
-  const AppBarButtonChoice({this.value});
-
-  final String value;
-}
-
-const List<AppBarButtonChoice> appBarButtonChoices = const <AppBarButtonChoice>[
-  const AppBarButtonChoice(value: "Settings")
-];

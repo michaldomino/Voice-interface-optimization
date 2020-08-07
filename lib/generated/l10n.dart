@@ -34,6 +34,16 @@ class S {
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Voice interface optimization`
+  String get appTitle {
+    return Intl.message(
+      'Voice interface optimization',
+      name: 'appTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -47,10 +57,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
-
   @override
   Future<S> load(Locale locale) => S.load(locale);
-
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 

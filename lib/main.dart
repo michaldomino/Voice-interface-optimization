@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/main/main_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
@@ -24,13 +25,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       localizationsDelegates: [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+//        GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        Locale('en', ''),
-        Locale('pl', ''),
-      ],
+      supportedLocales: S.delegate.supportedLocales,
       routes: {
         RoutesModel.MAIN_SCREEN: (context) =>
             MainScreen(title: 'Flutter Demo Home Page'),

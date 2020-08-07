@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:voice_interface_optimization/generated/l10n.dart';
+import 'package:voice_interface_optimization/main.dart';
 import 'package:voice_interface_optimization/screens/main/main_screen_app_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -33,6 +35,15 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void _select(BuildContext context, AppBarButtonChoice value) {
+    switch (value.text) {
+      case "Settings":
+        Navigator.pushNamed(context, RoutesModel.SETTINGS)
+            .then((value) => setState(() {}));
+//            context, MaterialPageRoute(builder: (context) => Settings()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -42,7 +53,24 @@ class _MainScreenState extends State<MainScreen> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: MainScreenAppBar(widget).build(context),
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(S.of(context).appTitle),
+        actions: <Widget>[
+          PopupMenuButton(
+            itemBuilder: (context) {
+              return appBarButtonChoices.map((choice) {
+                return PopupMenuItem<AppBarButtonChoice>(
+                  value: choice,
+                  child: Text(choice.text),
+                );
+              }).toList();
+            },
+            onSelected: (choice) => _select(context, choice),
+          )
+        ],
+      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

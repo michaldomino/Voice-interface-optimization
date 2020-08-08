@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/main.dart';
-
-import 'main_screen_app_bar.dart';
+import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key, this.title}) : super(key: key);
@@ -25,8 +23,10 @@ class _MainScreenState extends State<MainScreen> {
   void _select(BuildContext context, AppBarButtonChoice value) {
     switch (value.text) {
       case "Settings":
-        Navigator.pushNamed(context, RoutesModel.SETTINGS)
-            .then((value) => setState(() {}));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Settings()),
+        ).then((value) => setState(() {}));
     }
   }
 
@@ -71,3 +71,13 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
+class AppBarButtonChoice {
+  const AppBarButtonChoice({this.text});
+
+  final String text;
+}
+
+const List<AppBarButtonChoice> appBarButtonChoices = const <AppBarButtonChoice>[
+  const AppBarButtonChoice(text: "Settings")
+];

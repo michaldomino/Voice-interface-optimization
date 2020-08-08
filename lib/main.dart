@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/main/main_screen.dart';
-import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,17 +20,17 @@ class MyApp extends StatelessWidget {
 //        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      routes: {
-        RoutesModel.MAIN_SCREEN: (context) =>
-            MainScreen(title: 'Flutter Demo Home Page'),
-        RoutesModel.SETTINGS: (context) => Settings()
-      },
-      initialRoute: RoutesModel.MAIN_SCREEN,
+//      routes: {
+//        RoutesModel.MAIN_SCREEN: (context) =>
+//            MainScreen(title: 'Flutter Demo Home Page'),
+//        RoutesModel.SETTINGS: (context) => Settings()
+//      },
+      home: MainScreen(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class RoutesModel {
-  static const String MAIN_SCREEN = '/';
-  static const String SETTINGS = '/settings';
-}
+//class RoutesModel {
+//  static const String MAIN_SCREEN = '/';
+//  static const String SETTINGS = '/settings';
+//}

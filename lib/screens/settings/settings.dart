@@ -46,7 +46,6 @@ class _SettingsState extends State<Settings> {
         targetLanguageCode = 'en';
       }
       S.load(Locale(targetLanguageCode));
-      Intl.defaultLocale = targetLanguageCode;
     });
   }
 }

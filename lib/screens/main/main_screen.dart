@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/main.dart';
-import 'package:voice_interface_optimization/screens/main/main_screen_app_bar.dart';
+
+import 'main_screen_app_bar.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key, this.title}) : super(key: key);

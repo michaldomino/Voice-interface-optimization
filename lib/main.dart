@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/main/main_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
-import 'blocs/localization/localization_bloc.dart';
 import 'models/routes_model.dart';
 
 void main() => runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => LocalizationBloc(),
+        create: (context) => LocalizationCubit(),
         child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(

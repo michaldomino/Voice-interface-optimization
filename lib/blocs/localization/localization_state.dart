@@ -1,4 +1,4 @@
-part of 'localization_bloc.dart';
+part of 'localization_cubit.dart';
 
 @immutable
 abstract class LocalizationState {}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_interface_optimization/blocs/localization/localization_bloc.dart';
+import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 
 class Settings extends StatefulWidget {
@@ -12,7 +12,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocalizationBloc, LocalizationState>(
+    return BlocBuilder<LocalizationCubit, LocalizationState>(
       builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
@@ -40,8 +40,8 @@ class _SettingsState extends State<Settings> {
 
   void _changeLanguage(BuildContext context, String targetLanguageCode) {
     setState(() {
-      BlocProvider.of<LocalizationBloc>(context)
-          .add(ChangeLanguageEvent(context, Locale(targetLanguageCode)));
+      BlocProvider.of<LocalizationCubit>(context).changeLanguage(
+          context, Locale.fromSubtags(languageCode: targetLanguageCode));
     });
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_interface_optimization/blocs/localization/localization_bloc.dart';
+import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/screens/main/main_appbar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocalizationBloc, LocalizationState>(
+    return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
       return Scaffold(
         appBar: MainAppbarWrapper(context).get(),

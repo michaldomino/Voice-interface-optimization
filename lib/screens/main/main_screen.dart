@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_bloc.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/screens/settings/settings.dart';
+import 'package:voice_interface_optimization/main.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key, this.title}) : super(key: key);
@@ -25,11 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   void _select(BuildContext context, AppBarButtonChoice value) {
     switch (value.text) {
       case "Settings":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Settings()),
-        );
-//            .then((value) => setState(() {}));
+        Navigator.pushNamed(context, RoutesModel.SETTINGS);
     }
   }
 

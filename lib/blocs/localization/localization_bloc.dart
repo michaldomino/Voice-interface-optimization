@@ -8,7 +8,6 @@ import 'package:meta/meta.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 
 part 'localization_event.dart';
-
 part 'localization_state.dart';
 
 class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
@@ -21,7 +20,8 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
     if (event is ChangeLanguageEvent) {
       Locale localeToBeSet = event.localeToBeSet;
       if (Intl.defaultLocale != localeToBeSet.languageCode) {
-        S.load(localeToBeSet);
+        await S.load(localeToBeSet);
+        yield LocalizationChanged();
       }
     }
   }

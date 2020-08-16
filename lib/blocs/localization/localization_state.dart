@@ -4,3 +4,5 @@ part of 'localization_bloc.dart';
 abstract class LocalizationState {}
 
 class LocalizationInitial extends LocalizationState {}
+
+class LocalizationChanged extends LocalizationState {}

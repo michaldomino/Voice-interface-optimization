@@ -24,11 +24,12 @@ class MyApp extends StatelessWidget {
 //        GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
-//      routes: {
-//        RoutesModel.MAIN_SCREEN: (context) =>
-//            MainScreen(title: 'Flutter Demo Home Page'),
-//        RoutesModel.SETTINGS: (context) => Settings()
-//      },
+//          routes: {
+//            RoutesModel.MAIN_SCREEN: (context) =>
+//                MainScreen(title: 'Flutter Demo Home Page'),
+//            RoutesModel.SETTINGS: (context) => Settings()
+//          },
+//          initialRoute: RoutesModel.MAIN_SCREEN,
           home: MainScreen(title: 'Flutter Demo Home Page'),
 //          home: BlocProvider(
 //            create: (context) => LocalizationBloc(),

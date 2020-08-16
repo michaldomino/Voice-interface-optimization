@@ -5,7 +5,6 @@ import 'package:voice_interface_optimization/blocs/localization/localization_blo
 import 'package:voice_interface_optimization/generated/l10n.dart';
 
 class Settings extends StatefulWidget {
-
   @override
   _SettingsState createState() => _SettingsState();
 }
@@ -41,12 +40,6 @@ class _SettingsState extends State<Settings> {
 
   void _changeLanguage(BuildContext context, String targetLanguageCode) {
     setState(() {
-//      String targetLanguageCode;
-//      if (Intl.defaultLocale == 'en') {
-//        targetLanguageCode = 'pl';
-//      } else {
-//        targetLanguageCode = 'en';
-//      }
       BlocProvider.of<LocalizationBloc>(context)
           .add(ChangeLanguageEvent(context, Locale(targetLanguageCode)));
     });

@@ -6,6 +6,7 @@ import 'package:voice_interface_optimization/screens/main/main_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
 import 'blocs/localization/localization_bloc.dart';
+import 'models/routes_model.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,9 +40,4 @@ class MyApp extends StatelessWidget {
 //          )),
         ));
   }
-}
-
-class RoutesModel {
-  static const String MAIN_SCREEN = '/';
-  static const String SETTINGS = '/settings';
 }

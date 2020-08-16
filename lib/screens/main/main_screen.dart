@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_bloc.dart';
-import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/main.dart';
+import 'package:voice_interface_optimization/screens/main/main_appbar.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key, this.title}) : super(key: key);
@@ -22,34 +21,12 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  void _select(BuildContext context, AppBarButtonChoice value) {
-    switch (value.text) {
-      case "Settings":
-        Navigator.pushNamed(context, RoutesModel.SETTINGS);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationBloc, LocalizationState>(
         builder: (context, state) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(S.of(context).appTitle),
-          actions: <Widget>[
-            PopupMenuButton(
-              itemBuilder: (context) {
-                return appBarButtonChoices.map((choice) {
-                  return PopupMenuItem<AppBarButtonChoice>(
-                    value: choice,
-                    child: Text(choice.text),
-                  );
-                }).toList();
-              },
-              onSelected: (choice) => _select(context, choice),
-            )
-          ],
-        ),
+        appBar: MainAppbarWrapper(context).get(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -73,13 +50,3 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 }
-
-class AppBarButtonChoice {
-  const AppBarButtonChoice({this.text});
-
-  final String text;
-}
-
-const List<AppBarButtonChoice> appBarButtonChoices = const <AppBarButtonChoice>[
-  const AppBarButtonChoice(text: "Settings")
-];

@@ -10,26 +10,30 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        localizationsDelegates: [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
+    return BlocProvider(
+        create: (context) => LocalizationBloc(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
 //        GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
 //      routes: {
 //        RoutesModel.MAIN_SCREEN: (context) =>
 //            MainScreen(title: 'Flutter Demo Home Page'),
 //        RoutesModel.SETTINGS: (context) => Settings()
 //      },
-        home: BlocProvider(
-          create: (context) => LocalizationBloc(),
-          child: MainScreen(title: 'Flutter Demo Home Page'),
+          home: MainScreen(title: 'Flutter Demo Home Page'),
+//          home: BlocProvider(
+//            create: (context) => LocalizationBloc(),
+//            child: MainScreen(title: 'Flutter Demo Home Page'),
+//          )),
         ));
   }
 }

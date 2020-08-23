@@ -1,13 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/generated/l10n.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Settings"),
-      ),
+    return BlocBuilder<LocalizationCubit, LocalizationState>(
+      builder: (context, state) {
+        return Scaffold(
+            appBar: AppBar(
+              title: Text(S.of(context).settings),
+            ),
+            floatingActionButton: Row(
+              children: <Widget>[
+                FloatingActionButton(
+                  onPressed: () => _changeLanguage(context, 'en'),
+                  tooltip: 'en',
+                  child: Icon(Icons.add),
+                  heroTag: null,
+                ),
+                FloatingActionButton(
+                  onPressed: () => _changeLanguage(context, 'pl'),
+                  tooltip: 'pl',
+                  child: Icon(Icons.g_translate),
+                  heroTag: null,
+                )
+              ],
+            ));
+      },
     );
+  }
+
+  void _changeLanguage(BuildContext context, String targetLanguageCode) {
+    setState(() {
+      BlocProvider.of<LocalizationCubit>(context).changeLanguage(
+          context, Locale.fromSubtags(languageCode: targetLanguageCode));
+    });
   }
 }

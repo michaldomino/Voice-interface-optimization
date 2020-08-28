@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,7 @@ class _SettingsState extends State<Settings> {
 
   Future<String> _getCurrentLanguageCode() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     return sharedPreferencesWrapper.getLanguageCode();
   }
 
@@ -37,45 +38,46 @@ class _SettingsState extends State<Settings> {
           builder: (context, snapshot) {
             _currentLanguageCode = snapshot.data;
             return Scaffold(
-                appBar: AppBar(
-                  title: Text(S
-                      .of(context)
-                      .settings),
-                ),
-                body: Column(
-                  children: <Widget>[
-                    DropdownButton(
-                      value: _currentLanguageCode,
-                      items: [
-                        DropdownMenuItem(
-                          child: Text("English"),
-                          value: LanguagesCodesModel.ENGLISH,
+              appBar: AppBar(
+                title: Text(S
+                    .of(context)
+                    .settings),
+              ),
+              body: Column(
+                children: <Widget>[
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Flexible(child: Text(S
+                            .of(context)
+                            .appLanguage), flex: 1,),
+                        Flexible(
+                          flex: 2,
+                          child: DropdownButton(
+                            isExpanded: true,
+                            value: _currentLanguageCode,
+                            items: [
+                              DropdownMenuItem(
+                                child: Text(S
+                                    .of(context)
+                                    .english),
+                                value: LanguagesCodesModel.ENGLISH,
+                              ),
+                              DropdownMenuItem(
+                                child: Text(S
+                                    .of(context)
+                                    .polish),
+                                value: LanguagesCodesModel.POLISH,
+                              )
+                            ],
+                            onChanged: (value) =>
+                                _changeLanguage(context, value),
+                          ),
                         ),
-                        DropdownMenuItem(
-                          child: Text("Polish"),
-                          value: LanguagesCodesModel.POLISH,
-                        )
-                      ],
-                      onChanged: (value) => _changeLanguage(context, value),
-                    )
-                  ],
-                ),
-                floatingActionButton: Row(
-                  children: <Widget>[
-                    FloatingActionButton(
-                      onPressed: () => _changeLanguage(context, 'en'),
-                      tooltip: 'en',
-                      child: Icon(Icons.add),
-                      heroTag: null,
-                    ),
-                    FloatingActionButton(
-                      onPressed: () => _changeLanguage(context, 'pl'),
-                      tooltip: 'pl',
-                      child: Icon(Icons.g_translate),
-                      heroTag: null,
-                    )
-                  ],
-                ));
+                      ])
+                ],
+              ),
+            );
           },
         );
       },

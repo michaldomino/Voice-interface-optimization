@@ -8,7 +8,7 @@ class SharedPreferencesWrapper {
 
   SharedPreferencesWrapper._(this._sharedPreferencesInstance);
 
-  static getInstance() async {
+  static Future<SharedPreferencesWrapper> getInstance() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     SharedPreferencesWrapper instance =
         SharedPreferencesWrapper._(sharedPreferences);

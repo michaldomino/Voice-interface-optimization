@@ -10,14 +10,12 @@ part 'localization_state.dart';
 class LocalizationCubit extends Cubit<LocalizationState> {
   LocalizationCubit() : super(LocalizationInitial());
 
-  Future<void> changeLanguage(
-      BuildContext context, Locale localeToBeSet) async {
-    String targetLanguageCode = localeToBeSet.languageCode;
-    if (Intl.defaultLocale != targetLanguageCode) {
-      await S.load(localeToBeSet);
+  Future changeLanguage(BuildContext context, String languageCode) async {
+    if (Intl.defaultLocale != languageCode) {
+      await S.load(Locale.fromSubtags(languageCode: languageCode));
       SharedPreferencesWrapper sharedPreferencesWrapper =
           await SharedPreferencesWrapper.getInstance();
-      await sharedPreferencesWrapper.setLanguageCode(targetLanguageCode);
+      await sharedPreferencesWrapper.setLanguageCode(languageCode);
       emit(LocalizationChanged());
     }
   }

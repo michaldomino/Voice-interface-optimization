@@ -84,8 +84,8 @@ class _SettingsState extends State<Settings> {
 
   void _changeLanguage(BuildContext context, String targetLanguageCode) {
     // setState(() {
-    BlocProvider.of<LocalizationCubit>(context).changeLanguage(
-        context, Locale.fromSubtags(languageCode: targetLanguageCode));
+    BlocProvider.of<LocalizationCubit>(context)
+        .changeLanguage(context, targetLanguageCode);
     _currentLanguageCode = targetLanguageCode;
     // });
   }

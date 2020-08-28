@@ -26,9 +26,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
-      return FutureBuilder<String>(
+      return FutureBuilder(
         future: _loadLanguage(),
-        builder: (context, snapshot) {
+        builder: (context, _) {
           return Scaffold(
             appBar: MainAppbarWrapper(context).get(),
             body: Center(
@@ -56,11 +56,11 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  Future<void> _loadLanguage() async {
+  Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
         await SharedPreferencesWrapper.getInstance();
     String languageCode = sharedPreferencesWrapper.getLanguageCode();
     BlocProvider.of<LocalizationCubit>(context)
-        .changeLanguage(context, Locale(languageCode));
+        .changeLanguage(context, languageCode);
   }
 }

@@ -36,16 +36,12 @@ class _SettingsAppLanguageSelectionState
             child: DropdownButton(
               isExpanded: true,
               value: _currentLanguageCode,
-              items: [
-                DropdownMenuItem(
-                  child: Text(S.of(context).english),
-                  value: LanguagesCodesModel.ENGLISH,
-                ),
-                DropdownMenuItem(
-                  child: Text(S.of(context).polish),
-                  value: LanguagesCodesModel.POLISH,
-                )
-              ],
+              items: _languageCodeToNameMap.entries
+                  .map((e) => DropdownMenuItem(
+                        child: Text(Intl.message(e.value)),
+                        value: e.key,
+                      ))
+                  .toList(),
               onChanged: (value) => _changeLanguage(context, value),
             ),
           ),
@@ -59,14 +55,7 @@ class _SettingsAppLanguageSelectionState
   }
 }
 
-class _SettingsAppLanguageSelectionChoice {
-  final String value;
-  final String textCode;
-
-  const _SettingsAppLanguageSelectionChoice(this.value, this.textCode);
-}
-
-const Map<String, String> _a = {
-  'en': LanguagesCodesModel.ENGLISH,
-  'pl': LanguagesCodesModel.POLISH,
+const Map<String, String> _languageCodeToNameMap = {
+  LanguagesCodesModel.ENGLISH: 'english',
+  LanguagesCodesModel.POLISH: 'polish',
 };

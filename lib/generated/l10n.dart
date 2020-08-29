@@ -55,6 +55,16 @@ class S {
     );
   }
 
+  /// `App language`
+  String get appLanguage {
+    return Intl.message(
+      'App language',
+      name: 'appLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `English`
   String get english {
     return Intl.message(
@@ -70,16 +80,6 @@ class S {
     return Intl.message(
       'Polish',
       name: 'polish',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `App language`
-  String get appLanguage {
-    return Intl.message(
-      'App language',
-      name: 'appLanguage',
       desc: '',
       args: [],
     );

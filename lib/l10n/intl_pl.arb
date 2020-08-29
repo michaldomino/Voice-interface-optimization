@@ -1,7 +1,7 @@
 {
   "appTitle": "Optymalizacja interfejsu głosowego",
   "settings": "Ustawienia",
+  "appLanguage": "Język aplikacji",
   "english": "Angielski",
-  "polish": "Polski",
-  "appLanguage": "App language"
+  "polish": "Polski"
 }

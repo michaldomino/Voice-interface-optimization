@@ -1,17 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/models/languages_codes_model.dart';
 
-class SettingsAppLanguageSelection {
-  BuildContext context;
+class SettingsAppLanguageSelection extends StatefulWidget {
+  @override
+  _SettingsAppLanguageSelectionState createState() =>
+      _SettingsAppLanguageSelectionState();
+}
+
+class _SettingsAppLanguageSelectionState
+    extends State<SettingsAppLanguageSelection> {
   String _currentLanguageCode;
 
-  SettingsAppLanguageSelection(this.context);
+  @override
+  void initState() {
+    super.initState();
+    _currentLanguageCode = Intl.defaultLocale;
+  }
 
-  get() {
+  @override
+  Widget build(BuildContext context) {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
@@ -41,11 +53,9 @@ class SettingsAppLanguageSelection {
   }
 
   void _changeLanguage(BuildContext context, String targetLanguageCode) {
-    // setState(() {
     BlocProvider.of<LocalizationCubit>(context)
         .changeLanguage(context, targetLanguageCode);
     _currentLanguageCode = targetLanguageCode;
-    // });
   }
 }
 

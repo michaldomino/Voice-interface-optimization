@@ -66,20 +66,20 @@ class S {
   }
 
   /// `English`
-  String get english {
+  String get en {
     return Intl.message(
       'English',
-      name: 'english',
+      name: 'en',
       desc: '',
       args: [],
     );
   }
 
   /// `Polish`
-  String get polish {
+  String get pl {
     return Intl.message(
       'Polish',
-      name: 'polish',
+      name: 'pl',
       desc: '',
       args: [],
     );

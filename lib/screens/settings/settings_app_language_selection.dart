@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/models/languages_codes_model.dart';
 
 class SettingsAppLanguageSelection extends StatefulWidget {
   @override
@@ -36,10 +35,12 @@ class _SettingsAppLanguageSelectionState
             child: DropdownButton(
               isExpanded: true,
               value: _currentLanguageCode,
-              items: _languageCodeToNameMap.entries
-                  .map((e) => DropdownMenuItem(
-                        child: Text(Intl.message(e.value)),
-                        value: e.key,
+              items: AppLocalizationDelegate()
+                  .supportedLocales
+                  .map((locale) => locale.languageCode)
+                  .map((languageCode) => DropdownMenuItem(
+                        child: Text(Intl.message(languageCode)),
+                        value: languageCode,
                       ))
                   .toList(),
               onChanged: (value) => _changeLanguage(context, value),
@@ -54,8 +55,3 @@ class _SettingsAppLanguageSelectionState
     _currentLanguageCode = targetLanguageCode;
   }
 }
-
-const Map<String, String> _languageCodeToNameMap = {
-  LanguagesCodesModel.ENGLISH: 'english',
-  LanguagesCodesModel.POLISH: 'polish',
-};

@@ -25,8 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appLanguage": MessageLookupByLibrary.simpleMessage("Język aplikacji"),
         "appTitle": MessageLookupByLibrary.simpleMessage(
             "Optymalizacja interfejsu głosowego"),
-        "english": MessageLookupByLibrary.simpleMessage("Angielski"),
-        "polish": MessageLookupByLibrary.simpleMessage("Polski"),
+        "en": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "pl": MessageLookupByLibrary.simpleMessage("Polski"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia")
       };
 }

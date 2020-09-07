@@ -1,4 +1,7 @@
 {
   "appTitle": "Voice interface optimization",
-  "settings": "Settings"
+  "settings": "Settings",
+  "appLanguage": "App language",
+  "en": "English",
+  "pl": "Polish"
 }

@@ -21,7 +21,6 @@ class SharedPreferencesWrapper {
         _sharedPreferencesInstance.getString(_LANGUAGE_CODE_KEY);
     if (languageCode == null) {
       languageCode = defaultLanguageCode;
-//      setLanguageCode(languageCode);
     }
     return languageCode;
   }

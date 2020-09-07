@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 import 'package:voice_interface_optimization/screens/main/main_appbar.dart';
@@ -14,14 +15,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
@@ -38,17 +31,12 @@ class _MainScreenState extends State<MainScreen> {
                   Text(
                     'You have pushed the button this many times:',
                   ),
-                  Text(
-                    '$_counter',
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
+                  IconButton(
+                    icon: Icon(Icons.play_arrow),
+                    onPressed: _playSound,
+                  )
                 ],
               ),
-            ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: Icon(Icons.add),
             ),
           );
         },
@@ -62,5 +50,10 @@ class _MainScreenState extends State<MainScreen> {
     String languageCode = sharedPreferencesWrapper.getLanguageCode();
     BlocProvider.of<LocalizationCubit>(context)
         .changeLanguage(context, languageCode);
+  }
+
+  _playSound() async {
+    FlutterTts tts = FlutterTts();
+    await tts.speak("Test sound");
   }
 }

@@ -3,18 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
-import 'package:voice_interface_optimization/screens/main/main_appbar.dart';
 
-class MainScreen extends StatefulWidget {
-  MainScreen({Key key, this.title}) : super(key: key);
+import 'home_appbar.dart';
+
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   Speaker speaker;
 
   @override
@@ -37,18 +38,18 @@ class _MainScreenState extends State<MainScreen> {
         future: _loadLanguage(),
         builder: (context, _) {
           return Scaffold(
-            appBar: MainAppbarWrapper(context).get(),
+            appBar: HomeAppbarWrapper(context).get(),
             body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'You have pushed the button this many times:',
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.play_arrow),
-                        onPressed: _playSound,
-                      )
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'You have pushed the button this many times:',
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.play_arrow),
+                    onPressed: _playSound,
+                  )
                     ],
                   ),
                 ),

@@ -61,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
-    String languageCode = sharedPreferencesWrapper.getLanguageCode();
+        await SharedPreferencesWrapper.getInstance();
+    String languageCode = sharedPreferencesWrapper.getAppLanguageCode();
     BlocProvider.of<LocalizationCubit>(context)
         .changeLanguage(context, languageCode);
   }

@@ -9,7 +9,6 @@ enum TtsState { playing, stopped, paused, continued }
 class Speaker {
   FlutterTts flutterTts;
   dynamic languages;
-  String language;
   double volume = 0.5;
   double pitch = 1.0;
   double rate = 0.5;
@@ -112,7 +111,11 @@ class Speaker {
     if (result == 1) ttsState = TtsState.paused;
   }
 
-  void dispose() {
-    flutterTts.stop();
+  Future setLanguage(String languageCode) async {
+    await flutterTts.setLanguage(languageCode);
+  }
+
+  Future dispose() async {
+    await flutterTts.stop();
   }
 }

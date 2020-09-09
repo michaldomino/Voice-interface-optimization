@@ -15,7 +15,7 @@ class LocalizationCubit extends Cubit<LocalizationState> {
       await S.load(Locale.fromSubtags(languageCode: languageCode));
       SharedPreferencesWrapper sharedPreferencesWrapper =
           await SharedPreferencesWrapper.getInstance();
-      await sharedPreferencesWrapper.setLanguageCode(languageCode);
+      await sharedPreferencesWrapper.setAppLanguageCode(languageCode);
       emit(LocalizationChanged());
     }
   }

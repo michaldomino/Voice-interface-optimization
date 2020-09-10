@@ -17,18 +17,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Speaker speaker;
+  Speaker _speaker;
+  String _textToSpeak;
 
   @override
   void initState() {
     super.initState();
-    speaker = Speaker.getInstance();
+    _speaker = Speaker.getInstance();
   }
 
   @override
   void dispose() {
     super.dispose();
-    speaker.dispose();
+    _speaker.dispose();
   }
 
   @override
@@ -47,17 +48,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     'You have pushed the button this many times:',
                   ),
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        _textToSpeak = value;
+                      });
+                    },
+                  ),
                   IconButton(
                     icon: Icon(Icons.play_arrow),
                     onPressed: _playSound,
                   )
-                    ],
-                  ),
-                ),
-              );
-            },
+                ],
+              ),
+            ),
           );
-        });
+        },
+      );
+    });
   }
 
   Future _loadLanguage() async {
@@ -70,6 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _playSound() async {
-    speaker.speak("Test sound");
+    _speaker.speak(_textToSpeak);
   }
 }

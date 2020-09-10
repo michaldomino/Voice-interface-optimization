@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
@@ -36,41 +37,52 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
-      return FutureBuilder(
-        future: _loadLanguage(),
-        builder: (context, _) {
-          return Scaffold(
-            appBar: HomeAppbarWrapper(context).get(),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+          return FutureBuilder(
+            future: _loadLanguage(),
+            builder: (context, _) {
+              return Scaffold(
+                appBar: HomeAppbarWrapper(context).get(),
+                body: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
                   Text(
                     'You have pushed the button this many times:',
                   ),
-                  TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        _textToSpeak = value;
-                      });
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.play_arrow),
-                    onPressed: _playSound,
+                  Container(
+                      padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                      child: TextField(
+                        onChanged: (String value) {
+                          setState(() {
+                            _textToSpeak = value;
+                          });
+                        },
+                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      InkWell(
+                        child: Icon(
+                          Icons.play_arrow,
+                          color: Colors.green,
+                          size: 50,
+                        ),
+                        onTap: _playSound,
+                      ),
+                    ],
                   )
                 ],
-              ),
-            ),
+                  ),
+                ),
+              );
+            },
           );
-        },
-      );
-    });
+        });
   }
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-        await SharedPreferencesWrapper.getInstance();
+    await SharedPreferencesWrapper.getInstance();
     String languageCode = sharedPreferencesWrapper.getAppLanguageCode();
     BlocProvider.of<LocalizationCubit>(context)
         .changeLanguage(context, languageCode);

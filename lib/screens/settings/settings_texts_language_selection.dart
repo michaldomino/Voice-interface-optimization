@@ -7,23 +7,33 @@ import 'package:voice_interface_optimization/logic/text_language.dart';
 
 import 'dropdown_with_description.dart';
 
-class SettingsTextsLanguageSelection extends StatelessWidget {
+class SettingsTextsLanguageSelection extends StatefulWidget {
+  @override
+  _SettingsTextsLanguageSelectionState createState() =>
+      _SettingsTextsLanguageSelectionState();
+}
+
+class _SettingsTextsLanguageSelectionState
+    extends State<SettingsTextsLanguageSelection> {
   @override
   Widget build(BuildContext context) {
-    return DropdownWithDescription(
-        description: S.of(context).textsLanguage,
-        initialValue: TextsLanguage().textLanguage,
-        onChangedAction: (context, targetLanguageCode) {
-          BlocProvider.of<TextsLanguageCubit>(context)
-              .changeTextsLanguage(context, targetLanguageCode);
-        },
-        items: AppLocalizationDelegate()
-            .supportedLocales
-            .map((locale) => locale.languageCode)
-            .map(
-              (languageCode) => DropdownWithDescriptionItem(
-                  Intl.message(languageCode), languageCode),
-            )
-            .toList());
+    return BlocBuilder<TextsLanguageCubit, TextsLanguageState>(
+        builder: (context, state) {
+      return DropdownWithDescription(
+          description: S.of(context).textsLanguage,
+          initialValue: TextsLanguage().textLanguage,
+          onChangedAction: (context, targetLanguageCode) {
+            BlocProvider.of<TextsLanguageCubit>(context)
+                .changeTextsLanguage(context, targetLanguageCode);
+          },
+          items: AppLocalizationDelegate()
+              .supportedLocales
+              .map((locale) => locale.languageCode)
+              .map(
+                (languageCode) => DropdownWithDescriptionItem(
+                    Intl.message(languageCode), languageCode),
+              )
+              .toList());
+    });
   }
 }

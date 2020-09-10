@@ -37,14 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
-          return FutureBuilder(
-            future: _loadLanguage(),
-            builder: (context, _) {
-              return Scaffold(
-                appBar: HomeAppbarWrapper(context).get(),
-                body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      return FutureBuilder(
+        future: _loadLanguage(),
+        builder: (context, _) {
+          return Scaffold(
+            appBar: HomeAppbarWrapper(context).get(),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'You have pushed the button this many times:',
@@ -71,8 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   )
-                ],
-              ),
+                    ],
+                  ),
                 ),
               );
             },
@@ -83,11 +83,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
     await SharedPreferencesWrapper.getInstance();
-    String languageCode = sharedPreferencesWrapper.getAppLanguageCode();
-    BlocProvider.of<LocalizationCubit>(context)
-        .changeAppLanguage(context, languageCode);
+    BlocProvider.of<LocalizationCubit>(context).changeAppLanguage(
+        context, sharedPreferencesWrapper.getAppLanguageCode());
     BlocProvider.of<TextsLanguageCubit>(context).changeTextsLanguage(
-        context, languageCode);
+        context, sharedPreferencesWrapper.getTextsLanguage());
   }
 
   _playSound() async {

@@ -3,5 +3,6 @@
   "settings": "Ustawienia",
   "appLanguage": "Język aplikacji",
   "en": "Angielski",
-  "pl": "Polski"
+  "pl": "Polski",
+  "textsLanguage": "Język tekstów"
 }

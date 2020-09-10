@@ -1,20 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
+import 'package:voice_interface_optimization/logic/text_language.dart';
 
 import 'dropdown_with_description.dart';
 
-class SettingsAppLanguageSelection extends StatelessWidget {
+class SettingsTextsLanguageSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownWithDescription(
-        description: S.of(context).appLanguage,
-        initialValue: Intl.defaultLocale,
+        description: "Texts language",
+        initialValue: TextsLanguage.getInstance().textLanguage,
         onChangedAction: (context, targetLanguageCode) {
-          BlocProvider.of<LocalizationCubit>(context)
-              .changeLanguage(context, targetLanguageCode);
+          TextsLanguage.getInstance().textLanguage = targetLanguageCode;
         },
         items: AppLocalizationDelegate()
             .supportedLocales

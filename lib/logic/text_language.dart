@@ -1,20 +1,17 @@
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 
-class TextLanguage {
-  static final TextLanguage _instance = TextLanguage._();
+class TextsLanguage {
+  static final TextsLanguage _instance = TextsLanguage._();
 
-  factory TextLanguage.getInstance() {
+  factory TextsLanguage.getInstance() {
     return _instance;
   }
 
-  TextLanguage._();
+  TextsLanguage._();
 
   String _textLanguage;
 
-  get textLanguage async {
-    if (_textLanguage == null) {
-      _textLanguage = await _getTextLanguage();
-    }
+  get textLanguage {
     return _textLanguage;
   }
 
@@ -25,6 +22,10 @@ class TextLanguage {
     }
   }
 
+  Future loadLanguage() async {
+    _textLanguage = await _getTextLanguage();
+  }
+
   Future<String> _getTextLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
         await SharedPreferencesWrapper.getInstance();
@@ -33,7 +34,7 @@ class TextLanguage {
 
   Future _setTextLanguage(String value) async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     return sharedPreferencesWrapper.setTextsLanguageCode(value);
   }
 }

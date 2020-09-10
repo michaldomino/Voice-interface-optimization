@@ -4,10 +4,10 @@ class DropdownWithDescription extends StatefulWidget {
   String description;
   String initialValue;
   List<DropdownWithDescriptionItem> items;
-  Function(BuildContext, String) onChanged;
+  Function(BuildContext, String) onChangedAction;
 
   DropdownWithDescription(
-      {this.description, this.initialValue, this.items, this.onChanged});
+      {this.description, this.initialValue, this.items, this.onChangedAction});
 
   @override
   State<StatefulWidget> createState() => _DropdownWithDescriptionState();
@@ -49,7 +49,7 @@ class _DropdownWithDescriptionState extends State<DropdownWithDescription> {
   }
 
   onChanged(BuildContext context, String value) {
-    widget.onChanged(context, value);
+    widget.onChangedAction(context, value);
     _value = value;
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
-import 'package:voice_interface_optimization/logic/text_language.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 
 import 'home_appbar.dart';
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 body: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                children: <Widget>[
                   Text(
                     'You have pushed the button this many times:',
                   ),
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   )
                 ],
-                  ),
+              ),
                 ),
               );
             },
@@ -85,8 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
     await SharedPreferencesWrapper.getInstance();
     String languageCode = sharedPreferencesWrapper.getAppLanguageCode();
     BlocProvider.of<LocalizationCubit>(context)
-        .changeLanguage(context, languageCode);
-    TextsLanguage.getInstance().loadLanguage();
+        .changeAppLanguage(context, languageCode);
+    BlocProvider.of<TextsLanguageCubit>(context).changeTextsLanguage(
+        context, languageCode);
   }
 
   _playSound() async {

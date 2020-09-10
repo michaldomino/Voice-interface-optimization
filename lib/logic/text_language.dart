@@ -3,7 +3,7 @@ import 'package:voice_interface_optimization/persistence/shared_preferences_wrap
 class TextsLanguage {
   static final TextsLanguage _instance = TextsLanguage._();
 
-  factory TextsLanguage.getInstance() {
+  factory TextsLanguage() {
     return _instance;
   }
 

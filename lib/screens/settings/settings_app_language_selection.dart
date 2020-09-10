@@ -14,7 +14,7 @@ class SettingsAppLanguageSelection extends StatelessWidget {
         initialValue: Intl.defaultLocale,
         onChangedAction: (context, targetLanguageCode) {
           BlocProvider.of<LocalizationCubit>(context)
-              .changeLanguage(context, targetLanguageCode);
+              .changeAppLanguage(context, targetLanguageCode);
         },
         items: AppLocalizationDelegate()
             .supportedLocales

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
 import 'package:voice_interface_optimization/logic/text_language.dart';

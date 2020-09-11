@@ -7,28 +7,30 @@ import 'package:flutter_tts/flutter_tts.dart';
 enum TtsState { playing, stopped, paused, continued }
 
 class Speaker {
+  static final Speaker _instance = Speaker._();
+
   FlutterTts flutterTts;
   dynamic languages;
   double volume = 0.5;
   double pitch = 1.0;
   double rate = 0.5;
 
-  TtsState ttsState = TtsState.stopped;
+  TtsState _ttsState = TtsState.stopped;
 
-  get isPlaying => ttsState == TtsState.playing;
+  get isPlaying => _ttsState == TtsState.playing;
 
-  get isStopped => ttsState == TtsState.stopped;
+  get isStopped => _ttsState == TtsState.stopped;
 
-  get isPaused => ttsState == TtsState.paused;
+  get isPaused => _ttsState == TtsState.paused;
 
-  get isContinued => ttsState == TtsState.continued;
+  get isContinued => _ttsState == TtsState.continued;
 
-  Speaker._();
+  Speaker._() {
+    _initTts();
+  }
 
-  static Speaker getInstance() {
-    Speaker instance = Speaker._();
-    instance._initTts();
-    return instance;
+  factory Speaker() {
+    return _instance;
   }
 
   _initTts() {
@@ -44,34 +46,34 @@ class Speaker {
 
     flutterTts.setStartHandler(() {
       print("Playing");
-      ttsState = TtsState.playing;
+      _ttsState = TtsState.playing;
     });
 
     flutterTts.setCompletionHandler(() {
       print("Complete");
-      ttsState = TtsState.stopped;
+      _ttsState = TtsState.stopped;
     });
 
     flutterTts.setCancelHandler(() {
       print("Cancel");
-      ttsState = TtsState.stopped;
+      _ttsState = TtsState.stopped;
     });
 
     if (kIsWeb || Platform.isIOS) {
       flutterTts.setPauseHandler(() {
         print("Paused");
-        ttsState = TtsState.paused;
+        _ttsState = TtsState.paused;
       });
 
       flutterTts.setContinueHandler(() {
         print("Continued");
-        ttsState = TtsState.continued;
+        _ttsState = TtsState.continued;
       });
     }
 
     flutterTts.setErrorHandler((msg) {
       print("error: $msg");
-      ttsState = TtsState.stopped;
+      _ttsState = TtsState.stopped;
     });
   }
 
@@ -96,19 +98,19 @@ class Speaker {
     if (text != null) {
       if (text.isNotEmpty) {
         var result = await flutterTts.speak(text);
-        if (result == 1) ttsState = TtsState.playing;
+        if (result == 1) _ttsState = TtsState.playing;
       }
     }
   }
 
   Future stop() async {
     var result = await flutterTts.stop();
-    if (result == 1) ttsState = TtsState.stopped;
+    if (result == 1) _ttsState = TtsState.stopped;
   }
 
   Future pause() async {
     var result = await flutterTts.pause();
-    if (result == 1) ttsState = TtsState.paused;
+    if (result == 1) _ttsState = TtsState.paused;
   }
 
   Future setLanguage(String languageCode) async {

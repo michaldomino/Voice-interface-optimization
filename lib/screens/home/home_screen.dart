@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _speaker = Speaker.getInstance();
+    _speaker = Speaker();
   }
 
   @override
@@ -71,13 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   )
-                    ],
-                  ),
-                ),
-              );
-            },
+                ],
+              ),
+            ),
           );
-        });
+        },
+      );
+    });
   }
 
   Future _loadLanguage() async {

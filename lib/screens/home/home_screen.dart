@@ -41,36 +41,69 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, _) {
           return Scaffold(
             appBar: HomeAppbarWrapper(context).get(),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'You have pushed the button this many times:',
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                      child: TextField(
-                        onChanged: (String value) {
-                          setState(() {
-                            _textToSpeak = value;
-                          });
-                        },
-                      )),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      InkWell(
-                        child: Icon(
-                          Icons.play_arrow,
-                          color: Colors.green,
-                          size: 50,
+            body: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'You have pushed the button this many times:',
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                        child: TextField(
+                          onChanged: (String value) {
+                            setState(() {
+                              _textToSpeak = value;
+                            });
+                          },
+                        )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        InkWell(
+                          child: Icon(
+                            Icons.play_arrow,
+                            color: Colors.green,
+                            size: 50,
+                          ),
+                          onTap: _playSound,
                         ),
-                        onTap: _playSound,
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    ),
+                    Slider(
+                        value: _speaker.volume,
+                        onChanged: (newVolume) {
+                          setState(() => _speaker.volume = newVolume);
+                        },
+                        min: 0.0,
+                        max: 1.0,
+                        divisions: 10,
+                        label: "Volume: ${_speaker.volume}"),
+                    Slider(
+                      value: _speaker.pitch,
+                      onChanged: (newPitch) {
+                        setState(() => _speaker.pitch = newPitch);
+                      },
+                      min: 0.5,
+                      max: 2.0,
+                      divisions: 15,
+                      label: "Pitch: ${_speaker.pitch}",
+                      activeColor: Colors.red,
+                    ),
+                    Slider(
+                      value: _speaker.rate,
+                      onChanged: (newRate) {
+                        setState(() => _speaker.rate = newRate);
+                      },
+                      min: 0.0,
+                      max: 1.0,
+                      divisions: 10,
+                      label: "Rate: ${_speaker.rate}",
+                      activeColor: Colors.green,
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -81,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     BlocProvider.of<LocalizationCubit>(context).changeAppLanguage(
         context, sharedPreferencesWrapper.getAppLanguageCode());
     BlocProvider.of<TextsLanguageCubit>(context).changeTextsLanguage(

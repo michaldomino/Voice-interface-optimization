@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DropdownWithDescription extends StatefulWidget {
-  String description;
-  String initialValue;
-  List<DropdownWithDescriptionItem> items;
-  Function(BuildContext, String) onChangedAction;
+  final String description;
+  final String initialValue;
+  final List<DropdownWithDescriptionItem> items;
+  final Function(BuildContext, String) onChangedAction;
 
   DropdownWithDescription(
       {this.description, this.initialValue, this.items, this.onChangedAction});

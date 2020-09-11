@@ -1,3 +1,4 @@
+import 'package:voice_interface_optimization/models/languages_codes_model.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 
 class TextsLanguage {
@@ -15,6 +16,9 @@ class TextsLanguage {
     return _textLanguage;
   }
 
+  List<String> get supportedLanguages =>
+      [LanguagesCodesModel.ENGLISH, LanguagesCodesModel.POLISH];
+
   set textLanguage(String value) {
     if (_textLanguage != value) {
       _textLanguage = value;
@@ -28,13 +32,13 @@ class TextsLanguage {
 
   Future<String> _getTextLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-        await SharedPreferencesWrapper.getInstance();
+    await SharedPreferencesWrapper.getInstance();
     return sharedPreferencesWrapper.getTextsLanguage();
   }
 
   Future _setTextLanguage(String value) async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-        await SharedPreferencesWrapper.getInstance();
+    await SharedPreferencesWrapper.getInstance();
     return sharedPreferencesWrapper.setTextsLanguageCode(value);
   }
 }

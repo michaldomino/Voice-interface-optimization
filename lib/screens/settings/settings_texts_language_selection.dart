@@ -26,9 +26,8 @@ class _SettingsTextsLanguageSelectionState
             BlocProvider.of<TextsLanguageCubit>(context)
                 .changeTextsLanguage(context, targetLanguageCode);
           },
-          items: AppLocalizationDelegate()
-              .supportedLocales
-              .map((locale) => locale.languageCode)
+          items: TextsLanguage()
+              .supportedLanguages
               .map(
                 (languageCode) => DropdownWithDescriptionItem(
                     Intl.message(languageCode), languageCode),

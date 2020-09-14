@@ -4,10 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
+import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
 import 'models/routes_model.dart';
-import 'screens/home/home_screen.dart';
+import 'screens/home/custom_text_speaking_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,9 +32,10 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             routes: {
-              RoutesModel.HOME_SCREEN: (context) =>
-                  HomeScreen(title: 'Flutter Demo Home Page'),
-              RoutesModel.SETTINGS: (context) => Settings()
+              RoutesModel.HOME_SCREEN: (context) => MenuScreen(),
+              RoutesModel.SETTINGS: (context) => Settings(),
+              RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
+                  CustomTextSpeakingScreen(),
             },
             initialRoute: RoutesModel.HOME_SCREEN,
           ),

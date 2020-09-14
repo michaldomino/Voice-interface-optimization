@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
 
-import '../menu/menu_appbar.dart';
+import '../reusable/appbar.dart';
 
 class CustomTextSpeakingScreen extends StatefulWidget {
   CustomTextSpeakingScreen({Key key, this.title}) : super(key: key);
@@ -36,7 +36,7 @@ class _CustomTextSpeakingScreenState extends State<CustomTextSpeakingScreen> {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
       return Scaffold(
-        appBar: MenuAppbar(context).get(),
+        appBar: CustomAppbar(context).get(),
         body: SingleChildScrollView(
           child: Center(
             child: Column(

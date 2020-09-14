@@ -5,9 +5,9 @@ import 'package:voice_interface_optimization/blocs/localization/localization_cub
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/models/routes_model.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
-import 'package:voice_interface_optimization/screens/menu/menu_appbar.dart';
+import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
 
-import 'menu_appbar.dart';
+import '../reusable/appbar.dart';
 
 class MenuScreen extends StatefulWidget {
   MenuScreen({Key key, this.title}) : super(key: key);
@@ -27,7 +27,7 @@ class _MenuScreenState extends State<MenuScreen> {
         future: _loadLanguage(),
         builder: (context, _) {
           return Scaffold(
-            appBar: MenuAppbar(context).get(),
+            appBar: CustomAppbar(context).get(),
             body: ListView.separated(
                 itemCount: 2,
                 separatorBuilder: (context, index) => SizedBox(height: 10),

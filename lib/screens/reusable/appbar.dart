@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/models/routes_model.dart';
 
-class MenuAppbar {
+class CustomAppbar {
   BuildContext context;
 
-  MenuAppbar(this.context);
+  CustomAppbar(this.context);
 
   static const List<_AppBarButtonChoice> _appBarButtonChoices =
       const <_AppBarButtonChoice>[

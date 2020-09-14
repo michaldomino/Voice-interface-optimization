@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DropdownWithDescription extends StatefulWidget {
   final String description;
   final String initialValue;
-  final List<DropdownWithDescriptionItem> items;
+  final List<TextDropdownMenuItem> items;
   final Function(BuildContext, String) onChangedAction;
 
   DropdownWithDescription(
@@ -54,9 +54,9 @@ class _DropdownWithDescriptionState extends State<DropdownWithDescription> {
   }
 }
 
-class DropdownWithDescriptionItem {
+class TextDropdownMenuItem {
   String text;
   String value;
 
-  DropdownWithDescriptionItem(this.text, this.value);
+  TextDropdownMenuItem(this.text, this.value);
 }

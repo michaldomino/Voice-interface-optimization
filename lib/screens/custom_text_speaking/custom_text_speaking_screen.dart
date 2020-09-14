@@ -42,9 +42,6 @@ class _CustomTextSpeakingScreenState extends State<CustomTextSpeakingScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'You have pushed the button this many times:',
-                ),
                 Container(
                     padding: EdgeInsets.only(left: 25.0, right: 25.0),
                     child: TextField(

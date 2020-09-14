@@ -6,6 +6,7 @@ import 'package:voice_interface_optimization/blocs/texts_language/texts_language
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/custom_text_speaking/custom_text_speaking_screen.dart';
 import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
+import 'package:voice_interface_optimization/screens/predefined_texts_speaking/predefined_text_speaking_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 
 import 'models/routes_model.dart';
@@ -36,6 +37,8 @@ class MyApp extends StatelessWidget {
               RoutesModel.SETTINGS: (context) => Settings(),
               RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
                   CustomTextSpeakingScreen(),
+              RoutesModel.PREDEFINED_TEXT_SPEAKING: (context) =>
+                  PredefinedTextSpeakingScreen(),
             },
             initialRoute: RoutesModel.HOME_SCREEN,
           ),

@@ -30,18 +30,18 @@ class _MenuScreenState extends State<MenuScreen> {
         builder: (context, state) {
       return FutureBuilder(
         future: _loadLanguage(),
-        builder: (context, _) {
+        builder: (context, snapshot) {
           return Scaffold(
             appBar: CustomAppbar(context).get(),
             body: ListView.separated(
-                    itemCount: _listViewItems.length,
-                    separatorBuilder: (context, index) =>
-                        SizedBox(height: LIST_VIEW_ITEMS_SEPARATOR_HEIGHT),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: LIST_VIEW_ITEM_HEIGHT,
-                        child: RaisedButton(
-                          child: Row(
+                itemCount: _listViewItems.length,
+                separatorBuilder: (context, index) =>
+                    SizedBox(height: LIST_VIEW_ITEMS_SEPARATOR_HEIGHT),
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: LIST_VIEW_ITEM_HEIGHT,
+                    child: RaisedButton(
+                      child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
@@ -79,15 +79,15 @@ class _MenuScreenState extends State<MenuScreen> {
 
 List<_ListViewItem> _listViewItems = [
   _ListViewItem(
-      text: "Custom text speaking",
+      text: 'Custom text speaking',
       color: Colors.green,
       iconData: Icons.edit,
       routeName: RoutesModel.CUSTOM_TEXT_SPEAKING),
   _ListViewItem(
-      text: "Other",
+      text: 'Predefined text speaking',
       color: Colors.blue,
       iconData: Icons.list,
-      routeName: RoutesModel.SETTINGS),
+      routeName: RoutesModel.PREDEFINED_TEXT_SPEAKING),
 ];
 
 class _ListViewItem {

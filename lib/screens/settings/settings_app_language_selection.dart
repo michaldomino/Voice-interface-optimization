@@ -20,7 +20,7 @@ class SettingsAppLanguageSelection extends StatelessWidget {
             .supportedLocales
             .map((locale) => locale.languageCode)
             .map(
-              (languageCode) => DropdownWithDescriptionItem(
+              (languageCode) => TextDropdownMenuItem(
                   Intl.message(languageCode), languageCode),
             )
             .toList());

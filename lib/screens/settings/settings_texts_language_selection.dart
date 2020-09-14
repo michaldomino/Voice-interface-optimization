@@ -29,7 +29,7 @@ class _SettingsTextsLanguageSelectionState
           items: TextsLanguage()
               .supportedLanguages
               .map(
-                (languageCode) => DropdownWithDescriptionItem(
+                (languageCode) => TextDropdownMenuItem(
                     Intl.message(languageCode), languageCode),
               )
               .toList());

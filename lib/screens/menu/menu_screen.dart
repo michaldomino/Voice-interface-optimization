@@ -19,6 +19,11 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  static const double LIST_VIEW_ITEM_HEIGHT = 100;
+  static const double LIST_VIEW_ITEM_TEXT_SIZE = 20;
+  static const double LIST_VIEW_ITEM_ICON_SIZE = 30;
+  static const double LIST_VIEW_ITEMS_SEPARATOR_HEIGHT = 10;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
@@ -29,40 +34,42 @@ class _MenuScreenState extends State<MenuScreen> {
           return Scaffold(
             appBar: CustomAppbar(context).get(),
             body: ListView.separated(
-                itemCount: 2,
-                separatorBuilder: (context, index) => SizedBox(height: 10),
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 100,
-                    child: RaisedButton(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            _listViewItems[index].text,
-                            style: TextStyle(fontSize: 20),
+                    itemCount: _listViewItems.length,
+                    separatorBuilder: (context, index) =>
+                        SizedBox(height: LIST_VIEW_ITEMS_SEPARATOR_HEIGHT),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: LIST_VIEW_ITEM_HEIGHT,
+                        child: RaisedButton(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                _listViewItems[index].text,
+                                style:
+                                TextStyle(fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
+                              ),
+                              Icon(
+                                _listViewItems[index].iconData,
+                                size: LIST_VIEW_ITEM_ICON_SIZE,
+                              ),
+                            ],
                           ),
-                          Icon(
-                            _listViewItems[index].iconData,
-                            size: 30,
-                          ),
-                        ],
-                      ),
-                      onPressed: () => Navigator.pushNamed(
-                          context, _listViewItems[index].routeName),
-                      color: _listViewItems[index].color,
-                    ),
-                  );
-                }),
+                          onPressed: () => Navigator.pushNamed(
+                              context, _listViewItems[index].routeName),
+                          color: _listViewItems[index].color,
+                        ),
+                      );
+                    }),
+              );
+            },
           );
-        },
-      );
-    });
+        });
   }
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-        await SharedPreferencesWrapper.getInstance();
+    await SharedPreferencesWrapper.getInstance();
     BlocProvider.of<LocalizationCubit>(context).changeAppLanguage(
         context, sharedPreferencesWrapper.getAppLanguageCode());
     BlocProvider.of<TextsLanguageCubit>(context).changeTextsLanguage(

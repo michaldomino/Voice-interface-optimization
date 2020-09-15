@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
-
-import '../reusable/appbar.dart';
+import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
+import 'package:voice_interface_optimization/screens/text_speaking/speaker_regulator.dart';
 
 class CustomTextSpeakingScreen extends StatefulWidget {
   CustomTextSpeakingScreen({Key key, this.title}) : super(key: key);
@@ -64,37 +64,7 @@ class _CustomTextSpeakingScreenState extends State<CustomTextSpeakingScreen> {
                     ),
                   ],
                 ),
-                Slider(
-                    value: _speaker.volume,
-                    onChanged: (newVolume) {
-                      setState(() => _speaker.volume = newVolume);
-                    },
-                    min: 0.0,
-                    max: 1.0,
-                    divisions: 10,
-                    label: "Volume: ${_speaker.volume}"),
-                Slider(
-                  value: _speaker.pitch,
-                  onChanged: (newPitch) {
-                    setState(() => _speaker.pitch = newPitch);
-                  },
-                  min: 0.5,
-                  max: 2.0,
-                  divisions: 15,
-                  label: "Pitch: ${_speaker.pitch}",
-                  activeColor: Colors.red,
-                ),
-                Slider(
-                  value: _speaker.rate,
-                  onChanged: (newRate) {
-                    setState(() => _speaker.rate = newRate);
-                  },
-                  min: 0.0,
-                  max: 1.0,
-                  divisions: 10,
-                  label: "Rate: ${_speaker.rate}",
-                  activeColor: Colors.green,
-                ),
+                SpeakerRegulator(_speaker),
               ],
             ),
           ),

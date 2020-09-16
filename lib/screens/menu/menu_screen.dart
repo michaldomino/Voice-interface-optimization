@@ -42,38 +42,40 @@ class _MenuScreenState extends State<MenuScreen> {
                     height: LIST_VIEW_ITEM_HEIGHT,
                     child: RaisedButton(
                       child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                _listViewItems[index].text,
-                                style:
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            _listViewItems[index].text,
+                            style:
                                 TextStyle(fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
-                              ),
-                              Icon(
-                                _listViewItems[index].iconData,
-                                size: LIST_VIEW_ITEM_ICON_SIZE,
-                              ),
-                            ],
                           ),
-                          onPressed: () => Navigator.pushNamed(
-                              context, _listViewItems[index].routeName),
-                          color: _listViewItems[index].color,
-                        ),
-                      );
-                    }),
-              );
-            },
+                          Icon(
+                            _listViewItems[index].iconData,
+                            size: LIST_VIEW_ITEM_ICON_SIZE,
+                          ),
+                        ],
+                      ),
+                      onPressed: () => Navigator.pushNamed(
+                          context, _listViewItems[index].routeName),
+                      color: _listViewItems[index].color,
+                    ),
+                  );
+                }),
           );
-        });
+        },
+      );
+    });
   }
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
     await SharedPreferencesWrapper.getInstance();
-    BlocProvider.of<LocalizationCubit>(context).changeAppLanguage(
-        context, sharedPreferencesWrapper.getAppLanguageCode());
-    BlocProvider.of<TextsLanguageCubit>(context).changeTextsLanguage(
-        context, sharedPreferencesWrapper.getTextsLanguage());
+    String appLanguage = sharedPreferencesWrapper.getAppLanguageCode();
+    String textsLanguage = sharedPreferencesWrapper.getTextsLanguage();
+    BlocProvider.of<LocalizationCubit>(context)
+        .changeAppLanguage(context, appLanguage);
+    BlocProvider.of<TextsLanguageCubit>(context)
+        .changeTextsLanguage(context, textsLanguage);
   }
 }
 

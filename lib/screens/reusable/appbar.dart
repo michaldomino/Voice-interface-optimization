@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/models/routes_model.dart';
 
-class MainAppbarWrapper {
+class CustomAppbar {
   BuildContext context;
 
-  MainAppbarWrapper(this.context);
+  CustomAppbar(this.context);
 
   static const List<_AppBarButtonChoice> _appBarButtonChoices =
       const <_AppBarButtonChoice>[
@@ -28,7 +29,7 @@ class MainAppbarWrapper {
             return _appBarButtonChoices.map((choice) {
               return PopupMenuItem<_AppBarButtonChoice>(
                 value: choice,
-                child: Text(choice.text),
+                child: Text(Intl.message((choice.text))),
               );
             }).toList();
           },
@@ -46,5 +47,5 @@ class _AppBarButtonChoice {
 }
 
 class _AppBarChoicesTextModel {
-  static const SETTINGS = 'Settings';
+  static const SETTINGS = 'settings';
 }

@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Optymalizacja interfejsu głosowego"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
         "pl": MessageLookupByLibrary.simpleMessage("Polski"),
-        "settings": MessageLookupByLibrary.simpleMessage("Ustawienia")
+        "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
+        "textsLanguage": MessageLookupByLibrary.simpleMessage("Język tekstów")
       };
 }

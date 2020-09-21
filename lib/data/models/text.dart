@@ -6,7 +6,7 @@ class Text {
 
   Text(this.id, this.key, this.language, this.text);
 
-  factory Text.fromJson(Map<String, dynamic> jsonMap) {
+  factory Text.fromJsonMap(Map<String, dynamic> jsonMap) {
     return Text(
       jsonMap['id'],
       jsonMap['key'],

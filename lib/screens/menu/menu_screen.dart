@@ -3,11 +3,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
-import 'package:voice_interface_optimization/models/routes_model.dart';
+import 'package:voice_interface_optimization/logic/routes_model.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
-
-import '../reusable/appbar.dart';
 
 class MenuScreen extends StatefulWidget {
   MenuScreen({Key key, this.title}) : super(key: key);
@@ -69,7 +67,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     String appLanguage = sharedPreferencesWrapper.getAppLanguageCode();
     String textsLanguage = sharedPreferencesWrapper.getTextsLanguage();
     BlocProvider.of<LocalizationCubit>(context)

@@ -1,4 +1,4 @@
-import 'package:voice_interface_optimization/models/languages_codes_model.dart';
+import 'package:voice_interface_optimization/logic/languages_codes_model.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 
 class TextsLanguage {

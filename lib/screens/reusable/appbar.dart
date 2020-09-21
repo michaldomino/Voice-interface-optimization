@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/models/routes_model.dart';
+import 'package:voice_interface_optimization/logic/routes_model.dart';
 
 class CustomAppbar {
   BuildContext context;

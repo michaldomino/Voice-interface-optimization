@@ -43,10 +43,16 @@ class _MenuScreenState extends State<MenuScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            Intl.message(_listViewItems[index].text),
-                            style:
-                                TextStyle(fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
+                          Container(
+                            constraints: BoxConstraints(maxWidth: 300),
+                            child: FittedBox(
+                              fit: BoxFit.fitWidth,
+                              child: Text(
+                                Intl.message(_listViewItems[index].text),
+                                style: TextStyle(
+                                    fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
+                              ),
+                            ),
                           ),
                           Icon(
                             _listViewItems[index].iconData,

@@ -4,5 +4,7 @@
   "appLanguage": "App language",
   "en": "English",
   "pl": "Polish",
-  "textsLanguage": "Texts language"
+  "textsLanguage": "Texts language",
+  "customTextSpeaking": "Custom text speaking",
+  "predefinedTextSpeaking": "Predefined text speaking"
 }

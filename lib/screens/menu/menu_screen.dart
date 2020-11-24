@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/logic/routes_model.dart';
@@ -43,7 +44,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            _listViewItems[index].text,
+                            Intl.message(_listViewItems[index].text),
                             style:
                                 TextStyle(fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
                           ),
@@ -79,12 +80,12 @@ class _MenuScreenState extends State<MenuScreen> {
 
 List<_ListViewItem> _listViewItems = [
   _ListViewItem(
-      text: 'Custom text speaking',
+      text: 'customTextSpeaking',
       color: Colors.green,
       iconData: Icons.edit,
       routeName: RoutesModel.CUSTOM_TEXT_SPEAKING),
   _ListViewItem(
-      text: 'Predefined text speaking',
+      text: 'predefinedTextSpeaking',
       color: Colors.blue,
       iconData: Icons.list,
       routeName: RoutesModel.PREDEFINED_TEXT_SPEAKING),

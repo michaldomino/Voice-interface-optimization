@@ -126,6 +126,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Recognized text:`
+  String get recognizedText {
+    return Intl.message(
+      'Recognized text:',
+      name: 'recognizedText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

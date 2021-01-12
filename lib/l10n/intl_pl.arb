@@ -7,5 +7,6 @@
   "textsLanguage": "Język tekstów",
   "customTextSpeaking": "Odsłuchiwanie dowolnego tekstu",
   "predefinedTextSpeaking": "Odsłuchiwanie predefiniowanego tekstu",
-  "voiceRecognition": "Rozpoznawanie wypowiedzi"
+  "voiceRecognition": "Rozpoznawanie wypowiedzi",
+  "recognizedText": "Rozpoznany tekst:"
 }

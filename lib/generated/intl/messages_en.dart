@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pl": MessageLookupByLibrary.simpleMessage("Polish"),
         "predefinedTextSpeaking":
             MessageLookupByLibrary.simpleMessage("Predefined text speaking"),
+        "recognizedText":
+            MessageLookupByLibrary.simpleMessage("Recognized text:"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Texts language"),
         "voiceRecognition":

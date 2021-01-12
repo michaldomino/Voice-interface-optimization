@@ -7,5 +7,6 @@
   "textsLanguage": "Texts language",
   "customTextSpeaking": "Custom text speaking",
   "predefinedTextSpeaking": "Predefined text speaking",
-  "voiceRecognition": "Voice recognition"
+  "voiceRecognition": "Voice recognition",
+  "recognizedText": "Recognized text:"
 }

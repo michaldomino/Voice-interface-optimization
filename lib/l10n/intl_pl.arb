@@ -6,5 +6,6 @@
   "pl": "Polski",
   "textsLanguage": "Język tekstów",
   "customTextSpeaking": "Odsłuchiwanie dowolnego tekstu",
-  "predefinedTextSpeaking": "Odsłuchiwanie predefiniowanego tekstu"
+  "predefinedTextSpeaking": "Odsłuchiwanie predefiniowanego tekstu",
+  "voiceRecognition": "Rozpoznawanie wypowiedzi"
 }

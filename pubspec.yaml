@@ -27,6 +27,7 @@ dependencies:
   shared_preferences: ^0.5.10
   flutter_tts: ^1.2.7
   yaml: ^2.2.1
+  http: ^0.12.2
 
   intl: ^0.16.1
   intl_translation: ^0.17.9

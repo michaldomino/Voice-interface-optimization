@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
-import 'package:voice_interface_optimization/models/routes_model.dart';
+import 'package:voice_interface_optimization/logic/routes_model.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
-
-import '../reusable/appbar.dart';
 
 class MenuScreen extends StatefulWidget {
   MenuScreen({Key key, this.title}) : super(key: key);
@@ -44,14 +43,23 @@ class _MenuScreenState extends State<MenuScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            _listViewItems[index].text,
-                            style:
-                                TextStyle(fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
+                          Flexible(
+                            flex: 5,
+                            child: FittedBox(
+                              fit: BoxFit.fitWidth,
+                              child: Text(
+                                Intl.message(_listViewItems[index].text),
+                                style: TextStyle(
+                                    fontSize: LIST_VIEW_ITEM_TEXT_SIZE),
+                              ),
+                            ),
                           ),
-                          Icon(
-                            _listViewItems[index].iconData,
-                            size: LIST_VIEW_ITEM_ICON_SIZE,
+                          Flexible(
+                            flex: 1,
+                            child: Icon(
+                              _listViewItems[index].iconData,
+                              size: LIST_VIEW_ITEM_ICON_SIZE,
+                            ),
                           ),
                         ],
                       ),
@@ -69,7 +77,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Future _loadLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     String appLanguage = sharedPreferencesWrapper.getAppLanguageCode();
     String textsLanguage = sharedPreferencesWrapper.getTextsLanguage();
     BlocProvider.of<LocalizationCubit>(context)
@@ -81,12 +89,12 @@ class _MenuScreenState extends State<MenuScreen> {
 
 List<_ListViewItem> _listViewItems = [
   _ListViewItem(
-      text: 'Custom text speaking',
+      text: 'customTextSpeaking',
       color: Colors.green,
       iconData: Icons.edit,
       routeName: RoutesModel.CUSTOM_TEXT_SPEAKING),
   _ListViewItem(
-      text: 'Predefined text speaking',
+      text: 'predefinedTextSpeaking',
       color: Colors.blue,
       iconData: Icons.list,
       routeName: RoutesModel.PREDEFINED_TEXT_SPEAKING),

@@ -116,6 +116,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Voice recognition`
+  String get voiceRecognition {
+    return Intl.message(
+      'Voice recognition',
+      name: 'voiceRecognition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recognized text:`
+  String get recognizedText {
+    return Intl.message(
+      'Recognized text:',
+      name: 'recognizedText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

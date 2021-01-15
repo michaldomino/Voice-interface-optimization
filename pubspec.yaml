@@ -28,6 +28,7 @@ dependencies:
   flutter_tts: ^1.2.7
   yaml: ^2.2.1
   http: ^0.12.2
+  speech_to_text: ^3.0.0
 
   intl: ^0.16.1
   intl_translation: ^0.17.9

@@ -28,11 +28,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie dowolnego tekstu"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "pl": MessageLookupByLibrary.simpleMessage("Polski"),
         "predefinedTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie predefiniowanego tekstu"),
         "recognizedText":
             MessageLookupByLibrary.simpleMessage("Rozpoznany tekst:"),
+        "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Język tekstów"),
         "voiceRecognition":

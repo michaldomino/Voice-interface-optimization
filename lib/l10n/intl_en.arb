@@ -8,5 +8,7 @@
   "customTextSpeaking": "Custom text speaking",
   "predefinedTextSpeaking": "Predefined text speaking",
   "voiceRecognition": "Voice recognition",
-  "recognizedText": "Recognized text:"
+  "recognizedText": "Recognized text:",
+  "login": "Login",
+  "register": "Register"
 }

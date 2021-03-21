@@ -5,6 +5,7 @@ import 'package:voice_interface_optimization/blocs/localization/localization_cub
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/routes_model.dart';
+import 'package:voice_interface_optimization/screens/login/login_screen.dart';
 import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/custom_text_speaking/custom_text_speaking_screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             routes: {
-              RoutesModel.HOME_SCREEN: (context) => MenuScreen(),
+              RoutesModel.MENU: (context) => MenuScreen(),
               RoutesModel.SETTINGS: (context) => Settings(),
               RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
                   CustomTextSpeakingScreen(),
@@ -41,8 +42,9 @@ class MyApp extends StatelessWidget {
                   PredefinedTextSpeakingScreen(),
               RoutesModel.VOICE_RECOGNITION: (context) =>
                   VoiceRecognitionScreen(),
+              RoutesModel.LOGIN: (context) => LoginScreen(),
             },
-            initialRoute: RoutesModel.HOME_SCREEN,
+            initialRoute: RoutesModel.LOGIN,
           ),
         ));
   }

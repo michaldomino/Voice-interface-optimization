@@ -8,5 +8,11 @@
   "customTextSpeaking": "Odsłuchiwanie dowolnego tekstu",
   "predefinedTextSpeaking": "Odsłuchiwanie predefiniowanego tekstu",
   "voiceRecognition": "Rozpoznawanie wypowiedzi",
-  "recognizedText": "Rozpoznany tekst:"
+  "recognizedText": "Rozpoznany tekst:",
+  "login": "Login",
+  "password": "Hasło",
+  "loginAction": "Zaloguj się",
+  "registerAction": "Zarejestruj się",
+  "pleaseEnterSomeText": "Proszę wpisać tekst",
+  "submit": "Wyślij"
 }

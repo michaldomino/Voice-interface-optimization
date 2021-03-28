@@ -136,6 +136,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get loginAction {
+    return Intl.message(
+      'Login',
+      name: 'loginAction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get registerAction {
+    return Intl.message(
+      'Register',
+      name: 'registerAction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter some text`
+  String get pleaseEnterSomeText {
+    return Intl.message(
+      'Please enter some text',
+      name: 'pleaseEnterSomeText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

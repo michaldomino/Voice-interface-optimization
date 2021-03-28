@@ -13,5 +13,6 @@
   "password": "Password",
   "loginAction": "Login",
   "registerAction": "Register",
-  "pleaseEnterSomeText": "Please enter some text"
+  "pleaseEnterSomeText": "Please enter some text",
+  "submit": "Submit"
 }

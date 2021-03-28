@@ -13,5 +13,6 @@
   "password": "Hasło",
   "loginAction": "Zaloguj się",
   "registerAction": "Zarejestruj się",
-  "pleaseEnterSomeText": "Proszę wpisać tekst"
+  "pleaseEnterSomeText": "Proszę wpisać tekst",
+  "submit": "Wyślij"
 }

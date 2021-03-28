@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerAction":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
+        "submit": MessageLookupByLibrary.simpleMessage("Wyślij"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Język tekstów"),
         "voiceRecognition":
             MessageLookupByLibrary.simpleMessage("Rozpoznawanie wypowiedzi")

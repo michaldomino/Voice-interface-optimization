@@ -16,10 +16,10 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  static const double LIST_VIEW_ITEM_HEIGHT = 100;
-  static const double LIST_VIEW_ITEM_TEXT_SIZE = 20;
-  static const double LIST_VIEW_ITEM_ICON_SIZE = 30;
-  static const double LIST_VIEW_ITEMS_SEPARATOR_HEIGHT = 10;
+  static const double _LIST_VIEW_ITEM_HEIGHT = 100;
+  static const double _LIST_VIEW_ITEM_TEXT_SIZE = 20;
+  static const double _LIST_VIEW_ITEM_ICON_SIZE = 30;
+  static const double _LIST_VIEW_ITEMS_SEPARATOR_HEIGHT = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,10 @@ class _MenuScreenState extends State<MenuScreen> {
           child: ListView.separated(
               itemCount: _listViewItems.length,
               separatorBuilder: (context, index) =>
-                  SizedBox(height: LIST_VIEW_ITEMS_SEPARATOR_HEIGHT),
+                  SizedBox(height: _LIST_VIEW_ITEMS_SEPARATOR_HEIGHT),
               itemBuilder: (context, index) {
                 return Container(
-                  height: LIST_VIEW_ITEM_HEIGHT,
+                  height: _LIST_VIEW_ITEM_HEIGHT,
                   child: ElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +47,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             child: Text(
                               Intl.message(_listViewItems[index].text),
                               style: TextStyle(
-                                  fontSize: LIST_VIEW_ITEM_TEXT_SIZE,
+                                  fontSize: _LIST_VIEW_ITEM_TEXT_SIZE,
                                   color: Colors.black),
                             ),
                           ),
@@ -56,7 +56,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           flex: 1,
                           child: Icon(
                             _listViewItems[index].iconData,
-                            size: LIST_VIEW_ITEM_ICON_SIZE,
+                            size: _LIST_VIEW_ITEM_ICON_SIZE,
                             color: Colors.black,
                           ),
                         ),

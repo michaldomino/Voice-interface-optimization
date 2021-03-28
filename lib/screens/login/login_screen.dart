@@ -11,6 +11,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State {
+  static const double _TOP_FORM_MARGIN = 30.0;
+  static const double _HORIZONTAL_FORM_MARGIN = 30.0;
+  static const double _TOP_FORM_FIELD_MARGIN = 15.0;
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -20,28 +24,28 @@ class _LoginScreenState extends State {
       return Scaffold(
         appBar: LoginScreenAppbar(context).get(),
         body: Container(
-          margin: EdgeInsets.only(left: 30.0, right: 30.0),
+          margin: const EdgeInsets.only(
+              top: _TOP_FORM_MARGIN,
+              left: _HORIZONTAL_FORM_MARGIN,
+              right: _HORIZONTAL_FORM_MARGIN),
           child: Form(
             key: _formKey,
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: S.of(context).login,
-                    ),
-                    validator: (String value) {
-                      if (value == null || value.isEmpty) {
-                        return S.of(context).pleaseEnterSomeText;
-                      }
-                      return null;
-                    },
+                TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: S.of(context).login,
                   ),
+                  validator: (String value) {
+                    if (value == null || value.isEmpty) {
+                      return S.of(context).pleaseEnterSomeText;
+                    }
+                    return null;
+                  },
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                   child: TextFormField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -53,22 +57,22 @@ class _LoginScreenState extends State {
                       }
                       return null;
                     },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState.validate()) {}
                     },
-                    child: const Text('Submit'),
+                    child: Text(S.of(context).submit),
                   ),
                 ),
-              ],
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-      );
-    });
+          );
+        });
   }
 }

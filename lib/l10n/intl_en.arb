@@ -10,5 +10,8 @@
   "voiceRecognition": "Voice recognition",
   "recognizedText": "Recognized text:",
   "login": "Login",
-  "register": "Register"
+  "password": "Password",
+  "loginAction": "Login",
+  "registerAction": "Register",
+  "pleaseEnterSomeText": "Please enter some text"
 }

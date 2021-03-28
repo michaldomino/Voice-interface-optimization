@@ -147,11 +147,41 @@ class S {
     );
   }
 
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get loginAction {
+    return Intl.message(
+      'Login',
+      name: 'loginAction',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Register`
-  String get register {
+  String get registerAction {
     return Intl.message(
       'Register',
-      name: 'register',
+      name: 'registerAction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter some text`
+  String get pleaseEnterSomeText {
+    return Intl.message(
+      'Please enter some text',
+      name: 'pleaseEnterSomeText',
       desc: '',
       args: [],
     );

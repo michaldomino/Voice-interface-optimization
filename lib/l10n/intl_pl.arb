@@ -9,6 +9,9 @@
   "predefinedTextSpeaking": "Odsłuchiwanie predefiniowanego tekstu",
   "voiceRecognition": "Rozpoznawanie wypowiedzi",
   "recognizedText": "Rozpoznany tekst:",
-  "login": "Zaloguj się",
-  "register": "Zarejestruj się"
+  "login": "Login",
+  "password": "Hasło",
+  "loginAction": "Zaloguj się",
+  "registerAction": "Zarejestruj się",
+  "pleaseEnterSomeText": "Proszę wpisać tekst"
 }

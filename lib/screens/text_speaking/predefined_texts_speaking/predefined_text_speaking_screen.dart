@@ -12,20 +12,20 @@ class PredefinedTextSpeakingScreen extends StatefulWidget {
 
 class _PredefinedTextSpeakingScreenState
     extends State<PredefinedTextSpeakingScreen> {
-  String _currentText;
+  late String _currentText;
 
   @override
   Widget build(BuildContext context) {
     return TextSpeaking(
       currentText: _currentText,
-      textToSpeakAccessor: () => PredefinedTexts().texts[_currentText],
+      textToSpeakAccessor: () => PredefinedTexts().texts?[_currentText],
       textInput: BlocBuilder<TextsLanguageCubit, TextsLanguageState>(
           builder: (context, state) {
         return DropdownButton(
           isExpanded: true,
           value: _currentText,
           items: PredefinedTexts()
-              .texts
+              .texts!
               .entries
               .map((e) => DropdownMenuItem(
                     value: e.key,
@@ -37,7 +37,7 @@ class _PredefinedTextSpeakingScreenState
               .toList(),
           onChanged: (value) {
             setState(() {
-              _currentText = value;
+              _currentText = value as String;
             });
           },
         );

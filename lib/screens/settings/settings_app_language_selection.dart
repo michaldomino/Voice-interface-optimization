@@ -11,7 +11,7 @@ class SettingsAppLanguageSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownWithDescription(
         description: S.of(context).appLanguage,
-        initialValue: Intl.defaultLocale,
+        initialValue: Intl.defaultLocale ?? 'en',
         onChangedAction: (context, targetLanguageCode) {
           BlocProvider.of<LocalizationCubit>(context)
               .changeAppLanguage(context, targetLanguageCode);

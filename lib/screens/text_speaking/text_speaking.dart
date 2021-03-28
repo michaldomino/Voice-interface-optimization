@@ -11,7 +11,10 @@ class TextSpeaking extends StatefulWidget {
   final String Function() textToSpeakAccessor;
 
   const TextSpeaking(
-      {Key key, this.textInput, this.currentText, this.textToSpeakAccessor})
+      {Key? key,
+      required this.textInput,
+      required this.currentText,
+      required this.textToSpeakAccessor})
       : super(key: key);
 
   @override
@@ -19,7 +22,7 @@ class TextSpeaking extends StatefulWidget {
 }
 
 class _TextSpeakingState extends State<TextSpeaking> {
-  Speaker _speaker;
+  late Speaker _speaker;
 
   @override
   void initState() {

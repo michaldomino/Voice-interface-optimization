@@ -7,9 +7,9 @@ import 'package:voice_interface_optimization/logic/routes_model.dart';
 import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
 
 class MenuScreen extends StatefulWidget {
-  MenuScreen({Key key, this.title}) : super(key: key);
+  MenuScreen({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MenuScreenState createState() => _MenuScreenState();
@@ -103,5 +103,9 @@ class _ListViewItem {
   IconData iconData;
   String routeName;
 
-  _ListViewItem({this.text, this.color, this.iconData, this.routeName});
+  _ListViewItem(
+      {required this.text,
+      required this.color,
+      required this.iconData,
+      required this.routeName});
 }

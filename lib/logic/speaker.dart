@@ -9,7 +9,7 @@ enum TtsState { playing, stopped, paused, continued }
 class Speaker {
   static final Speaker _instance = Speaker._();
 
-  FlutterTts flutterTts;
+  FlutterTts flutterTts = FlutterTts();
   dynamic languages;
   double volume = 0.5;
   double pitch = 1.0;
@@ -34,7 +34,6 @@ class Speaker {
   }
 
   _initTts() {
-    flutterTts = FlutterTts();
 
     _getLanguages();
 
@@ -95,11 +94,9 @@ class Speaker {
     await flutterTts.setSpeechRate(rate);
     await flutterTts.setPitch(pitch);
 
-    if (text != null) {
-      if (text.isNotEmpty) {
-        var result = await flutterTts.speak(text);
-        if (result == 1) _ttsState = TtsState.playing;
-      }
+    if (text.isNotEmpty) {
+      var result = await flutterTts.speak(text);
+      if (result == 1) _ttsState = TtsState.playing;
     }
   }
 

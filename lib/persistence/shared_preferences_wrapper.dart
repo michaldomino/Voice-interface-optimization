@@ -18,7 +18,7 @@ class SharedPreferencesWrapper {
 
   String _getString(String key, String defaultValue) {
     String defaultTextsLanguageCode = defaultValue;
-    String value = _sharedPreferencesInstance.getString(key);
+    String? value = _sharedPreferencesInstance.getString(key);
     if (value == null) {
       value = defaultTextsLanguageCode;
     }

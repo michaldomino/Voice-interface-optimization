@@ -10,19 +10,19 @@ class TextsLanguage {
 
   TextsLanguage._();
 
-  String _textLanguage;
+  String? _textLanguage;
 
-  get textLanguage {
+  String? get textLanguage {
     return _textLanguage;
   }
 
   List<String> get supportedLanguages =>
       [LanguagesCodesModel.ENGLISH, LanguagesCodesModel.POLISH];
 
-  set textLanguage(String value) {
-    if (_textLanguage != value) {
+  set textLanguage(String? value) {
+    if (value != null && _textLanguage != value) {
       _textLanguage = value;
-      _setTextLanguage(_textLanguage);
+      _setTextLanguage(value);
     }
   }
 
@@ -32,13 +32,13 @@ class TextsLanguage {
 
   Future<String> _getTextLanguage() async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     return sharedPreferencesWrapper.getTextsLanguage();
   }
 
   Future _setTextLanguage(String value) async {
     SharedPreferencesWrapper sharedPreferencesWrapper =
-    await SharedPreferencesWrapper.getInstance();
+        await SharedPreferencesWrapper.getInstance();
     return sharedPreferencesWrapper.setTextsLanguageCode(value);
   }
 }

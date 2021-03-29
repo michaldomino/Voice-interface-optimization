@@ -11,6 +11,7 @@
   "recognizedText": "Recognized text:",
   "login": "Login",
   "password": "Password",
+  "confirmPassword": "Confirm password",
   "loginAction": "Login",
   "registerAction": "Register",
   "pleaseEnterSomeText": "Please enter some text",

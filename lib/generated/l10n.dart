@@ -157,6 +157,16 @@ class S {
     );
   }
 
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Login`
   String get loginAction {
     return Intl.message(

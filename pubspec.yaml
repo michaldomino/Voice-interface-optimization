@@ -26,9 +26,8 @@ dependencies:
   equatable: ^2.0.0
   shared_preferences: ^2.0.5
   flutter_tts: ^3.0.0
-  yaml: ^2.1.2
   http: ^0.13.1
-  speech_to_text: ^3.0.0
+  speech_to_text: ^4.1.0-nullsafety
 
   intl_translation: ^0.17.10
 

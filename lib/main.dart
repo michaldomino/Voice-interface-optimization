@@ -11,7 +11,6 @@ import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/register/register_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/custom_text_speaking/custom_text_speaking_screen.dart';
-import 'package:voice_interface_optimization/screens/text_speaking/predefined_texts_speaking/predefined_text_speaking_screen.dart';
 import 'package:voice_interface_optimization/screens/voice_recognition/voice_recogniton_screen.dart';
 
 void main() => runApp(MyApp());
@@ -41,8 +40,6 @@ class MyApp extends StatelessWidget {
               RoutesModel.SETTINGS: (context) => Settings(),
               RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
                   CustomTextSpeakingScreen(),
-              RoutesModel.PREDEFINED_TEXT_SPEAKING: (context) =>
-                  PredefinedTextSpeakingScreen(),
               RoutesModel.VOICE_RECOGNITION: (context) =>
                   VoiceRecognitionScreen(),
               RoutesModel.LOGIN: (context) => LoginScreen(),

@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
-import 'package:voice_interface_optimization/logic/predefined_texts.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
 import 'package:voice_interface_optimization/logic/text_language.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
@@ -19,7 +18,6 @@ class TextsLanguageCubit extends Cubit<TextsLanguageState> {
           await SharedPreferencesWrapper.getInstance();
       await sharedPreferencesWrapper.setTextsLanguageCode(languageCode);
       Speaker().setLanguage(languageCode);
-      PredefinedTexts.loadFromLanguageCode(languageCode);
       emit(TextsLanguageChanged());
     }
   }

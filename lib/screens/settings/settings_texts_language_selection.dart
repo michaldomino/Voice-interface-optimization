@@ -21,7 +21,7 @@ class _SettingsTextsLanguageSelectionState
         builder: (context, state) {
       return DropdownWithDescription(
           description: S.of(context).textsLanguage,
-          initialValue: TextsLanguage().textLanguage,
+          initialValue: TextsLanguage().textLanguage ?? 'en',
           onChangedAction: (context, targetLanguageCode) {
             BlocProvider.of<TextsLanguageCubit>(context)
                 .changeTextsLanguage(context, targetLanguageCode);

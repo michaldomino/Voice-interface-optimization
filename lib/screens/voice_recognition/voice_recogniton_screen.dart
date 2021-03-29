@@ -11,14 +11,13 @@ class VoiceRecognitionScreen extends StatefulWidget {
 }
 
 class _VoiceRecognitionScreenState extends State<VoiceRecognitionScreen> {
-  stt.SpeechToText _speaker;
+  stt.SpeechToText _speaker = stt.SpeechToText();
   bool _isListening = false;
   String _text = '';
 
   @override
   void initState() {
     super.initState();
-    _speaker = stt.SpeechToText();
   }
 
   void _onMicrophoneButtonPressed() async {

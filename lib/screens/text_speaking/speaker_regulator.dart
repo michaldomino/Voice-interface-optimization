@@ -4,7 +4,7 @@ import 'package:voice_interface_optimization/logic/speaker.dart';
 class SpeakerRegulator extends StatefulWidget {
   final Speaker speaker;
 
-  const SpeakerRegulator(this.speaker, {Key key}) : super(key: key);
+  const SpeakerRegulator(this.speaker, {Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SpeakerRegulatorState();

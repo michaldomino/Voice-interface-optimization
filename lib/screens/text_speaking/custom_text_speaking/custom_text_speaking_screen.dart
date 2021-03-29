@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/text_speaking.dart';
 
 class CustomTextSpeakingScreen extends StatefulWidget {
-  CustomTextSpeakingScreen({Key key, this.title}) : super(key: key);
+  CustomTextSpeakingScreen({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _CustomTextSpeakingScreenState createState() =>
@@ -12,7 +12,7 @@ class CustomTextSpeakingScreen extends StatefulWidget {
 }
 
 class _CustomTextSpeakingScreenState extends State<CustomTextSpeakingScreen> {
-  String _currentText;
+  late String _currentText;
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:voice_interface_optimization/logic/routes_model.dart';
 class CustomPopupMenuButton extends StatelessWidget {
   static const List<_PopupMenuButtonChoice> _appBarButtonChoices =
       const <_PopupMenuButtonChoice>[
-    const _PopupMenuButtonChoice(text: _PopupMenuChoicesTextModel.SETTINGS)
+    const _PopupMenuButtonChoice(_PopupMenuChoicesTextModel.SETTINGS)
   ];
 
   void _select(BuildContext context, _PopupMenuButtonChoice value) {
@@ -27,13 +27,15 @@ class CustomPopupMenuButton extends StatelessWidget {
           );
         }).toList();
       },
-      onSelected: (choice) => _select(context, choice),
+      onSelected: (_PopupMenuButtonChoice choice) {
+        _select(context, choice);
+      },
     );
   }
 }
 
 class _PopupMenuButtonChoice {
-  const _PopupMenuButtonChoice({this.text});
+  const _PopupMenuButtonChoice(this.text);
 
   final String text;
 }

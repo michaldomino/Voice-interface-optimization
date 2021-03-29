@@ -8,6 +8,7 @@ import 'package:voice_interface_optimization/logic/routes_model.dart';
 import 'package:voice_interface_optimization/screens/initial/initial_screen.dart';
 import 'package:voice_interface_optimization/screens/login/login_screen.dart';
 import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
+import 'package:voice_interface_optimization/screens/register/register_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/custom_text_speaking/custom_text_speaking_screen.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/predefined_texts_speaking/predefined_text_speaking_screen.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
               RoutesModel.VOICE_RECOGNITION: (context) =>
                   VoiceRecognitionScreen(),
               RoutesModel.LOGIN: (context) => LoginScreen(),
+              RoutesModel.REGISTER: (context) => RegisterScreen(),
             },
             initialRoute: RoutesModel.INITIAL,
           ),

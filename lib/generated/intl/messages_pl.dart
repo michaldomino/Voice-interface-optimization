@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appLanguage": MessageLookupByLibrary.simpleMessage("Język aplikacji"),
         "appTitle": MessageLookupByLibrary.simpleMessage(
             "Optymalizacja interfejsu głosowego"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie dowolnego tekstu"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),

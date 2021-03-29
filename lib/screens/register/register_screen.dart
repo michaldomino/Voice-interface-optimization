@@ -42,7 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     border: OutlineInputBorder(),
                     labelText: S.of(context).login,
                   ),
-                  validator: (String value) {
+                  validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return S.of(context).pleaseEnterSomeText;
                     }
@@ -58,7 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: OutlineInputBorder(),
                       labelText: S.of(context).password,
                     ),
-                    validator: (String value) {
+                    validator: (String? value) {
                       if (value == null || value.isEmpty) {
                         return S.of(context).pleaseEnterSomeText;
                       }
@@ -75,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: OutlineInputBorder(),
                       labelText: S.of(context).confirmPassword,
                     ),
-                    validator: (String value) {
+                    validator: (String? value) {
                       if (value == null || value.isEmpty) {
                         return S.of(context).pleaseEnterSomeText;
                       }
@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {}
+                      if (_formKey.currentState!.validate()) {}
                     },
                     child: Text(S.of(context).submit),
                   ),

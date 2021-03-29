@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/routes_model.dart';
@@ -20,7 +19,8 @@ class LoginScreenAppbar {
                 S.of(context).registerAction,
                 style: TextStyle(color: Colors.white),
               ),
-              onPressed: () => Navigator.pushNamed(context, RoutesModel.MENU)),
+              onPressed: () =>
+                  Navigator.pushNamed(context, RoutesModel.REGISTER)),
         ),
         CustomPopupMenuButton(),
       ],

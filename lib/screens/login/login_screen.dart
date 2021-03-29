@@ -10,12 +10,14 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State {
+class _LoginScreenState extends State<LoginScreen> {
   static const double _TOP_FORM_MARGIN = 30.0;
   static const double _HORIZONTAL_FORM_MARGIN = 30.0;
   static const double _TOP_FORM_FIELD_MARGIN = 15.0;
 
   final _formKey = GlobalKey<FormState>();
+  TextEditingController _loginEditingController = TextEditingController();
+  TextEditingController _passwordEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class _LoginScreenState extends State {
             child: Column(
               children: <Widget>[
                 TextFormField(
+                  controller: _loginEditingController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: S.of(context).login,
@@ -47,6 +50,8 @@ class _LoginScreenState extends State {
                 Padding(
                   padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                   child: TextFormField(
+                    obscureText: true,
+                    controller: _passwordEditingController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: S.of(context).password,
@@ -57,7 +62,7 @@ class _LoginScreenState extends State {
                       }
                       return null;
                     },
-                      ),
+                  ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),

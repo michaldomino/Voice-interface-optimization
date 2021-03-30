@@ -227,6 +227,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Account created successfully`
+  String get accountCreatedSuccessfully {
+    return Intl.message(
+      'Account created successfully',
+      name: 'accountCreatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

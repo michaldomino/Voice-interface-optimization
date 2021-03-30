@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request.dart';
+import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/token.dart';
 import 'package:voice_interface_optimization/data/repositories/authentication_repository.dart';

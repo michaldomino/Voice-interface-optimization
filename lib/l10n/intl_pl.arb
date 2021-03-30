@@ -16,5 +16,6 @@
   "registerAction": "Zarejestruj się",
   "pleaseEnterSomeText": "Proszę wpisać tekst",
   "submit": "Wyślij",
-  "somethingWentWrong": "Coś poszło nie tak"
+  "somethingWentWrong": "Coś poszło nie tak",
+  "accountCreatedSuccessfully": "Konto utworzono pomyślnie"
 }

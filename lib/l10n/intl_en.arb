@@ -16,5 +16,6 @@
   "registerAction": "Register",
   "pleaseEnterSomeText": "Please enter some text",
   "submit": "Submit",
-  "somethingWentWrong": "Something went wrong"
+  "somethingWentWrong": "Something went wrong",
+  "accountCreatedSuccessfully": "Account created successfully"
 }

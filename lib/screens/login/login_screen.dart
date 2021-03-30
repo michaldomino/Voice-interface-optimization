@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request.dart';
+import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/routes_model.dart';
 import 'package:voice_interface_optimization/screens/login/login_screen_appbar.dart';
@@ -17,17 +19,25 @@ class _LoginScreenState extends State<LoginScreen> {
   static const double _HORIZONTAL_FORM_MARGIN = 30.0;
   static const double _TOP_FORM_FIELD_MARGIN = 15.0;
 
-
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _loginEditingController = TextEditingController();
+  TextEditingController _userNameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
+  String? _userNameErrors;
+  String? _passwordErrors;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) => {
         if (state is AuthenticationAuthenticated)
-          Navigator.pushNamed(context, RoutesModel.MENU)
+          {Navigator.pushReplacementNamed(context, RoutesModel.MENU)}
+        else if (state is AuthenticationBadRequest)
+          {_onBadRequest(state.loginBadRequestResponse)}
+        else if (state is AuthenticationUnauthorized)
+          {_onUnauthorized(state.loginUnauthenticatedResponse)}
+        else if (state is AuthenticationUnknownError) {
+          _onUnknownError()
+            }
       },
       child: BlocBuilder<LocalizationCubit, LocalizationState>(
           builder: (context, state) {
@@ -43,16 +53,13 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    controller: _loginEditingController,
+                    controller: _userNameEditingController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: S.of(context).login,
                     ),
                     validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return S.of(context).pleaseEnterSomeText;
-                      }
-                      return null;
+                      return _userNameErrors;
                     },
                   ),
                   Padding(
@@ -65,10 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: S.of(context).password,
                       ),
                       validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return S.of(context).pleaseEnterSomeText;
-                        }
-                        return null;
+                        return _passwordErrors;
                       },
                     ),
                   ),
@@ -76,15 +80,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                     child: ElevatedButton(
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          BlocProvider.of<AuthenticationCubit>(context).login(
-                              _loginEditingController.text,
-                              _passwordEditingController.text);
-                          // _onLogin(
-                          //     _loginEditingController.text,
-                          //     _passwordEditingController.text,
-                          //     authenticationState);
-                        }
+                        setState(() {
+                          _userNameErrors = null;
+                          _passwordErrors = null;
+                          _formKey.currentState!.validate();
+                        });
+                        BlocProvider.of<AuthenticationCubit>(context).login(
+                            _userNameEditingController.text,
+                            _passwordEditingController.text);
                       },
                       child: Text(S.of(context).submit),
                     ),
@@ -96,5 +99,29 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       }),
     );
+  }
+
+  _onBadRequest(LoginBadRequestResponse loginBadRequestResponse) {
+    setState(() {
+      _userNameErrors = loginBadRequestResponse.username?.join(' ');
+      _passwordErrors = loginBadRequestResponse.password?.join(' ');
+      _formKey.currentState!.validate();
+    });
+  }
+
+  _onUnauthorized(LoginUnauthorizedResponse loginUnauthenticatedResponse) {
+    SnackBar snackBar = SnackBar(
+      content: Text(loginUnauthenticatedResponse.detail),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  _onUnknownError() {
+    SnackBar snackBar = SnackBar(
+      content: Text(S.of(context).somethingWentWrong),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

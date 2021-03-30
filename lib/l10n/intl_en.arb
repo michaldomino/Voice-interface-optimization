@@ -15,5 +15,6 @@
   "loginAction": "Login",
   "registerAction": "Register",
   "pleaseEnterSomeText": "Please enter some text",
-  "submit": "Submit"
+  "submit": "Submit",
+  "somethingWentWrong": "Something went wrong"
 }

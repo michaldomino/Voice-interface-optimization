@@ -12,7 +12,7 @@ class CustomTextSpeakingScreen extends StatefulWidget {
 }
 
 class _CustomTextSpeakingScreenState extends State<CustomTextSpeakingScreen> {
-  late String _currentText;
+  String _currentText = '';
 
   @override
   Widget build(BuildContext context) {

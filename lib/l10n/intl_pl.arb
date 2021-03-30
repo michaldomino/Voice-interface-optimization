@@ -15,5 +15,6 @@
   "loginAction": "Zaloguj się",
   "registerAction": "Zarejestruj się",
   "pleaseEnterSomeText": "Proszę wpisać tekst",
-  "submit": "Wyślij"
+  "submit": "Wyślij",
+  "somethingWentWrong": "Coś poszło nie tak"
 }

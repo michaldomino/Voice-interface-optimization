@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:bloc/bloc.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request.dart';
@@ -12,28 +11,28 @@ part 'authentication_state.dart';
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit() : super(AuthenticationInitial());
 
-  Future login(String login, String password) async {
+  Future login(String userName, String password) async {
     emit(AuthenticationLoggingIn());
     AuthenticationRepository authenticationRepository =
         AuthenticationRepository();
-    var response = await authenticationRepository.login(login, password);
-    var jsonMap = json.decode(response.body);
+    var response = await authenticationRepository.login(userName, password);
     switch (response.statusCode) {
-      case HttpStatus.ok:
+      case 200:
         {
-          emit(AuthenticationAuthenticated(Token.fromJsonMap(jsonMap)));
+          emit(AuthenticationAuthenticated(
+              Token.fromJsonMap(json.decode(response.body))));
         }
         break;
-      case HttpStatus.badRequest:
+      case 400:
         {
           emit(AuthenticationBadRequest(
-              LoginBadRequestResponse.fromJsonMap(jsonMap)));
+              LoginBadRequestResponse.fromJsonMap(json.decode(response.body))));
         }
         break;
-      case HttpStatus.unauthorized:
+      case 401:
         {
-          emit(AuthenticationUnauthorized(
-              LoginUnauthorizedResponse.fromJsonMap(jsonMap)));
+          emit(AuthenticationUnauthorized(LoginUnauthorizedResponse.fromJsonMap(
+              json.decode(response.body))));
         }
         break;
       default:

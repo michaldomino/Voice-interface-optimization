@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
@@ -19,34 +20,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => LocalizationCubit(),
-        child: BlocProvider(
-          create: (context) => TextsLanguageCubit(),
-          child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            localizationsDelegates: [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
+      create: (context) => AuthenticationCubit(),
+      child: BlocProvider(
+          create: (context) => LocalizationCubit(),
+          child: BlocProvider(
+            create: (context) => TextsLanguageCubit(),
+            child: MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              localizationsDelegates: [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
 //        GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            routes: {
-              RoutesModel.INITIAL: (context) => InitialScreen(),
-              RoutesModel.MENU: (context) => MenuScreen(),
-              RoutesModel.SETTINGS: (context) => Settings(),
-              RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
-                  CustomTextSpeakingScreen(),
-              RoutesModel.VOICE_RECOGNITION: (context) =>
-                  VoiceRecognitionScreen(),
-              RoutesModel.LOGIN: (context) => LoginScreen(),
-              RoutesModel.REGISTER: (context) => RegisterScreen(),
-            },
-            initialRoute: RoutesModel.INITIAL,
-          ),
-        ));
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              routes: {
+                RoutesModel.INITIAL: (context) => InitialScreen(),
+                RoutesModel.MENU: (context) => MenuScreen(),
+                RoutesModel.SETTINGS: (context) => Settings(),
+                RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
+                    CustomTextSpeakingScreen(),
+                RoutesModel.VOICE_RECOGNITION: (context) =>
+                    VoiceRecognitionScreen(),
+                RoutesModel.LOGIN: (context) => LoginScreen(),
+                RoutesModel.REGISTER: (context) => RegisterScreen(),
+              },
+              initialRoute: RoutesModel.INITIAL,
+            ),
+          )),
+    );
   }
 }

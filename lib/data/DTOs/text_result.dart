@@ -1,4 +1,4 @@
-import 'package:voice_interface_optimization/data/models/predefined_text.dart';
+import 'package:voice_interface_optimization/data/DTOs/predefined_text.dart';
 
 class TextResult {
   final PredefinedText text;

@@ -24,8 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocBuilder<AuthenticationCubit, AuthenticationState>(
-    //     builder: (context, authenticationState) {
     return BlocListener<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) => {
         if (state is AuthenticationAuthenticated)
@@ -98,11 +96,5 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       }),
     );
-    // });
   }
-
-// _onLogin(String login, String password, AuthenticationState authenticationState) async {
-//   await
-//   if (authenticationState is Auth)
-// }
 }

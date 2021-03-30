@@ -20,31 +20,23 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-
-  static _notInlinedMessages(_) => <String, Function>{
-        "appLanguage": MessageLookupByLibrary.simpleMessage("App language"),
-        "appTitle": MessageLookupByLibrary.simpleMessage(
-            "Voice interface optimization"),
-        "confirmPassword":
-            MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "customTextSpeaking":
-            MessageLookupByLibrary.simpleMessage("Custom text speaking"),
-        "en": MessageLookupByLibrary.simpleMessage("English"),
-        "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "loginAction": MessageLookupByLibrary.simpleMessage("Login"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "pl": MessageLookupByLibrary.simpleMessage("Polish"),
-        "pleaseEnterSomeText":
-            MessageLookupByLibrary.simpleMessage("Please enter some text"),
-        "predefinedTextSpeaking":
-            MessageLookupByLibrary.simpleMessage("Predefined text speaking"),
-        "recognizedText":
-            MessageLookupByLibrary.simpleMessage("Recognized text:"),
-        "registerAction": MessageLookupByLibrary.simpleMessage("Register"),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
-        "textsLanguage": MessageLookupByLibrary.simpleMessage("Texts language"),
-        "voiceRecognition":
-            MessageLookupByLibrary.simpleMessage("Voice recognition")
-      };
+  static _notInlinedMessages(_) => <String, Function> {
+    "appLanguage" : MessageLookupByLibrary.simpleMessage("App language"),
+    "appTitle" : MessageLookupByLibrary.simpleMessage("Voice interface optimization"),
+    "confirmPassword" : MessageLookupByLibrary.simpleMessage("Confirm password"),
+    "customTextSpeaking" : MessageLookupByLibrary.simpleMessage("Custom text speaking"),
+    "en" : MessageLookupByLibrary.simpleMessage("English"),
+    "login" : MessageLookupByLibrary.simpleMessage("Login"),
+    "loginAction" : MessageLookupByLibrary.simpleMessage("Login"),
+    "password" : MessageLookupByLibrary.simpleMessage("Password"),
+    "pl" : MessageLookupByLibrary.simpleMessage("Polish"),
+    "pleaseEnterSomeText" : MessageLookupByLibrary.simpleMessage("Please enter some text"),
+    "predefinedTextSpeaking" : MessageLookupByLibrary.simpleMessage("Predefined text speaking"),
+    "recognizedText" : MessageLookupByLibrary.simpleMessage("Recognized text:"),
+    "registerAction" : MessageLookupByLibrary.simpleMessage("Register"),
+    "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "submit" : MessageLookupByLibrary.simpleMessage("Submit"),
+    "textsLanguage" : MessageLookupByLibrary.simpleMessage("Texts language"),
+    "voiceRecognition" : MessageLookupByLibrary.simpleMessage("Voice recognition")
+  };
 }

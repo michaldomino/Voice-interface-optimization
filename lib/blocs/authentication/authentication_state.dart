@@ -24,4 +24,6 @@ class AuthenticationUnauthorized extends AuthenticationState {
   AuthenticationUnauthorized(this.loginUnauthenticatedResponse);
 }
 
+class AuthenticationServiceUnavailable extends AuthenticationState {}
+
 class AuthenticationUnknownError extends AuthenticationState {}

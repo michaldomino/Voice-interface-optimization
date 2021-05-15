@@ -35,6 +35,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
               json.decode(response.body))));
         }
         break;
+      case 503:
+        {
+          emit(AuthenticationServiceUnavailable());
+        }
+        break;
       default:
         {
           emit(AuthenticationUnknownError());

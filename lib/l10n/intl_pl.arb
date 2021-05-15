@@ -17,5 +17,6 @@
   "pleaseEnterSomeText": "Proszę wpisać tekst",
   "submit": "Wyślij",
   "somethingWentWrong": "Coś poszło nie tak",
-  "accountCreatedSuccessfully": "Konto utworzono pomyślnie"
+  "accountCreatedSuccessfully": "Konto utworzono pomyślnie",
+  "serverIsDown": "Serwer jest wyłączony"
 }

@@ -35,6 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
           {_onBadRequest(state.loginBadRequestResponse)}
         else if (state is AuthenticationUnauthorized)
           {_onUnauthorized(state.loginUnauthenticatedResponse)}
+        else if (state is AuthenticationServiceUnavailable)
+          {_onServiceUnavailable()}
         else if (state is AuthenticationUnknownError) {
           _onUnknownError()
             }
@@ -113,6 +115,14 @@ class _LoginScreenState extends State<LoginScreen> {
     SnackBar snackBar = SnackBar(
       content: Text(loginUnauthenticatedResponse.detail),
       backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  _onServiceUnavailable() {
+    SnackBar snackBar = SnackBar(
+      content: Text(S.of(context).serverIsDown),
+      backgroundColor: Colors.orange,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }

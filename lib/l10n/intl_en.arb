@@ -17,5 +17,6 @@
   "pleaseEnterSomeText": "Please enter some text",
   "submit": "Submit",
   "somethingWentWrong": "Something went wrong",
-  "accountCreatedSuccessfully": "Account created successfully"
+  "accountCreatedSuccessfully": "Account created successfully",
+  "serverIsDown": "Server is down"
 }

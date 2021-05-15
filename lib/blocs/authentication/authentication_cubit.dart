@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request_response.dart';
@@ -17,25 +18,25 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         AuthenticationRepository();
     var response = await authenticationRepository.login(userName, password);
     switch (response.statusCode) {
-      case 200:
+      case HttpStatus.ok:
         {
           emit(AuthenticationAuthenticated(
               Token.fromJsonMap(json.decode(response.body))));
         }
         break;
-      case 400:
+      case HttpStatus.badRequest:
         {
           emit(AuthenticationBadRequest(
               LoginBadRequestResponse.fromJsonMap(json.decode(response.body))));
         }
         break;
-      case 401:
+      case HttpStatus.unauthorized:
         {
           emit(AuthenticationUnauthorized(LoginUnauthorizedResponse.fromJsonMap(
               json.decode(response.body))));
         }
         break;
-      case 503:
+      case HttpStatus.serviceUnavailable:
         {
           emit(AuthenticationServiceUnavailable());
         }

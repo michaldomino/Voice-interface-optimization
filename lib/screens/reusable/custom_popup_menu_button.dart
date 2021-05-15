@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:voice_interface_optimization/logic/routes_model.dart';
+import 'package:voice_interface_optimization/value_models/routes_model.dart';
 
 class CustomPopupMenuButton extends StatelessWidget {
   static const List<_PopupMenuButtonChoice> _appBarButtonChoices =

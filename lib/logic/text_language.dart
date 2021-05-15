@@ -1,5 +1,5 @@
-import 'package:voice_interface_optimization/logic/languages_codes_model.dart';
 import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
+import 'package:voice_interface_optimization/value_models/languages_codes_model.dart';
 
 class TextsLanguage {
   static final TextsLanguage _instance = TextsLanguage._();

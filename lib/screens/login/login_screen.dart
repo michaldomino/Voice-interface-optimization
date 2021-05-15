@@ -6,8 +6,8 @@ import 'package:voice_interface_optimization/blocs/localization/localization_cub
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/logic/routes_model.dart';
 import 'package:voice_interface_optimization/screens/login/login_screen_appbar.dart';
+import 'package:voice_interface_optimization/value_models/routes_model.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

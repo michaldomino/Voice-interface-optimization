@@ -15,15 +15,14 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   Future login(String userName, String password) async {
     emit(AuthenticationLoggingIn());
-    AuthenticationService authenticationRepository =
-        AuthenticationService();
+    AuthenticationService authenticationRepository = AuthenticationService();
     var response = await authenticationRepository.login(userName, password);
     switch (response.statusCode) {
       case HttpStatus.ok:
         {
           Token token = Token.fromJsonMap(json.decode(response.body));
           var flutterSecureStorage = FlutterSecureStorageWrapper();
-          flutterSecureStorage.setRefreshToken(token.refresh);
+          await flutterSecureStorage.setRefreshToken(token.refresh);
           emit(AuthenticationAuthenticated(token));
         }
         break;

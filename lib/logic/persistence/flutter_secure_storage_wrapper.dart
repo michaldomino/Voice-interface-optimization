@@ -13,7 +13,7 @@ class FlutterSecureStorageWrapper {
     return _flutterSecureStorage.read(key: _REFRESH_TOKEN_KEY);
   }
 
-  setRefreshToken(String refreshToken) async {
+  Future setRefreshToken(String refreshToken) async {
     await _flutterSecureStorage.write(
         key: _REFRESH_TOKEN_KEY, value: refreshToken);
   }

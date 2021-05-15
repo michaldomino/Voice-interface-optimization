@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
-import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
+import 'package:voice_interface_optimization/logic/persistence/shared_preferences_wrapper.dart';
 import 'package:voice_interface_optimization/screens/login/login_screen.dart';
 
 class InitialScreen extends StatelessWidget {

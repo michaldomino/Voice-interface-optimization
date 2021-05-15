@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
+import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
 import 'package:voice_interface_optimization/screens/reusable/custom_popup_menu_button.dart';
-import 'package:voice_interface_optimization/value_models/routes_model.dart';
 
 class LoginScreenAppbar {
   BuildContext context;

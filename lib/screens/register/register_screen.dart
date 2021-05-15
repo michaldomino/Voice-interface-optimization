@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/register/register_bad_request_response.dart';
-import 'package:voice_interface_optimization/data/repositories/authentication_repository.dart';
+import 'package:voice_interface_optimization/data/services/authentication_service.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/register/register_screen_appbar.dart';
 
@@ -29,8 +29,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String? _userNameErrors;
   String? _passwordErrors;
 
-  final AuthenticationRepository _authenticationRepository =
-      AuthenticationRepository();
+  final AuthenticationService _authenticationRepository =
+      AuthenticationService();
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
+import 'package:voice_interface_optimization/logic/persistence/shared_preferences_wrapper.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
 import 'package:voice_interface_optimization/logic/text_language.dart';
-import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
 
 part 'texts_language_state.dart';
 

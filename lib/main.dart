@@ -19,38 +19,36 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthenticationCubit(),
-      child: BlocProvider(
-          create: (context) => LocalizationCubit(),
-          child: BlocProvider(
-            create: (context) => TextsLanguageCubit(),
-            child: MaterialApp(
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => AuthenticationCubit()),
+          BlocProvider(create: (context) => LocalizationCubit()),
+          BlocProvider(create: (context) => TextsLanguageCubit()),
+        ],
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
 //        GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              routes: {
-                RoutesModel.INITIAL: (context) => InitialScreen(),
-                RoutesModel.MENU: (context) => MenuScreen(),
-                RoutesModel.SETTINGS: (context) => Settings(),
-                RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
-                    CustomTextSpeakingScreen(),
-                RoutesModel.VOICE_RECOGNITION: (context) =>
-                    VoiceRecognitionScreen(),
-                RoutesModel.LOGIN: (context) => LoginScreen(),
-                RoutesModel.REGISTER: (context) => RegisterScreen(),
-              },
-              initialRoute: RoutesModel.INITIAL,
-            ),
-          )),
-    );
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          routes: {
+            RoutesModel.INITIAL: (context) => InitialScreen(),
+            RoutesModel.MENU: (context) => MenuScreen(),
+            RoutesModel.SETTINGS: (context) => Settings(),
+            RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>
+                CustomTextSpeakingScreen(),
+            RoutesModel.VOICE_RECOGNITION: (context) =>
+                VoiceRecognitionScreen(),
+            RoutesModel.LOGIN: (context) => LoginScreen(),
+            RoutesModel.REGISTER: (context) => RegisterScreen(),
+          },
+          initialRoute: RoutesModel.INITIAL,
+        ));
   }
 }

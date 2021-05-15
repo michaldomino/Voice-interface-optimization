@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -115,12 +116,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _register(String userName, String password) async {
     var response = await _authenticationRepository.register(userName, password);
     switch (response.statusCode) {
-      case 201:
+      case HttpStatus.created:
         {
           _onUserCreated();
         }
         break;
-      case 400:
+      case HttpStatus.badRequest:
         {
           RegisterBadRequestResponse registerBadRequestResponse =
               RegisterBadRequestResponse.fromJsonMap(

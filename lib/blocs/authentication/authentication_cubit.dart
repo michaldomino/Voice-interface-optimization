@@ -6,6 +6,7 @@ import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/token.dart';
 import 'package:voice_interface_optimization/data/services/authentication_service.dart';
+import 'package:voice_interface_optimization/logic/persistence/flutter_secure_storage_wrapper.dart';
 
 part 'authentication_state.dart';
 
@@ -21,7 +22,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       case HttpStatus.ok:
         {
           Token token = Token.fromJsonMap(json.decode(response.body));
-
+          var flutterSecureStorage = FlutterSecureStorageWrapper();
+          flutterSecureStorage.setRefreshToken(token.refresh);
           emit(AuthenticationAuthenticated(token));
         }
         break;

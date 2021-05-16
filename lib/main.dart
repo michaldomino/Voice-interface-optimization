@@ -11,6 +11,7 @@ import 'package:voice_interface_optimization/screens/login/login_screen.dart';
 import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/register/register_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
+import 'package:voice_interface_optimization/screens/splash/splash_screen.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/custom_text_speaking/custom_text_speaking_screen.dart';
 import 'package:voice_interface_optimization/screens/voice_recognition/voice_recogniton_screen.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: S.delegate.supportedLocales,
           routes: {
             RoutesModel.INITIAL: (context) => InitialScreen(),
+            RoutesModel.SPLASH: (context) => SplashScreen(),
             RoutesModel.MENU: (context) => MenuScreen(),
             RoutesModel.SETTINGS: (context) => Settings(),
             RoutesModel.CUSTOM_TEXT_SPEAKING: (context) =>

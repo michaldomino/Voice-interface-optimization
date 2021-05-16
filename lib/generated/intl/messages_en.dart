@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Login"),
+        "masterThesis": MessageLookupByLibrary.simpleMessage("Master Thesis"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pl": MessageLookupByLibrary.simpleMessage("Polish"),
         "pleaseEnterSomeText":

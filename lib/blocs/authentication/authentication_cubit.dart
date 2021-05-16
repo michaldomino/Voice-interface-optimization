@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/token.dart';
+import 'package:voice_interface_optimization/data/DTOs/responses/refresh_token/access_token.dart';
 import 'package:voice_interface_optimization/data/services/authentication_service.dart';
 import 'package:voice_interface_optimization/logic/persistence/flutter_secure_storage_wrapper.dart';
 
@@ -15,8 +16,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   Future login(String userName, String password) async {
     emit(AuthenticationLoggingIn());
-    AuthenticationService authenticationRepository = AuthenticationService();
-    var response = await authenticationRepository.login(userName, password);
+    AuthenticationService authenticationService = AuthenticationService();
+    var response = await authenticationService.login(userName, password);
     switch (response.statusCode) {
       case HttpStatus.ok:
         {
@@ -46,6 +47,36 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       default:
         {
           emit(AuthenticationUnknownError());
+        }
+        break;
+    }
+  }
+
+  Future refreshToken(String? refreshToken) async {
+    // emit(AuthenticationLoggingIn());
+    if (refreshToken == null) {
+      emit(RefreshTokenUnsuccessful());
+      return;
+    }
+    AuthenticationService authenticationService = AuthenticationService();
+    var response = await authenticationService.refreshToken(refreshToken);
+    switch (response.statusCode) {
+      case HttpStatus.ok:
+        {
+          AccessToken accessToken =
+              AccessToken.fromJsonMap(json.decode(response.body));
+          Token token = Token(accessToken.access, refreshToken);
+          emit(AuthenticationAuthenticated(token));
+        }
+        break;
+      case HttpStatus.serviceUnavailable:
+        {
+          emit(AuthenticationServiceUnavailable());
+        }
+        break;
+      default:
+        {
+          emit(RefreshTokenUnsuccessful());
         }
         break;
     }

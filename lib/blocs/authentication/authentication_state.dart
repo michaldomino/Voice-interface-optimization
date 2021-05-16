@@ -27,3 +27,5 @@ class AuthenticationUnauthorized extends AuthenticationState {
 class AuthenticationServiceUnavailable extends AuthenticationState {}
 
 class AuthenticationUnknownError extends AuthenticationState {}
+
+class RefreshTokenUnsuccessful extends AuthenticationState {}

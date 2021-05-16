@@ -15,4 +15,13 @@ class CustomAppbar {
       ],
     );
   }
+
+  getTitled (String title) {
+    return AppBar(
+      title: Text(title),
+      actions: <Widget>[
+        CustomPopupMenuButton(),
+      ],
+    );
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:voice_interface_optimization/logic/languages_codes_model.dart';
+import 'package:voice_interface_optimization/logic/value_models/languages_codes_model.dart';
 
 class SharedPreferencesWrapper {
   static const String _APP_LANGUAGE_CODE_KEY = 'appLanguageCode';

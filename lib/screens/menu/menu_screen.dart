@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
-import 'package:voice_interface_optimization/logic/routes_model.dart';
+import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
 import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
 
 class MenuScreen extends StatefulWidget {

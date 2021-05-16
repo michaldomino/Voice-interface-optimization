@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/persistence/shared_preferences_wrapper.dart';
+import 'package:voice_interface_optimization/logic/persistence/shared_preferences_wrapper.dart';
 
 part 'localization_state.dart';
 

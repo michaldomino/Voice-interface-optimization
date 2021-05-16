@@ -15,5 +15,8 @@
   "loginAction": "Zaloguj się",
   "registerAction": "Zarejestruj się",
   "pleaseEnterSomeText": "Proszę wpisać tekst",
-  "submit": "Wyślij"
+  "submit": "Wyślij",
+  "somethingWentWrong": "Coś poszło nie tak",
+  "accountCreatedSuccessfully": "Konto utworzono pomyślnie",
+  "serverIsDown": "Serwer jest wyłączony"
 }

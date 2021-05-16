@@ -1,5 +1,6 @@
 class RoutesModel {
   static const String INITIAL = '/initial';
+  static const String SPLASH = '/splash';
   static const String MENU = '/menu';
   static const String SETTINGS = '/settings';
   static const String CUSTOM_TEXT_SPEAKING = '/custom_text_speaking';

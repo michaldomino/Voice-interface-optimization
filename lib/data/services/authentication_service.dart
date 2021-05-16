@@ -1,0 +1,38 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:voice_interface_optimization/data/DTOs/requests/login_request.dart';
+import 'package:voice_interface_optimization/data/DTOs/requests/refresh_token_request.dart';
+import 'package:voice_interface_optimization/data/DTOs/requests/register_request.dart';
+
+class AuthenticationService {
+  static const String _API_URL = 'aqueous-shelf-69777.herokuapp.com';
+  static final Uri _LOGIN_URI =
+      Uri.https(_API_URL, '/authentication/api/login');
+  static final Uri _REGISTER_URI =
+      Uri.https(_API_URL, '/authentication/api/register');
+  static final Uri _REFRESH_TOKEN_URI =
+      Uri.https(_API_URL, '/authentication/api/refresh_token');
+
+  Future<http.Response> login(String userName, String password) {
+    LoginRequest loginRequest = LoginRequest(userName, password);
+    return postRequest(loginRequest.toJson(), _LOGIN_URI);
+  }
+
+  Future<http.Response> register(String userName, String password) {
+    RegisterRequest registerRequest = RegisterRequest(userName, password);
+    return postRequest(registerRequest.toJson(), _REGISTER_URI);
+  }
+
+  Future<http.Response> refreshToken(String refreshToken) {
+    RefreshTokenRequest refreshTokenRequest = RefreshTokenRequest(refreshToken);
+    return postRequest(refreshTokenRequest.toJson(), _REFRESH_TOKEN_URI);
+  }
+
+  Future<http.Response> postRequest(Map<String, dynamic> jsonMap, Uri uri) {
+    String jsonString = json.encode(jsonMap);
+    return http.post(uri,
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: jsonString);
+  }
+}

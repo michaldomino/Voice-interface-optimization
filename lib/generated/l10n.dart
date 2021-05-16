@@ -250,16 +250,6 @@ class S {
       args: [],
     );
   }
-
-  /// `Master Thesis`
-  String get masterThesis {
-    return Intl.message(
-      'Master Thesis',
-      name: 'masterThesis',
-      desc: '',
-      args: [],
-    );
-  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -8,28 +8,20 @@ import 'package:voice_interface_optimization/data/DTOs/requests/register_request
 class AuthenticationService {
   static const String _API_URL = 'aqueous-shelf-69777.herokuapp.com';
   static final Uri _LOGIN_URI =
-  Uri.https(_API_URL, '/authentication/api/login');
+      Uri.https(_API_URL, '/authentication/api/login');
   static final Uri _REGISTER_URI =
-  Uri.https(_API_URL, '/authentication/api/register');
+      Uri.https(_API_URL, '/authentication/api/register');
   static final Uri _REFRESH_TOKEN_URI =
-  Uri.https(_API_URL, '/authentication/api/refresh_token');
+      Uri.https(_API_URL, '/authentication/api/refresh_token');
 
   Future<http.Response> login(String userName, String password) {
     LoginRequest loginRequest = LoginRequest(userName, password);
     return postRequest(loginRequest.toJson(), _LOGIN_URI);
-    // String jsonString = json.encode(loginRequest.toJson());
-    // return http.post(_LOGIN_URI,
-    //     headers: {'Content-Type': 'application/json; charset=UTF-8'},
-    //     body: jsonString);
   }
 
   Future<http.Response> register(String userName, String password) {
     RegisterRequest registerRequest = RegisterRequest(userName, password);
     return postRequest(registerRequest.toJson(), _REGISTER_URI);
-    // String jsonString = json.encode(registerRequest.toJson());
-    // return http.post(_REGISTER_URI,
-    //     headers: {'Content-Type': 'application/json; charset=UTF-8'},
-    //     body: jsonString);
   }
 
   Future<http.Response> refreshToken(String refreshToken) {

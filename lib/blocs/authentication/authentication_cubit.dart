@@ -69,11 +69,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           emit(AuthenticationAuthenticated(token));
         }
         break;
-      case HttpStatus.serviceUnavailable:
-        {
-          emit(AuthenticationServiceUnavailable());
-        }
-        break;
       default:
         {
           emit(RefreshTokenUnsuccessful());

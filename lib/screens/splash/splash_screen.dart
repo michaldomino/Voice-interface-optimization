@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Text(
-                    S.of(context).masterThesis,
+                    S.of(context).appTitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 50,

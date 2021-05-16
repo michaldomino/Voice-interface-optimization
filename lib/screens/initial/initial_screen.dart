@@ -15,18 +15,6 @@ class InitialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocListener<AuthenticationCubit, AuthenticationState>(
-    //   listener: (context, state) {
-    //     if (state is AuthenticationAuthenticated) {
-    //       Navigator.pushReplacementNamed(context, RoutesModel.MENU);
-    //     } else {
-    //       if (state is AuthenticationServiceUnavailable) {
-    //         _onServiceUnavailable(context);
-    //       }
-    //       Navigator.pushReplacementNamed(context, RoutesModel.LOGIN);
-    //     }
-    //   },
-    //   child:
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
       return FutureBuilder(
@@ -45,11 +33,6 @@ class InitialScreen extends StatelessWidget {
             } else {
               return SplashScreen();
             }
-            // if (snapshot.connectionState == ConnectionState.done) {
-            //   return LoginScreen();
-            // } else {
-            //   return SplashScreen();
-            // }
           });
     });
   }

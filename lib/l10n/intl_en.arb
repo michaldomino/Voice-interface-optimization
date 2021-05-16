@@ -18,6 +18,5 @@
   "submit": "Submit",
   "somethingWentWrong": "Something went wrong",
   "accountCreatedSuccessfully": "Account created successfully",
-  "serverIsDown": "Server is down",
-  "masterThesis": "Master Thesis"
+  "serverIsDown": "Server is down"
 }

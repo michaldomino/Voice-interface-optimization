@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -14,12 +15,11 @@ abstract class BaseApiService {
         body: jsonString);
   }
 
-  Future<http.Response> getPrivateRequest(
-      String unencodedPath, accessToken) {
+  Future<http.Response> getPrivateRequest(String unencodedPath, accessToken) {
     Uri uri = Uri.https(_API_URL, unencodedPath);
     return http.get(uri, headers: {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Bearer Token': accessToken,
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+      HttpHeaders.authorizationHeader: 'Bearer $accessToken',
     });
   }
 }

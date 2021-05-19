@@ -81,10 +81,15 @@ class _MenuScreenState extends State<MenuScreen> {
 
 List<_ListViewItem> _listViewItems = [
   _ListViewItem(
-      text: 'customTextSpeaking',
+      text: 'ttsTest',
       color: Colors.green,
       iconData: Icons.edit,
-      routeName: RoutesModel.CUSTOM_TEXT_SPEAKING),
+      routeName: RoutesModel.TTS_TEST),
+  // _ListViewItem(
+  //     text: 'customTextSpeaking',
+  //     color: Colors.green,
+  //     iconData: Icons.edit,
+  //     routeName: RoutesModel.CUSTOM_TEXT_SPEAKING),
   // _ListViewItem(
   //     text: 'predefinedTextSpeaking',
   //     color: Colors.blue,

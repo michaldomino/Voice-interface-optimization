@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
+import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
+import 'package:voice_interface_optimization/data/services/tts_tests_service.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
 import 'package:voice_interface_optimization/screens/initial/initial_screen.dart';
@@ -26,6 +28,14 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => AuthenticationCubit()),
           BlocProvider(create: (context) => LocalizationCubit()),
           BlocProvider(create: (context) => TextsLanguageCubit()),
+          BlocProvider(
+              create: (context) => TtsTestsCubit(
+                    textsLanguageCubit:
+                        BlocProvider.of<TextsLanguageCubit>(context),
+                    authenticationCubit:
+                        BlocProvider.of<AuthenticationCubit>(context),
+                    ttsTestsService: TtsTestsService(),
+                  ))
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -52,7 +62,7 @@ class MyApp extends StatelessWidget {
             RoutesModel.REGISTER: (context) => RegisterScreen(),
             RoutesModel.TTS_TEST: (context) => TtsTestScreen(),
           },
-          initialRoute: RoutesModel.TTS_TEST,
+          initialRoute: RoutesModel.INITIAL,
         ));
   }
 }

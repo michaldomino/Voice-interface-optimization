@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "submit": MessageLookupByLibrary.simpleMessage("Wyślij"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Język tekstów"),
+        "ttsTest":
+            MessageLookupByLibrary.simpleMessage("Test zamiany tekstu na mowę"),
         "voiceRecognition":
             MessageLookupByLibrary.simpleMessage("Rozpoznawanie wypowiedzi")
       };

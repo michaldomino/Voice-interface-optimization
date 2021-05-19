@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
 import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
 
 class TtsTestScreen extends StatefulWidget {
@@ -63,53 +64,62 @@ class _TtsTestScreenState extends State<TtsTestScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<TtsTestsCubit>(context).fetch();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
       builder: (context, state) {
         return Scaffold(
           appBar: CustomAppbar(context).getTitled("Test"),
-          body: Column(
-            children: [
-              Expanded(
-                  child: Stepper(
-                currentStep: _currentStep,
-                type: stepperType,
-                onStepContinue: _continue,
-                onStepTapped: (step) => _goTo(step),
-                onStepCancel: _cancel,
-                controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-                  return Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        child: ElevatedButton(
-                          onPressed: _currentStep > 0 ? onStepCancel : null,
-                          child: Text("Previous"),
+          body: BlocBuilder<TtsTestsCubit, TtsTestsState>(
+            builder: (context, state) {
+              if (state is TtsTestsFetchSuccessful) {
+                return Stepper(
+                  currentStep: _currentStep,
+                  type: stepperType,
+                  onStepContinue: _continue,
+                  onStepTapped: (step) => _goTo(step),
+                  onStepCancel: _cancel,
+                  controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          child: ElevatedButton(
+                            onPressed: _currentStep > 0 ? onStepCancel : null,
+                            child: Text("Previous"),
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: ElevatedButton(
-                          onPressed: _currentStep < _stepsData.length - 1
-                              ? onStepContinue
-                              : null,
-                          child: Text("Next"),
+                        Container(
+                          child: ElevatedButton(
+                            onPressed: _currentStep < _stepsData.length - 1
+                                ? onStepContinue
+                                : null,
+                            child: Text("Next"),
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-                },
-                steps: _stepsData
-                    .map((e) => Step(
-                        title: Text(e.text),
-                        isActive: _currentStep >= 0,
-                        state: _currentStep >= e.index
-                            ? StepState.complete
-                            : StepState.disabled,
-                        content: Text('a')))
-                    .toList(),
-              )),
-            ],
+                      ],
+                    );
+                  },
+                  steps: _stepsData
+                      .map((e) => Step(
+                          title: Text(e.text),
+                          isActive: _currentStep >= 0,
+                          state: _currentStep >= e.index
+                              ? StepState.complete
+                              : StepState.disabled,
+                          content: Text('a')))
+                      .toList(),
+                );
+              } else {
+                return CircularProgressIndicator();
+              }
+            },
           ),
         );
       },

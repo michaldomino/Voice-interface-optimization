@@ -250,6 +250,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Text to speech test`
+  String get ttsTest {
+    return Intl.message(
+      'Text to speech test',
+      name: 'ttsTest',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

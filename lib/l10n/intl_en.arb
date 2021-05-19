@@ -18,5 +18,6 @@
   "submit": "Submit",
   "somethingWentWrong": "Something went wrong",
   "accountCreatedSuccessfully": "Account created successfully",
-  "serverIsDown": "Server is down"
+  "serverIsDown": "Server is down",
+  "ttsTest": "Text to speech test"
 }

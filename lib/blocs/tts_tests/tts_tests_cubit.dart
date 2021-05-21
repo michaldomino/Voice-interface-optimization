@@ -17,24 +17,27 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
   final TtsTestsService ttsTestsService;
   late StreamSubscription textsLanguageSubscription;
 
+  List<TtsTest> ttsTestList = [];
+
   TtsTestsCubit(
       {required this.textsLanguageCubit,
       required this.authenticationCubit,
       required this.ttsTestsService})
       : super(TtsTestsInitial()) {
-    textsLanguageSubscription = textsLanguageCubit.stream.listen((state) {
-      if (state is TextsLanguageChanged) {
-        var a = 5;
-      }
-    });
-    //textsLanguageCubit.stream.listen(_onTextsLanguageCubitStateChanged);
+    textsLanguageSubscription =
+        textsLanguageCubit.stream.listen(_onTextsLanguageCubitStateChanged);
   }
 
   _onTextsLanguageCubitStateChanged(TextsLanguageState state) {
-    var a = 5;
+    if (state is TextsLanguageChanged && ttsTestList.isNotEmpty) {
+      List<TtsTest> currentTextLanguageTtsTestList = ttsTestList
+          .where((element) => element.language == state.language.code)
+          .toList();
+      emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
+    }
   }
 
-  Future fetch() async {
+  Future fetchTtsTests() async {
     emit(TtsTestsFetching());
     AuthenticationState authenticationState = authenticationCubit.state;
     if (authenticationState is AuthenticationAuthenticated) {
@@ -44,9 +47,11 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
         case HttpStatus.ok:
           {
             var decodedMapList = json.decode(response.body) as List;
-            List<TtsTest> ttsTestList =
+            List<TtsTest> fetchedList =
                 decodedMapList.map((e) => TtsTest.fromJsonMap(e)).toList();
-            emit(TtsTestsFetchSuccessful(ttsTestList));
+            ttsTestList = fetchedList;
+            emit(TtsTestsFetchSuccessful());
+            _onTextsLanguageCubitStateChanged(textsLanguageCubit.state);
           }
           break;
         case HttpStatus.unauthorized:

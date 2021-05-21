@@ -53,7 +53,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
   Future refreshToken(String? refreshToken) async {
-    // emit(AuthenticationLoggingIn());
     if (refreshToken == null) {
       emit(RefreshTokenUnsuccessful());
       return;

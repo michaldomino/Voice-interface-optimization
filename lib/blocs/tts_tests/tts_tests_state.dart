@@ -7,10 +7,12 @@ class TtsTestsInitial extends TtsTestsState {}
 
 class TtsTestsFetching extends TtsTestsState {}
 
-class TtsTestsFetchSuccessful extends TtsTestsState {
+class TtsTestsFetchSuccessful extends TtsTestsState {}
+
+class TtsTestsLoaded extends TtsTestsState {
   final List<TtsTest> ttsTests;
 
-  TtsTestsFetchSuccessful(this.ttsTests);
+  TtsTestsLoaded(this.ttsTests);
 }
 
 class TtsTestsTokenInvalid extends TtsTestsState {}

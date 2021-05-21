@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
+import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
 import 'package:voice_interface_optimization/logic/language.dart';
 import 'package:voice_interface_optimization/logic/persistence/flutter_secure_storage_wrapper.dart';
 import 'package:voice_interface_optimization/logic/persistence/shared_preferences_wrapper.dart';
@@ -43,14 +44,14 @@ class InitialScreen extends StatelessWidget {
         await SharedPreferencesWrapper.getInstance();
     String appLanguage = sharedPreferencesWrapper.getAppLanguageCode();
     String textsLanguage = sharedPreferencesWrapper.getTextsLanguage();
-    Future splashScreenDurationSeconds =
+    Future splashScreenLoading =
         Future.delayed(Duration(seconds: _SPLASH_SCREEN_DURATION_TIME_SEC));
     await Future.wait([
       _loadAppLanguage(context, appLanguage),
       _loadTextsLanguage(context, textsLanguage),
       _refreshToken(context),
-      splashScreenDurationSeconds,
     ]);
+    await Future.wait([_loadTtsTests(context), splashScreenLoading]);
   }
 
   Future _loadAppLanguage(BuildContext context, String appLanguageCode) {
@@ -66,6 +67,11 @@ class InitialScreen extends StatelessWidget {
   Future _refreshToken(BuildContext context) async {
     var flutterSecureStorageWrapper = FlutterSecureStorageWrapper();
     String? refreshToken = await flutterSecureStorageWrapper.getRefreshToken();
-    BlocProvider.of<AuthenticationCubit>(context).refreshToken(refreshToken);
+    return BlocProvider.of<AuthenticationCubit>(context)
+        .refreshToken(refreshToken);
+  }
+
+  Future _loadTtsTests(BuildContext context) {
+    return BlocProvider.of<TtsTestsCubit>(context).fetchTtsTests();
   }
 }

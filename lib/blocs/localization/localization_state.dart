@@ -5,4 +5,8 @@ abstract class LocalizationState {}
 
 class LocalizationInitial extends LocalizationState {}
 
-class LocalizationChanged extends LocalizationState {}
+class LocalizationChanged extends LocalizationState {
+  final Language language;
+
+  LocalizationChanged(this.language);
+}

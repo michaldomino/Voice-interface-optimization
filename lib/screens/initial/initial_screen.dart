@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
+import 'package:voice_interface_optimization/logic/language.dart';
 import 'package:voice_interface_optimization/logic/persistence/flutter_secure_storage_wrapper.dart';
 import 'package:voice_interface_optimization/logic/persistence/shared_preferences_wrapper.dart';
 import 'package:voice_interface_optimization/screens/login/login_screen.dart';
@@ -52,14 +53,14 @@ class InitialScreen extends StatelessWidget {
     ]);
   }
 
-  Future _loadAppLanguage(BuildContext context, String appLanguage) {
+  Future _loadAppLanguage(BuildContext context, String appLanguageCode) {
     return BlocProvider.of<LocalizationCubit>(context)
-        .changeAppLanguage(context, appLanguage);
+        .changeAppLanguage(context, Language.fromLanguageCode(appLanguageCode));
   }
 
-  Future _loadTextsLanguage(BuildContext context, String textsLanguage) {
-    return BlocProvider.of<TextsLanguageCubit>(context)
-        .changeTextsLanguage(context, textsLanguage);
+  Future _loadTextsLanguage(BuildContext context, String textsLanguageCode) {
+    return BlocProvider.of<TextsLanguageCubit>(context).changeTextsLanguage(
+        context, Language.fromLanguageCode(textsLanguageCode));
   }
 
   Future _refreshToken(BuildContext context) async {

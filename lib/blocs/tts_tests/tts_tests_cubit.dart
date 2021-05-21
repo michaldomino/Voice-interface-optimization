@@ -46,7 +46,8 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
       switch (response.statusCode) {
         case HttpStatus.ok:
           {
-            var decodedMapList = json.decode(response.body) as List;
+            var decodedResponseBody = Utf8Codec().decode(response.bodyBytes);
+            var decodedMapList = json.decode(decodedResponseBody) as List;
             List<TtsTest> fetchedList =
                 decodedMapList.map((e) => TtsTest.fromJsonMap(e)).toList();
             ttsTestList = fetchedList;

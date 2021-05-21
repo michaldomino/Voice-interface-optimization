@@ -64,12 +64,6 @@ class _TtsTestScreenState extends State<TtsTestScreen> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<TtsTestsCubit>(context).fetch();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
       builder: (context, state) {
@@ -77,7 +71,7 @@ class _TtsTestScreenState extends State<TtsTestScreen> {
           appBar: CustomAppbar(context).getTitled("Test"),
           body: BlocBuilder<TtsTestsCubit, TtsTestsState>(
             builder: (context, state) {
-              if (state is TtsTestsFetchSuccessful) {
+              if (state is TtsTestsLoaded) {
                 return Stepper(
                   currentStep: _currentStep,
                   type: stepperType,
@@ -106,15 +100,17 @@ class _TtsTestScreenState extends State<TtsTestScreen> {
                       ],
                     );
                   },
-                  steps: _stepsData
-                      .map((e) => Step(
-                          title: Text(e.text),
-                          isActive: _currentStep >= 0,
-                          state: _currentStep >= e.index
-                              ? StepState.complete
-                              : StepState.disabled,
-                          content: Text('a')))
-                      .toList(),
+                  steps: state.ttsTests.asMap().entries.map((e) {
+                    return Step(
+                        title: Text('Test ${e.key + 1}'),
+                        isActive: _currentStep >= 0,
+                        state:
+                          _currentStep < e.key
+                            ? StepState.complete
+                            : StepState.disabled,
+
+                        content: Text(e.value.text));
+                  }).toList(),
                 );
               } else {
                 return CircularProgressIndicator();

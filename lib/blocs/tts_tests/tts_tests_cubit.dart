@@ -12,37 +12,26 @@ import 'package:voice_interface_optimization/data/services/tts_tests_service.dar
 part 'tts_tests_state.dart';
 
 class TtsTestsCubit extends Cubit<TtsTestsState> {
-  final TextsLanguageCubit textsLanguageCubit;
-  final AuthenticationCubit authenticationCubit;
-  final TtsTestsService ttsTestsService;
-  late StreamSubscription textsLanguageSubscription;
+  final TextsLanguageCubit _textsLanguageCubit;
+  final AuthenticationCubit _authenticationCubit;
+  final TtsTestsService _ttsTestsService;
+  late StreamSubscription _textsLanguageSubscription;
 
-  List<TtsTest> ttsTestList = [];
+  List<TtsTest> _ttsTestList = [];
 
-  TtsTestsCubit(
-      {required this.textsLanguageCubit,
-      required this.authenticationCubit,
-      required this.ttsTestsService})
+  TtsTestsCubit(this._textsLanguageCubit, this._authenticationCubit,
+      this._ttsTestsService)
       : super(TtsTestsInitial()) {
-    textsLanguageSubscription =
-        textsLanguageCubit.stream.listen(_onTextsLanguageCubitStateChanged);
-  }
-
-  _onTextsLanguageCubitStateChanged(TextsLanguageState state) {
-    if (state is TextsLanguageChanged && ttsTestList.isNotEmpty) {
-      List<TtsTest> currentTextLanguageTtsTestList = ttsTestList
-          .where((element) => element.language == state.language.code)
-          .toList();
-      emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
-    }
+    _textsLanguageSubscription =
+        _textsLanguageCubit.stream.listen(_onTextsLanguageCubitStateChanged);
   }
 
   Future fetchTtsTests() async {
     emit(TtsTestsFetching());
-    AuthenticationState authenticationState = authenticationCubit.state;
+    AuthenticationState authenticationState = _authenticationCubit.state;
     if (authenticationState is AuthenticationAuthenticated) {
       var response =
-          await ttsTestsService.getTtsTests(authenticationState.token.access);
+          await _ttsTestsService.getTtsTests(authenticationState.token.access);
       switch (response.statusCode) {
         case HttpStatus.ok:
           {
@@ -50,9 +39,9 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
             var decodedMapList = json.decode(decodedResponseBody) as List;
             List<TtsTest> fetchedList =
                 decodedMapList.map((e) => TtsTest.fromJsonMap(e)).toList();
-            ttsTestList = fetchedList;
+            _ttsTestList = fetchedList;
             emit(TtsTestsFetchSuccessful());
-            _onTextsLanguageCubitStateChanged(textsLanguageCubit.state);
+            _onTextsLanguageCubitStateChanged(_textsLanguageCubit.state);
           }
           break;
         case HttpStatus.unauthorized:
@@ -71,9 +60,51 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
     }
   }
 
+  Future<List<TtsTest>?> getTtsTests() async {
+    var currentState = state;
+    if (currentState is TtsTestsLoaded) {
+      return currentState.ttsTests;
+    } else if (currentState is TtsTestsFetchSuccessful) {
+      return _loadTtsTests(_textsLanguageCubit.state);
+      // var textsLanguageState = _textsLanguageCubit.state;
+      // if (textsLanguageState is TextsLanguageChanged &&
+      //     _ttsTestList.isNotEmpty) {
+      //   List<TtsTest> filteredLanguages =
+      //       _filterTtsTestsByLanguageCode(textsLanguageState.language.code);
+      //   emit(TtsTestsLoaded(filteredLanguages));
+      //   return filteredLanguages;
+      // } else {
+      //   return null;
+      // }
+    } else {
+      await fetchTtsTests();
+      return _loadTtsTests(_textsLanguageCubit.state);
+    }
+  }
+
+  _onTextsLanguageCubitStateChanged(TextsLanguageState textsLanguageState) {
+    _loadTtsTests(textsLanguageState);
+    // if (textsLanguageState is TextsLanguageChanged && _ttsTestList.isNotEmpty) {
+    //   List<TtsTest> currentTextLanguageTtsTestList =
+    //       _filterTtsTestsByLanguageCode(textsLanguageState.language.code);
+    //   emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
+    // }
+  }
+
+  List<TtsTest>? _loadTtsTests(TextsLanguageState textsLanguageState) {
+    if (textsLanguageState is TextsLanguageChanged && _ttsTestList.isNotEmpty) {
+      List<TtsTest> currentTextLanguageTtsTestList = _ttsTestList
+          .where(
+              (element) => element.language == textsLanguageState.language.code)
+          .toList();
+      emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
+      return currentTextLanguageTtsTestList;
+    }
+  }
+
   @override
   Future<void> close() {
-    textsLanguageSubscription.cancel();
+    _textsLanguageSubscription.cancel();
     return super.close();
   }
 }

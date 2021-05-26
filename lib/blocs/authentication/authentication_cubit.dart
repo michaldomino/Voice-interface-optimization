@@ -6,18 +6,19 @@ import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/token.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/refresh_token/access_token.dart';
-import 'package:voice_interface_optimization/data/services/authentication_service.dart';
 import 'package:voice_interface_optimization/logic/persistence/flutter_secure_storage_wrapper.dart';
 
 part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
-  AuthenticationCubit() : super(AuthenticationInitial());
+  final _authenticationService;
+
+  AuthenticationCubit(this._authenticationService)
+      : super(AuthenticationInitial());
 
   Future login(String userName, String password) async {
     emit(AuthenticationLoggingIn());
-    AuthenticationService authenticationService = AuthenticationService();
-    var response = await authenticationService.login(userName, password);
+    var response = await _authenticationService.login(userName, password);
     switch (response.statusCode) {
       case HttpStatus.ok:
         {
@@ -57,8 +58,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       emit(RefreshTokenUnsuccessful());
       return;
     }
-    AuthenticationService authenticationService = AuthenticationService();
-    var response = await authenticationService.refreshToken(refreshToken);
+    var response = await _authenticationService.refreshToken(refreshToken);
     switch (response.statusCode) {
       case HttpStatus.ok:
         {
@@ -74,5 +74,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         }
         break;
     }
+  }
+
+  Future logout() async {
+    emit(AuthenticationLoggingOut());
+    FlutterSecureStorageWrapper flutterSecureStorageWrapper =
+        FlutterSecureStorageWrapper();
+    await flutterSecureStorageWrapper.deleteRefreshToken();
+    emit(AuthenticationLoggedOut());
   }
 }

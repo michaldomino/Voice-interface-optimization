@@ -21,5 +21,6 @@
   "serverIsDown": "Server is down",
   "ttsTest": "Text to speech test",
   "previous": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "logOut": "Log out"
 }

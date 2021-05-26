@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
+import 'package:voice_interface_optimization/screens/reusable/custom_app_bar.dart';
 
 class VoiceRecognitionScreen extends StatefulWidget {
   @override
@@ -55,7 +55,7 @@ class _VoiceRecognitionScreenState extends State<VoiceRecognitionScreen> {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
       return Scaffold(
-        appBar: CustomAppbar(context).get(),
+        appBar: CustomAppBar(context).get(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
           onPressed: _onMicrophoneButtonPressed,

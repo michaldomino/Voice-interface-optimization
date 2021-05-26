@@ -5,6 +5,7 @@ import 'package:voice_interface_optimization/blocs/authentication/authentication
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
+import 'package:voice_interface_optimization/data/services/authentication_service.dart';
 import 'package:voice_interface_optimization/data/services/tts_tests_service.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => AuthenticationCubit()),
+          BlocProvider(
+              create: (context) =>
+                  AuthenticationCubit(AuthenticationService())),
           BlocProvider(create: (context) => LocalizationCubit()),
           BlocProvider(create: (context) => TextsLanguageCubit()),
           BlocProvider(

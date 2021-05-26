@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie dowolnego tekstu"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "next": MessageLookupByLibrary.simpleMessage("Następny"),

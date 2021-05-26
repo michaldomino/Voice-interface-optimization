@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
-import 'package:voice_interface_optimization/screens/reusable/appbar.dart';
+import 'package:voice_interface_optimization/screens/reusable/custom_app_bar.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/speaker_regulator.dart';
 
 class TextSpeaking extends StatefulWidget {
@@ -41,7 +41,7 @@ class _TextSpeakingState extends State<TextSpeaking> {
     return BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
       return Scaffold(
-        appBar: CustomAppbar(context).get(),
+        appBar: CustomAppBar(context).get(),
         body: SingleChildScrollView(
           child: Center(
             child: Column(

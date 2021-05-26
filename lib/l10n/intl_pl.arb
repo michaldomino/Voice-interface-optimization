@@ -21,5 +21,6 @@
   "serverIsDown": "Serwer jest wyłączony",
   "ttsTest": "Test zamiany tekstu na mowę",
   "previous": "Poprzedni",
-  "next": "Następny"
+  "next": "Następny",
+  "logOut": "Wyloguj się"
 }

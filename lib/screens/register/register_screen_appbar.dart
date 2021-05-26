@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/screens/reusable/custom_popup_menu_button.dart';
+import 'package:voice_interface_optimization/screens/reusable/popup_menu_button_factory.dart';
 
 class RegisterScreenAppbar {
   BuildContext context;
@@ -11,7 +11,7 @@ class RegisterScreenAppbar {
     return AppBar(
       title: Text(S.of(context).registerAction),
       actions: <Widget>[
-        CustomPopupMenuButton(),
+        PopupMenuButtonFactory(context).unauthenticated.get(),
       ],
     );
   }

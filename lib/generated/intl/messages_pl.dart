@@ -33,12 +33,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
+        "next": MessageLookupByLibrary.simpleMessage("Następny"),
         "password": MessageLookupByLibrary.simpleMessage("Hasło"),
         "pl": MessageLookupByLibrary.simpleMessage("Polski"),
         "pleaseEnterSomeText":
             MessageLookupByLibrary.simpleMessage("Proszę wpisać tekst"),
         "predefinedTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie predefiniowanego tekstu"),
+        "previous": MessageLookupByLibrary.simpleMessage("Poprzedni"),
         "recognizedText":
             MessageLookupByLibrary.simpleMessage("Rozpoznany tekst:"),
         "registerAction":

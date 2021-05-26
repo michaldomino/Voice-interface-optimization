@@ -66,16 +66,6 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
       return currentState.ttsTests;
     } else if (currentState is TtsTestsFetchSuccessful) {
       return _loadTtsTests(_textsLanguageCubit.state);
-      // var textsLanguageState = _textsLanguageCubit.state;
-      // if (textsLanguageState is TextsLanguageChanged &&
-      //     _ttsTestList.isNotEmpty) {
-      //   List<TtsTest> filteredLanguages =
-      //       _filterTtsTestsByLanguageCode(textsLanguageState.language.code);
-      //   emit(TtsTestsLoaded(filteredLanguages));
-      //   return filteredLanguages;
-      // } else {
-      //   return null;
-      // }
     } else {
       await fetchTtsTests();
       return _loadTtsTests(_textsLanguageCubit.state);
@@ -84,11 +74,6 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
 
   _onTextsLanguageCubitStateChanged(TextsLanguageState textsLanguageState) {
     _loadTtsTests(textsLanguageState);
-    // if (textsLanguageState is TextsLanguageChanged && _ttsTestList.isNotEmpty) {
-    //   List<TtsTest> currentTextLanguageTtsTestList =
-    //       _filterTtsTestsByLanguageCode(textsLanguageState.language.code);
-    //   emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
-    // }
   }
 
   List<TtsTest>? _loadTtsTests(TextsLanguageState textsLanguageState) {

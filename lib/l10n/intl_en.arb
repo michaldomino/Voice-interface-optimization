@@ -19,5 +19,7 @@
   "somethingWentWrong": "Something went wrong",
   "accountCreatedSuccessfully": "Account created successfully",
   "serverIsDown": "Server is down",
-  "ttsTest": "Text to speech test"
+  "ttsTest": "Text to speech test",
+  "previous": "Previous",
+  "next": "Next"
 }

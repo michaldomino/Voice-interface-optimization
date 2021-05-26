@@ -19,5 +19,7 @@
   "somethingWentWrong": "Coś poszło nie tak",
   "accountCreatedSuccessfully": "Konto utworzono pomyślnie",
   "serverIsDown": "Serwer jest wyłączony",
-  "ttsTest": "Test zamiany tekstu na mowę"
+  "ttsTest": "Test zamiany tekstu na mowę",
+  "previous": "Poprzedni",
+  "next": "Następny"
 }

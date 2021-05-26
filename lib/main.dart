@@ -15,7 +15,7 @@ import 'package:voice_interface_optimization/screens/register/register_screen.da
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 import 'package:voice_interface_optimization/screens/splash/splash_screen.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/custom_text_speaking/custom_text_speaking_screen.dart';
-import 'package:voice_interface_optimization/screens/tts_test/tts_test_screen_builder.dart';
+import 'package:voice_interface_optimization/screens/tts_test/tts_test_screen.dart';
 import 'package:voice_interface_optimization/screens/voice_recognition/voice_recogniton_screen.dart';
 
 void main() => runApp(MyApp());
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
                 VoiceRecognitionScreen(),
             RoutesModel.LOGIN: (context) => LoginScreen(),
             RoutesModel.REGISTER: (context) => RegisterScreen(),
-            RoutesModel.TTS_TEST: (context) => TtsTestScreenBuilder(),
+            RoutesModel.TTS_TEST: (context) => TtsTestScreen(),
           },
           initialRoute: RoutesModel.INITIAL,
         ));

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
+import 'package:voice_interface_optimization/screens/reusable/custom_radio.dart';
 
 class TtsTestWizard extends StatefulWidget {
   final List<TtsTest> ttsTests;
@@ -16,12 +17,13 @@ class TtsTestWizard extends StatefulWidget {
 class _TtsTestWizardState extends State<TtsTestWizard> {
   int _currentStep = 0;
   bool? _complete = false;
-  List<bool?> _results = <bool?>[];
+  late List<bool?> _results;
   StepperType stepperType = StepperType.horizontal;
 
   @override
   void initState() {
-    _results = List.filled(widget.ttsTests.length, false);
+    // _results = widget.ttsTests.map((e) => TtsTestResult(e, false)).toList();
+    _results = List.filled(widget.ttsTests.length, null);
     super.initState();
   }
 
@@ -69,16 +71,35 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
             content: Column(
               children: [
                 Text(e.value.text),
-                Checkbox(
-                    value: _results[e.key],
-                    onChanged: (value) => setState(() {
-                          _results[e.key] = value;
-                        })),
+                // Checkbox(
+                //     value: _results[e.key],
+                //     onChanged: (value) {
+                //       setState(() {
+                //         _results[e.key] = value;
+                //       });
+                //       if (_results.every((element) => element != null)) {
+                //         setState(() {
+                //           _complete = true;
+                //         });
+                //       }
+                //     }),
+                CustomRadio(_radioModels)
               ],
             ));
       }).toList(),
     );
   }
+
+  List<RadioModel> _radioModels = [
+    RadioModel(
+      Text('tak', style: TextStyle(color: Colors.green)),
+      Text('tak', style: TextStyle(color: Colors.red)),
+    ),
+    RadioModel(
+      Text('nie', style: TextStyle(color: Colors.green)),
+      Text('nie', style: TextStyle(color: Colors.red)),
+    ),
+  ];
 
   _continue(List<TtsTest> ttsTests) {
     _currentStep + 1 < ttsTests.length

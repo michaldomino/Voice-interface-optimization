@@ -83,19 +83,41 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
                 //         });
                 //       }
                 //     }),
-                CustomRadio(_radioModels)
+                CustomRadio<bool?>(_radioModels,
+                //     [RadioModel(
+                //     true,
+                //     Text('tak', style: TextStyle(color: Colors.green)),
+                //     Text('tak', style: TextStyle(color: Colors.red)),
+                //   ),
+                //   RadioModel(
+                //     false,
+                //     Text('nie', style: TextStyle(color: Colors.green)),
+                //     Text('nie', style: TextStyle(color: Colors.red)),
+                //   ),
+                // ],
+                    _results[e.key],
+                    (value) {
+                  setState(() => _results[e.key] = value);
+                  if (_results.every((element) => element != null)) {
+                    setState(() {
+                      _complete = true;
+                    });
+                  }
+                }),
               ],
             ));
       }).toList(),
     );
   }
 
-  List<RadioModel> _radioModels = [
+  List<RadioModel<bool?>> _radioModels = [
     RadioModel(
+      true,
       Text('tak', style: TextStyle(color: Colors.green)),
       Text('tak', style: TextStyle(color: Colors.red)),
     ),
     RadioModel(
+      false,
       Text('nie', style: TextStyle(color: Colors.green)),
       Text('nie', style: TextStyle(color: Colors.red)),
     ),
@@ -114,6 +136,15 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
   _cancel() {
     if (_currentStep > 0) {
       _goTo(_currentStep - 1);
+    }
+  }
+
+  void _a(int index, bool? value) {
+    setState(() => _results[index] = value);
+    if (_results.every((element) => element != null)) {
+      setState(() {
+        _complete = true;
+      });
     }
   }
 }

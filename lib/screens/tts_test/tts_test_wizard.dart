@@ -4,6 +4,7 @@ import 'package:voice_interface_optimization/blocs/localization/localization_cub
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/reusable/custom_radio.dart';
+import 'package:voice_interface_optimization/screens/tts_test/custom_radio_element.dart';
 
 class TtsTestWizard extends StatefulWidget {
   final List<TtsTest> ttsTests;
@@ -64,38 +65,58 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
         );
       },
       steps: ttsTests.asMap().entries.map((e) {
+        // var radioModels = ;
         return Step(
             title: Text('Test ${e.key + 1}'),
             isActive: _currentStep >= 0,
-            content: Column(
-              children: [
-                Text(e.value.text),
-                CustomRadio<bool?>(_radioModels, _results[e.key], (value) {
-                  setState(() => _results[e.key] = value);
-                  if (_results.every((element) => element != null)) {
-                    setState(() {
-                      _complete = true;
-                    });
-                  }
-                }),
-              ],
+            content: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Text(e.value.text),
+                  CustomRadio<bool?>(_buildRadioModels(), _results[e.key],
+                      (value) {
+                    setState(() => _results[e.key] = value);
+                    if (_results.every((element) => element != null)) {
+                      setState(() {
+                        _complete = true;
+                      });
+                    }
+                  }),
+                ],
+              ),
             ));
       }).toList(),
     );
   }
 
-  List<RadioModel<bool?>> _radioModels = [
-    RadioModel(
-      true,
-      Text('tak', style: TextStyle(color: Colors.green)),
-      Text('tak', style: TextStyle(color: Colors.red)),
-    ),
-    RadioModel(
-      false,
-      Text('nie', style: TextStyle(color: Colors.green)),
-      Text('nie', style: TextStyle(color: Colors.red)),
-    ),
-  ];
+  List<RadioModel<bool?>> _buildRadioModels() {
+    return [
+      RadioModel(
+        true,
+        CustomRadioElement(
+            boxColor: Colors.green,
+            // text: S.of(context).yes,
+            text: S.of(context).yes,
+            textColor: Colors.black),
+        CustomRadioElement(
+            boxColor: Colors.transparent,
+            text: S.of(context).yes,
+            textColor: Colors.green),
+      ),
+      RadioModel(
+        false,
+        CustomRadioElement(
+            boxColor: Colors.red,
+            text: S.of(context).no,
+            textColor: Colors.black),
+        CustomRadioElement(
+            boxColor: Colors.transparent,
+            text: S.of(context).no,
+            textColor: Colors.red),
+      ),
+    ];
+  }
 
   _continue(List<TtsTest> ttsTests) {
     _currentStep + 1 < ttsTests.length

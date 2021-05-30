@@ -27,9 +27,9 @@ class _CustomRadioState<T> extends State<CustomRadio<T>> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: _radioModels
-          .map((e) => OutlinedButton(
+          .map((e) => InkWell(
                 child: RadioItem<T>(e, widget._currentValue),
-                onPressed: () => widget._onValueChangedCallback(e.value),
+                onTap: () => widget._onValueChangedCallback(e.value),
               ))
           .toList(),
     );

@@ -22,5 +22,7 @@
   "ttsTest": "Text to speech test",
   "previous": "Previous",
   "next": "Next",
-  "logOut": "Log out"
+  "logOut": "Log out",
+  "yes": "Yes",
+  "no": "No"
 }

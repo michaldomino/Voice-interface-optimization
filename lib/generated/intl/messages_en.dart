@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Login"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pl": MessageLookupByLibrary.simpleMessage("Polish"),
         "pleaseEnterSomeText":
@@ -53,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Texts language"),
         "ttsTest": MessageLookupByLibrary.simpleMessage("Text to speech test"),
         "voiceRecognition":
-            MessageLookupByLibrary.simpleMessage("Voice recognition")
+            MessageLookupByLibrary.simpleMessage("Voice recognition"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

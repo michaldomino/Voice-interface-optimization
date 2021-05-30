@@ -17,16 +17,9 @@ class CustomRadio<T> extends StatefulWidget {
 }
 
 class _CustomRadioState<T> extends State<CustomRadio<T>> {
-  // late T _currentValue;
   final List<RadioModel<T>> _radioModels;
 
   _CustomRadioState(this._radioModels);
-
-  // @override
-  // void initState() {
-  //   _currentValue = widget._currentValue;
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -36,20 +29,7 @@ class _CustomRadioState<T> extends State<CustomRadio<T>> {
       children: _radioModels
           .map((e) => OutlinedButton(
                 child: RadioItem<T>(e, widget._currentValue),
-                onPressed: () {
-                  // if (!e.isSelected) {
-                  //   setState(() {
-                  //     _radioModels
-                  //         .forEach((element) => element.isSelected = false);
-                  //     e.isSelected = true;
-                  //   });
-                  //   widget._onValueChangedCallback(e.value);
-                  // }
-                  // setState(() {
-                  //   _currentValue = e.value;
-                  // });
-                  widget._onValueChangedCallback(e.value);
-                },
+                onPressed: () => widget._onValueChangedCallback(e.value),
               ))
           .toList(),
     );
@@ -66,18 +46,12 @@ class RadioItem<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _item.value == _currentValue
-        // return _item.isSelected
         ? _item.itemWidgetSelected
         : _item.itemWidgetNotSelected;
-    // if (_item.isSelected == true) {
-    //   return _item.itemWidgetSelected;
-    // }
-    // return _item.itemWidgetNotSelected;
   }
 }
 
 class RadioModel<T> {
-  bool isSelected = false;
   T value;
   final Widget itemWidgetSelected;
   final Widget itemWidgetNotSelected;

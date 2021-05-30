@@ -22,7 +22,6 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
 
   @override
   void initState() {
-    // _results = widget.ttsTests.map((e) => TtsTestResult(e, false)).toList();
     _results = List.filled(widget.ttsTests.length, null);
     super.initState();
   }
@@ -71,32 +70,7 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
             content: Column(
               children: [
                 Text(e.value.text),
-                // Checkbox(
-                //     value: _results[e.key],
-                //     onChanged: (value) {
-                //       setState(() {
-                //         _results[e.key] = value;
-                //       });
-                //       if (_results.every((element) => element != null)) {
-                //         setState(() {
-                //           _complete = true;
-                //         });
-                //       }
-                //     }),
-                CustomRadio<bool?>(_radioModels,
-                //     [RadioModel(
-                //     true,
-                //     Text('tak', style: TextStyle(color: Colors.green)),
-                //     Text('tak', style: TextStyle(color: Colors.red)),
-                //   ),
-                //   RadioModel(
-                //     false,
-                //     Text('nie', style: TextStyle(color: Colors.green)),
-                //     Text('nie', style: TextStyle(color: Colors.red)),
-                //   ),
-                // ],
-                    _results[e.key],
-                    (value) {
+                CustomRadio<bool?>(_radioModels, _results[e.key], (value) {
                   setState(() => _results[e.key] = value);
                   if (_results.every((element) => element != null)) {
                     setState(() {
@@ -136,15 +110,6 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
   _cancel() {
     if (_currentStep > 0) {
       _goTo(_currentStep - 1);
-    }
-  }
-
-  void _a(int index, bool? value) {
-    setState(() => _results[index] = value);
-    if (_results.every((element) => element != null)) {
-      setState(() {
-        _complete = true;
-      });
     }
   }
 }

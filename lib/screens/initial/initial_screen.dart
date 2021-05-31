@@ -17,26 +17,23 @@ class InitialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocalizationCubit, LocalizationState>(
-        builder: (context, state) {
-      return FutureBuilder(
-          future: _loadConfiguration(context),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                builder: (context, state) {
-                  if (state is AuthenticationAuthenticated) {
-                    return MenuScreen();
-                  } else {
-                    return LoginScreen();
-                  }
-                },
-              );
-            } else {
-              return SplashScreen();
-            }
-          });
-    });
+    return FutureBuilder(
+        future: _loadConfiguration(context),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return BlocBuilder<AuthenticationCubit, AuthenticationState>(
+              builder: (context, state) {
+                if (state is AuthenticationAuthenticated) {
+                  return MenuScreen();
+                } else {
+                  return LoginScreen();
+                }
+              },
+            );
+          } else {
+            return SplashScreen();
+          }
+        });
   }
 
   Future _loadConfiguration(BuildContext context) async {

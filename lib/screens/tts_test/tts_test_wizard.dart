@@ -17,7 +17,7 @@ class TtsTestWizard extends StatefulWidget {
 
 class _TtsTestWizardState extends State<TtsTestWizard> {
   int _currentStep = 0;
-  bool? _complete = false;
+  bool _complete = false;
   late List<bool?> _results;
   StepperType stepperType = StepperType.horizontal;
 
@@ -37,56 +37,61 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
 
   _buildWizard() {
     var ttsTests = widget.ttsTests;
-    return Stepper(
-      currentStep: _currentStep,
-      type: stepperType,
-      onStepContinue: () => _continue(ttsTests),
-      onStepTapped: (step) => _goTo(step),
-      onStepCancel: _cancel,
-      controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-        return Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              child: ElevatedButton(
-                onPressed: _currentStep > 0 ? onStepCancel : null,
-                child: Text(S.of(context).previous),
+    return Scaffold(
+      appBar: AppBar(title: Text('Test')),
+      floatingActionButton: _buildOnCompleteButton(),
+      body: Stepper(
+        currentStep: _currentStep,
+        type: stepperType,
+        onStepContinue: () => _continue(ttsTests),
+        onStepTapped: (step) => _goTo(step),
+        onStepCancel: _cancel,
+        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+          return Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                child: ElevatedButton(
+                  onPressed: _currentStep > 0 ? onStepCancel : null,
+                  child: Text(S.of(context).previous),
+                ),
               ),
-            ),
-            Container(
-              child: ElevatedButton(
-                onPressed:
-                    _currentStep < ttsTests.length - 1 ? onStepContinue : null,
-                child: Text(S.of(context).next),
+              Container(
+                child: ElevatedButton(
+                  onPressed: _currentStep < ttsTests.length - 1
+                      ? onStepContinue
+                      : null,
+                  child: Text(S.of(context).next),
+                ),
               ),
-            ),
-          ],
-        );
-      },
-      steps: ttsTests.asMap().entries.map((e) {
-        // var radioModels = ;
-        return Step(
-            title: Text('Test ${e.key + 1}'),
-            isActive: _currentStep >= 0,
-            content: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  Text(e.value.text),
-                  CustomRadio<bool?>(_buildRadioModels(), _results[e.key],
-                      (value) {
-                    setState(() => _results[e.key] = value);
-                    if (_results.every((element) => element != null)) {
-                      setState(() {
-                        _complete = true;
-                      });
-                    }
-                  }),
-                ],
-              ),
-            ));
-      }).toList(),
+            ],
+          );
+        },
+        steps: ttsTests.asMap().entries.map((e) {
+          // var radioModels = ;
+          return Step(
+              title: Text('Test ${e.key + 1}'),
+              isActive: _currentStep >= 0,
+              content: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(e.value.text),
+                    CustomRadio<bool?>(_buildRadioModels(), _results[e.key],
+                        (value) {
+                      setState(() => _results[e.key] = value);
+                      if (_results.every((element) => element != null)) {
+                        setState(() {
+                          _complete = true;
+                        });
+                      }
+                    }),
+                  ],
+                ),
+              ));
+        }).toList(),
+      ),
     );
   }
 
@@ -132,5 +137,13 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
     if (_currentStep > 0) {
       _goTo(_currentStep - 1);
     }
+  }
+
+  Widget? _buildOnCompleteButton() {
+    if (_complete)
+      return FloatingActionButton(
+        child: Icon(Icons.done),
+        onPressed: () {},
+      );
   }
 }

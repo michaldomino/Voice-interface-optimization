@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
-import 'package:voice_interface_optimization/screens/reusable/custom_app_bar.dart';
 import 'package:voice_interface_optimization/screens/tts_test/tts_test_wizard.dart';
 
 class TtsTestScreen extends StatelessWidget {
@@ -12,10 +11,11 @@ class TtsTestScreen extends StatelessWidget {
     return FutureBuilder<List<TtsTest>?>(
       future: _load(context),
       builder: (context, snapshot) {
-        return Scaffold(
-          appBar: CustomAppBar(context).getTitled("Test"),
-          body: _buildBody(snapshot),
-        );
+        return _buildScreen(snapshot);
+        // return Scaffold(
+        //   appBar: AppBar(title: Text('Test')),
+        //   body: _buildBody(snapshot),
+        // );
       },
     );
   }
@@ -24,11 +24,13 @@ class TtsTestScreen extends StatelessWidget {
     return BlocProvider.of<TtsTestsCubit>(context).getTtsTests();
   }
 
-  Widget _buildBody(AsyncSnapshot<List<TtsTest>?> snapshot) {
+  Widget _buildScreen(AsyncSnapshot<List<TtsTest>?> snapshot) {
     if (snapshot.connectionState == ConnectionState.done) {
       return TtsTestWizard(snapshot.data!);
     } else {
-      return Center(child: CircularProgressIndicator());
+      return Scaffold(
+        appBar: AppBar(title: Text('Test')),
+          body: Center(child: CircularProgressIndicator()));
     }
   }
 }

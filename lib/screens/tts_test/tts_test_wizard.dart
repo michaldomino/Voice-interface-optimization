@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/data/DTOs/requests/tts_test_result.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/reusable/custom_radio.dart';
-import 'package:voice_interface_optimization/screens/tts_test/custom_radio_element.dart';
+import 'package:voice_interface_optimization/screens/reusable/yes_no_alert_dialog.dart';
+import 'package:voice_interface_optimization/screens/tts_test/tts_test_radio_element.dart';
 
 class TtsTestWizard extends StatefulWidget {
   final List<TtsTest> ttsTests;
@@ -69,10 +71,12 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
           );
         },
         steps: ttsTests.asMap().entries.map((e) {
-          // var radioModels = ;
           return Step(
               title: Text('Test ${e.key + 1}'),
               isActive: _currentStep >= 0,
+              state: _results[e.key] != null
+                  ? StepState.complete
+                  : StepState.indexed,
               content: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
@@ -99,23 +103,23 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
     return [
       RadioModel(
         true,
-        CustomRadioElement(
+        TtsTestRadioElement(
             boxColor: Colors.green,
             // text: S.of(context).yes,
             text: S.of(context).yes,
             textColor: Colors.black),
-        CustomRadioElement(
+        TtsTestRadioElement(
             boxColor: Colors.transparent,
             text: S.of(context).yes,
             textColor: Colors.green),
       ),
       RadioModel(
         false,
-        CustomRadioElement(
+        TtsTestRadioElement(
             boxColor: Colors.red,
             text: S.of(context).no,
             textColor: Colors.black),
-        CustomRadioElement(
+        TtsTestRadioElement(
             boxColor: Colors.transparent,
             text: S.of(context).no,
             textColor: Colors.red),
@@ -143,7 +147,40 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
     if (_complete)
       return FloatingActionButton(
         child: Icon(Icons.done),
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) => _buildYesNoAlertDialog().build(context));
+        },
       );
+  }
+
+  AlertDialog _buildYesNoAlertDialog() {
+    return YesNoAlertDialog(
+      titleText: 'Alert',
+      contentText: S.of(context).doYouWantToSendTheResults,
+      onYesAction: () {
+        var ttsTestResults = _results
+            .asMap()
+            .entries
+            .map((e) => TtsTestResult(widget.ttsTests[e.key], e.value!))
+            .toList();
+        var x = 5;
+        Navigator.of(context).pop();
+        Navigator.of(context).pop();
+        _showResultsSnackBar();
+      },
+      onNoAction: () {
+        Navigator.of(context).pop();
+      },
+    ).build(context);
+  }
+
+  void _showResultsSnackBar() {
+    SnackBar snackBar = SnackBar(
+      content: Text(S.of(context).thankYouForParticipatingInTheStudy),
+      backgroundColor: Colors.green,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

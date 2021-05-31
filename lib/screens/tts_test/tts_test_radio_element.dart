@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomRadioElement extends StatelessWidget {
+class TtsTestRadioElement extends StatelessWidget {
   static const double _BOX_HEIGHT = 30.0;
   static const double _BOX_WIDTH = 50.0;
 
@@ -8,7 +8,7 @@ class CustomRadioElement extends StatelessWidget {
   final String text;
   final Color textColor;
 
-  const CustomRadioElement(
+  const TtsTestRadioElement(
       {Key? key,
       required this.boxColor,
       required this.text,

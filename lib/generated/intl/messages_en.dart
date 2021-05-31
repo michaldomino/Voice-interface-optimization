@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "customTextSpeaking":
             MessageLookupByLibrary.simpleMessage("Custom text speaking"),
+        "doYouWantToSendTheResults": MessageLookupByLibrary.simpleMessage(
+            "Do you want to send the results?"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -52,6 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Texts language"),
+        "thankYouForParticipatingInTheStudy":
+            MessageLookupByLibrary.simpleMessage(
+                "Thank you for participating in the study"),
         "ttsTest": MessageLookupByLibrary.simpleMessage("Text to speech test"),
         "voiceRecognition":
             MessageLookupByLibrary.simpleMessage("Voice recognition"),

@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie dowolnego tekstu"),
+        "doYouWantToSendTheResults":
+            MessageLookupByLibrary.simpleMessage("Czy chcesz wysłać wyniki?"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
         "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -54,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "submit": MessageLookupByLibrary.simpleMessage("Wyślij"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Język tekstów"),
+        "thankYouForParticipatingInTheStudy":
+            MessageLookupByLibrary.simpleMessage(
+                "Dziękuję za udział w badaniu"),
         "ttsTest":
             MessageLookupByLibrary.simpleMessage("Test zamiany tekstu na mowę"),
         "voiceRecognition":

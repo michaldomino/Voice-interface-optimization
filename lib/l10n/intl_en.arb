@@ -24,5 +24,7 @@
   "next": "Next",
   "logOut": "Log out",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "doYouWantToSendTheResults": "Do you want to send the results?",
+  "thankYouForParticipatingInTheStudy": "Thank you for participating in the study"
 }

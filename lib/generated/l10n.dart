@@ -310,6 +310,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want to send the results?`
+  String get doYouWantToSendTheResults {
+    return Intl.message(
+      'Do you want to send the results?',
+      name: 'doYouWantToSendTheResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for participating in the study`
+  String get thankYouForParticipatingInTheStudy {
+    return Intl.message(
+      'Thank you for participating in the study',
+      name: 'thankYouForParticipatingInTheStudy',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

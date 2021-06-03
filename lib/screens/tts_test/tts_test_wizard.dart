@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
 import 'package:voice_interface_optimization/data/DTOs/requests/tts_test_result.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
@@ -71,13 +72,14 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
     return YesNoAlertDialog(
       titleText: 'Alert',
       contentText: S.of(context).doYouWantToSendTheResults,
-      onYesAction: () {
+      onYesAction: () async {
         List<TtsTestResult> ttsTestResults = _results
             .asMap()
             .entries
             .map((e) => TtsTestResult(widget.ttsTests[e.key], e.value!))
             .toList();
-        var x = 5;
+        await BlocProvider.of<TtsTestsCubit>(context)
+            .sendResults(ttsTestResults);
         Navigator.of(context).pop();
         Navigator.of(context).pop();
         _showResultsSnackBar();

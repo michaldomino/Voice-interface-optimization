@@ -6,6 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
+import 'package:voice_interface_optimization/data/DTOs/requests/tts_test_result.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/data/services/tts_tests_service.dart';
 
@@ -84,6 +85,14 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
           .toList();
       emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
       return currentTextLanguageTtsTestList;
+    }
+  }
+
+  Future sendResults(List<TtsTestResult> ttsTestResults) async {
+    AuthenticationState authenticationState = _authenticationCubit.state;
+    if (authenticationState is AuthenticationAuthenticated) {
+      await _ttsTestsService.postTtsTestResults(
+          ttsTestResults, authenticationState.token.access);
     }
   }
 

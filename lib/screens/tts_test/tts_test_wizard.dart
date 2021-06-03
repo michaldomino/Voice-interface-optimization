@@ -4,9 +4,8 @@ import 'package:voice_interface_optimization/blocs/localization/localization_cub
 import 'package:voice_interface_optimization/data/DTOs/requests/tts_test_result.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
-import 'package:voice_interface_optimization/screens/reusable/custom_radio.dart';
 import 'package:voice_interface_optimization/screens/reusable/yes_no_alert_dialog.dart';
-import 'package:voice_interface_optimization/screens/tts_test/tts_test_radio_element.dart';
+import 'package:voice_interface_optimization/screens/tts_test/tts_test_wizard_stepper.dart';
 
 class TtsTestWizard extends StatefulWidget {
   final List<TtsTest> ttsTests;
@@ -18,14 +17,19 @@ class TtsTestWizard extends StatefulWidget {
 }
 
 class _TtsTestWizardState extends State<TtsTestWizard> {
-  int _currentStep = 0;
   bool _complete = false;
   late List<bool?> _results;
   StepperType stepperType = StepperType.horizontal;
 
+  late final void Function(int, bool?) _setResultsCallback;
+  late final void Function(bool) _setCompleteCallback;
+
   @override
   void initState() {
     _results = List.filled(widget.ttsTests.length, null);
+    _setResultsCallback =
+        (index, value) => setState(() => _results[index] = value);
+    _setCompleteCallback = (value) => setState(() => _complete = value);
     super.initState();
   }
 
@@ -38,109 +42,17 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
   }
 
   _buildWizard() {
-    var ttsTests = widget.ttsTests;
+    // var ttsTests = widget.ttsTests;
     return Scaffold(
       appBar: AppBar(title: Text('Test')),
       floatingActionButton: _buildOnCompleteButton(),
-      body: Stepper(
-        currentStep: _currentStep,
-        type: stepperType,
-        onStepContinue: () => _continue(ttsTests),
-        onStepTapped: (step) => _goTo(step),
-        onStepCancel: _cancel,
-        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-          return Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                child: ElevatedButton(
-                  onPressed: _currentStep > 0 ? onStepCancel : null,
-                  child: Text(S.of(context).previous),
-                ),
-              ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: _currentStep < ttsTests.length - 1
-                      ? onStepContinue
-                      : null,
-                  child: Text(S.of(context).next),
-                ),
-              ),
-            ],
-          );
-        },
-        steps: ttsTests.asMap().entries.map((e) {
-          return Step(
-              title: Text('Test ${e.key + 1}'),
-              isActive: _currentStep >= 0,
-              state: _results[e.key] != null
-                  ? StepState.complete
-                  : StepState.indexed,
-              content: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(e.value.text),
-                    CustomRadio<bool?>(_buildRadioModels(), _results[e.key],
-                        (value) {
-                      setState(() => _results[e.key] = value);
-                      if (_results.every((element) => element != null)) {
-                        setState(() {
-                          _complete = true;
-                        });
-                      }
-                    }),
-                  ],
-                ),
-              ));
-        }).toList(),
+      body: TtsTestWizardStepper(
+        ttsTests: widget.ttsTests,
+        results: _results,
+        setResultsCallback: _setResultsCallback,
+        setCompleteCallback: _setCompleteCallback,
       ),
     );
-  }
-
-  List<RadioModel<bool?>> _buildRadioModels() {
-    return [
-      RadioModel(
-        true,
-        TtsTestRadioElement(
-            boxColor: Colors.green,
-            // text: S.of(context).yes,
-            text: S.of(context).yes,
-            textColor: Colors.black),
-        TtsTestRadioElement(
-            boxColor: Colors.transparent,
-            text: S.of(context).yes,
-            textColor: Colors.green),
-      ),
-      RadioModel(
-        false,
-        TtsTestRadioElement(
-            boxColor: Colors.red,
-            text: S.of(context).no,
-            textColor: Colors.black),
-        TtsTestRadioElement(
-            boxColor: Colors.transparent,
-            text: S.of(context).no,
-            textColor: Colors.red),
-      ),
-    ];
-  }
-
-  _continue(List<TtsTest> ttsTests) {
-    _currentStep + 1 < ttsTests.length
-        ? _goTo(_currentStep + 1)
-        : setState(() => _complete = true);
-  }
-
-  _goTo(int step) {
-    setState(() => _currentStep = step);
-  }
-
-  _cancel() {
-    if (_currentStep > 0) {
-      _goTo(_currentStep - 1);
-    }
   }
 
   Widget? _buildOnCompleteButton() {
@@ -160,7 +72,7 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
       titleText: 'Alert',
       contentText: S.of(context).doYouWantToSendTheResults,
       onYesAction: () {
-        var ttsTestResults = _results
+        List<TtsTestResult> ttsTestResults = _results
             .asMap()
             .entries
             .map((e) => TtsTestResult(widget.ttsTests[e.key], e.value!))

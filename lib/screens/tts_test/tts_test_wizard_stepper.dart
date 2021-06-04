@@ -71,12 +71,8 @@ class _TtsTestWizardStepperState extends State<TtsTestWizardStepper> {
                   CustomRadio<bool?>(_buildRadioModels(), widget.results[e.key],
                       (value) {
                     widget.setResultsCallback(e.key, value);
-                    // setState(() => _results[e.key] = value);
                     if (widget.results.every((element) => element != null)) {
                       widget.setCompleteCallback(true);
-                      // setState(() {
-                      //   _complete = true;
-                      // });
                     }
                   }),
                 ],
@@ -92,7 +88,6 @@ class _TtsTestWizardStepperState extends State<TtsTestWizardStepper> {
         true,
         TtsTestRadioElement(
             boxColor: Colors.green,
-            // text: S.of(context).yes,
             text: S.of(context).yes,
             textColor: Colors.black),
         TtsTestRadioElement(
@@ -118,9 +113,6 @@ class _TtsTestWizardStepperState extends State<TtsTestWizardStepper> {
     if (_currentStep + 1 < ttsTests.length) {
       _goTo(_currentStep + 1);
     }
-    // _currentStep + 1 < ttsTests.length
-    //     ? _goTo(_currentStep + 1)
-    //     : setState(() => _complete = true);
   }
 
   _goTo(int step) {

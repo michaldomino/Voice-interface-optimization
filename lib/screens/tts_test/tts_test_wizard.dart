@@ -43,7 +43,6 @@ class _TtsTestWizardState extends State<TtsTestWizard> {
   }
 
   _buildWizard() {
-    // var ttsTests = widget.ttsTests;
     return Scaffold(
       appBar: AppBar(title: Text('Test')),
       floatingActionButton: _buildOnCompleteButton(),

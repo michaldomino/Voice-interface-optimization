@@ -2,16 +2,18 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:voice_interface_optimization/data/DTOs/responses/is_verified/is_verified_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_bad_request_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/login_unauthorized_response.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/login/token.dart';
 import 'package:voice_interface_optimization/data/DTOs/responses/refresh_token/access_token.dart';
+import 'package:voice_interface_optimization/data/services/authentication_service.dart';
 import 'package:voice_interface_optimization/logic/persistence/flutter_secure_storage_wrapper.dart';
 
 part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
-  final _authenticationService;
+  final AuthenticationService _authenticationService;
 
   AuthenticationCubit(this._authenticationService)
       : super(AuthenticationInitial());
@@ -23,9 +25,17 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       case HttpStatus.ok:
         {
           Token token = Token.fromJsonMap(json.decode(response.body));
-          var flutterSecureStorage = FlutterSecureStorageWrapper();
-          await flutterSecureStorage.setRefreshToken(token.refresh);
-          emit(AuthenticationAuthenticated(token));
+          var isVerifiedResponse =
+              await _authenticationService.isVerified(token.access);
+          IsVerifiedResponse isVerified = IsVerifiedResponse.fromJsonMap(
+              json.decode(isVerifiedResponse.body));
+          if (isVerified.isVerified) {
+            var flutterSecureStorage = FlutterSecureStorageWrapper();
+            await flutterSecureStorage.setRefreshToken(token.refresh);
+            emit(AuthenticationAuthenticated(token));
+          } else {
+            emit(AuthenticationNotVerified());
+          }
         }
         break;
       case HttpStatus.badRequest:
@@ -65,7 +75,15 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           AccessToken accessToken =
               AccessToken.fromJsonMap(json.decode(response.body));
           Token token = Token(accessToken.access, refreshToken);
-          emit(AuthenticationAuthenticated(token));
+          var isVerifiedResponse =
+              await _authenticationService.isVerified(token.access);
+          IsVerifiedResponse isVerified = IsVerifiedResponse.fromJsonMap(
+              json.decode(isVerifiedResponse.body));
+          if (isVerified.isVerified) {
+            emit(AuthenticationAuthenticated(token));
+          } else {
+            emit(AuthenticationNotVerified());
+          }
         }
         break;
       default:

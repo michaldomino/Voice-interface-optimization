@@ -330,6 +330,16 @@ class S {
       args: [],
     );
   }
+
+  /// `You are not verified yet`
+  String get youAreNotVerifiedYet {
+    return Intl.message(
+      'You are not verified yet',
+      name: 'youAreNotVerifiedYet',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

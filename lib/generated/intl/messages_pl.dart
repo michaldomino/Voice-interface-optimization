@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Test zamiany tekstu na mowę"),
         "voiceRecognition":
             MessageLookupByLibrary.simpleMessage("Rozpoznawanie wypowiedzi"),
-        "yes": MessageLookupByLibrary.simpleMessage("Tak")
+        "yes": MessageLookupByLibrary.simpleMessage("Tak"),
+        "youAreNotVerifiedYet": MessageLookupByLibrary.simpleMessage(
+            "Nie jesteś jeszcze zweryfikowany")
       };
 }

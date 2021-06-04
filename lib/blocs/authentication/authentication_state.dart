@@ -33,3 +33,5 @@ class RefreshTokenUnsuccessful extends AuthenticationState {}
 class AuthenticationLoggingOut extends AuthenticationState {}
 
 class AuthenticationLoggedOut extends AuthenticationState {}
+
+class AuthenticationNotVerified extends AuthenticationState {}

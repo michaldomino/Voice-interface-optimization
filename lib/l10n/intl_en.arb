@@ -26,5 +26,6 @@
   "yes": "Yes",
   "no": "No",
   "doYouWantToSendTheResults": "Do you want to send the results?",
-  "thankYouForParticipatingInTheStudy": "Thank you for participating in the study"
+  "thankYouForParticipatingInTheStudy": "Thank you for participating in the study",
+  "youAreNotVerifiedYet": "You are not verified yet"
 }

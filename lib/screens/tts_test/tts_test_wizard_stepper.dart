@@ -3,6 +3,7 @@ import 'package:voice_interface_optimization/data/entities/tts_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/screens/reusable/custom_radio.dart';
 import 'package:voice_interface_optimization/screens/tts_test/tts_test_radio_element.dart';
+import 'package:voice_interface_optimization/screens/tts_test/tts_test_speaker.dart';
 
 class TtsTestWizardStepper extends StatefulWidget {
   final List<TtsTest> ttsTests;
@@ -67,7 +68,8 @@ class _TtsTestWizardStepperState extends State<TtsTestWizardStepper> {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  Text(e.value.text),
+                  Text(S.of(context).isTextClearlyAudible),
+                  TtsTestSpeaker(ttsTest: e.value),
                   CustomRadio<bool?>(_buildRadioModels(), widget.results[e.key],
                       (value) {
                     widget.setResultsCallback(e.key, value);

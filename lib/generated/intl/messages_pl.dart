@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "doYouWantToSendTheResults":
             MessageLookupByLibrary.simpleMessage("Czy chcesz wysłać wyniki?"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "isTextClearlyAudible": MessageLookupByLibrary.simpleMessage(
+            "Czy tekst jest dobrze słyszalny?"),
         "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Zaloguj się"),

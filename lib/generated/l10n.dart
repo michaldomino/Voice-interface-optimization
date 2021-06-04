@@ -340,6 +340,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Is text clearly audible?`
+  String get isTextClearlyAudible {
+    return Intl.message(
+      'Is text clearly audible?',
+      name: 'isTextClearlyAudible',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

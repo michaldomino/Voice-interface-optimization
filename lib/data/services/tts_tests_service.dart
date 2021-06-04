@@ -5,9 +5,9 @@ import 'package:voice_interface_optimization/data/DTOs/requests/tts_test_result.
 import 'package:voice_interface_optimization/data/services/base_api_service.dart';
 
 class TtsTestsService extends BaseApiService {
-  static const String _TTS_TESTS_PATH = '/tts_tests/api/tts_tests';
-  static const String _TTS_TEST_RESULTS_PATH =
-      '/tts_tests/api/tts_test_results/';
+  static const String _BASE_PATH = '/tts_tests/api';
+  static const String _TTS_TESTS_PATH = '$_BASE_PATH/tts_tests';
+  static const String _TTS_TEST_RESULTS_PATH = '$_BASE_PATH/tts_test_results/';
 
   Future<http.Response> getTtsTests(String accessToken) {
     return getAuthenticatedRequest(_TTS_TESTS_PATH, accessToken);

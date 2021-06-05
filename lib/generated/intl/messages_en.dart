@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appLanguage": MessageLookupByLibrary.simpleMessage("App language"),
         "appTitle": MessageLookupByLibrary.simpleMessage(
             "Voice interface optimization"),
+        "clickTheButtonToRecordTheVoice": MessageLookupByLibrary.simpleMessage(
+            "Click the button to record the voice"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "customTextSpeaking":
@@ -33,8 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "doYouWantToSendTheResults": MessageLookupByLibrary.simpleMessage(
             "Do you want to send the results?"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
-        "isTextClearlyAudible":
-            MessageLookupByLibrary.simpleMessage("Is text clearly audible?"),
+        "isTextClearlyAudible": MessageLookupByLibrary.simpleMessage(
+            "Click the button to play the text and check if the text is clearly audible"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Login"),

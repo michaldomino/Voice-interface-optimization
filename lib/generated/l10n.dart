@@ -351,11 +351,21 @@ class S {
     );
   }
 
-  /// `Is text clearly audible?`
+  /// `Click the button to play the text and check if the text is clearly audible`
   String get isTextClearlyAudible {
     return Intl.message(
-      'Is text clearly audible?',
+      'Click the button to play the text and check if the text is clearly audible',
       name: 'isTextClearlyAudible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Click the button to record the voice`
+  String get clickTheButtonToRecordTheVoice {
+    return Intl.message(
+      'Click the button to record the voice',
+      name: 'clickTheButtonToRecordTheVoice',
       desc: '',
       args: [],
     );

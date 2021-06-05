@@ -66,31 +66,23 @@ class _SttTestWizardStepperState extends State<SttTestWizardStepper> {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  Text(e.value.text),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15.0),
+                    child: Text(
+                      S.of(context).clickTheButtonToRecordTheVoice,
+                      style: TextStyle(fontSize: 30.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   SttTestVoiceRecognizer(
-                    currentValue: widget.results[e.key],
                     onValueChangedCallback: (value) {
                       setState(() {
                         widget.setResultsCallback(e.key, value);
                         widget.setCompleteCallback(widget.results
                             .every((element) => element.isNotEmpty));
-                        // if (widget.results
-                        //     .every((element) => element.isNotEmpty)) {
-                        //   widget.setCompleteCallback(true);
-                        // } else {
-                        //   widget.setCompleteCallback(false);
-                        // }
                       });
                     },
                   ),
-                  // SttTestSpeaker(sttTest: e.value),
-                  // CustomRadio<bool?>(_buildRadioModels(), widget.results[e.key],
-                  //     (value) {
-                  //   widget.setResultsCallback(e.key, value);
-                  //   if (widget.results.every((element) => element != null)) {
-                  //     widget.setCompleteCallback(true);
-                  //   }
-                  // }),
                 ],
               ),
             ));

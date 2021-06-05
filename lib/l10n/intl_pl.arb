@@ -29,5 +29,6 @@
   "doYouWantToSendTheResults": "Czy chcesz wysłać wyniki?",
   "thankYouForParticipatingInTheStudy": "Dziękuję za udział w badaniu",
   "youAreNotVerifiedYet": "Nie jesteś jeszcze zweryfikowany",
-  "isTextClearlyAudible": "Czy tekst jest dobrze słyszalny?"
+  "isTextClearlyAudible": "Naciśnij przycisk aby odtworzyć wypowiedź, następnie zaznacz czy tekst jest dobrze słyszalny",
+  "clickTheButtonToRecordTheVoice": "Naciśnij przycisk, aby rozpocząć nagrywanie"
 }

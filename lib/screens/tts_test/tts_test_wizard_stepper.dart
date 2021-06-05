@@ -65,18 +65,27 @@ class _TtsTestWizardStepperState extends State<TtsTestWizardStepper> {
                 ? StepState.complete
                 : StepState.indexed,
             content: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
               child: Column(
                 children: [
-                  Text(S.of(context).isTextClearlyAudible),
+                  Text(
+                    S.of(context).isTextClearlyAudible,
+                    style: TextStyle(fontSize: 30.0),
+                    textAlign: TextAlign.center,
+                  ),
                   TtsTestSpeaker(ttsTest: e.value),
-                  CustomRadio<bool?>(_buildRadioModels(), widget.results[e.key],
-                      (value) {
-                    widget.setResultsCallback(e.key, value);
-                    if (widget.results.every((element) => element != null)) {
-                      widget.setCompleteCallback(true);
-                    }
-                  }),
+                  CustomRadio<bool?>(
+                      radioModels: _buildRadioModels(),
+                      currentValue: widget.results[e.key],
+                      onValueChangedCallback: (value) {
+                        setState(() {
+                          widget.setResultsCallback(e.key, value);
+                          if (widget.results
+                              .every((element) => element != null)) {
+                            widget.setCompleteCallback(true);
+                          }
+                        });
+                      }),
                 ],
               ),
             ));

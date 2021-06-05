@@ -35,13 +35,16 @@ class _TtsTestSpeakerState extends State<TtsTestSpeaker> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        InkWell(
-          child: Icon(
-            Icons.play_arrow,
-            color: Colors.green,
-            size: 50,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: InkWell(
+            child: Icon(
+              Icons.play_arrow,
+              color: Colors.green,
+              size: 70,
+            ),
+            onTap: _playSound,
           ),
-          onTap: _playSound,
         ),
       ],
     );

@@ -2,18 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomRadio<T> extends StatefulWidget {
-  final List<RadioModel<T>> _radioModels;
+  final List<RadioModel<T>> radioModels;
 
-  final T _currentValue;
-  final void Function(T) _onValueChangedCallback;
+  final T currentValue;
+  final void Function(T) onValueChangedCallback;
 
-  const CustomRadio(
-      this._radioModels, this._currentValue, this._onValueChangedCallback,
-      {Key? key})
-      : super(key: key);
+  const CustomRadio({
+    Key? key,
+    required this.radioModels,
+    required this.currentValue,
+    required this.onValueChangedCallback,
+  }) : super(key: key);
 
   @override
-  _CustomRadioState<T> createState() => _CustomRadioState(_radioModels);
+  _CustomRadioState<T> createState() => _CustomRadioState(radioModels);
 }
 
 class _CustomRadioState<T> extends State<CustomRadio<T>> {
@@ -28,8 +30,8 @@ class _CustomRadioState<T> extends State<CustomRadio<T>> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: _radioModels
           .map((e) => InkWell(
-                child: RadioItem<T>(e, widget._currentValue),
-                onTap: () => widget._onValueChangedCallback(e.value),
+                child: RadioItem<T>(e, widget.currentValue),
+                onTap: () => widget.onValueChangedCallback(e.value),
               ))
           .toList(),
     );

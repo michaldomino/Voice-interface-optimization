@@ -13,7 +13,7 @@ import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/splash/splash_screen.dart';
 
 class InitialScreen extends StatelessWidget {
-  static const int _SPLASH_SCREEN_DURATION_TIME_SEC = 3;
+  static const int _SPLASH_SCREEN_DURATION_TIME_SEC = 2;
 
   @override
   Widget build(BuildContext context) {

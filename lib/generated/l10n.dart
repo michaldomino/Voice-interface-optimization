@@ -261,6 +261,16 @@ class S {
     );
   }
 
+  /// `Speech to text test`
+  String get sttTest {
+    return Intl.message(
+      'Speech to text test',
+      name: 'sttTest',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Previous`
   String get previous {
     return Intl.message(

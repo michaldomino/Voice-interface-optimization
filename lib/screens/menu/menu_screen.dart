@@ -83,8 +83,13 @@ List<_ListViewItem> _listViewItems = [
   _ListViewItem(
       text: 'ttsTest',
       color: Colors.green,
-      iconData: Icons.edit,
+      iconData: Icons.volume_up_rounded,
       routeName: RoutesModel.TTS_TEST),
+  _ListViewItem(
+      text: 'sttTest',
+      color: Colors.blue,
+      iconData: Icons.mic_rounded,
+      routeName: RoutesModel.STT_TEST),
   // _ListViewItem(
   //     text: 'customTextSpeaking',
   //     color: Colors.green,
@@ -95,11 +100,11 @@ List<_ListViewItem> _listViewItems = [
   //     color: Colors.blue,
   //     iconData: Icons.list,
   //     routeName: RoutesModel.PREDEFINED_TEXT_SPEAKING),
-  _ListViewItem(
-      text: 'voiceRecognition',
-      color: Colors.blue,
-      iconData: Icons.mic,
-      routeName: RoutesModel.VOICE_RECOGNITION),
+  // _ListViewItem(
+  //     text: 'voiceRecognition',
+  //     color: Colors.blue,
+  //     iconData: Icons.mic,
+  //     routeName: RoutesModel.VOICE_RECOGNITION),
 ];
 
 class _ListViewItem {

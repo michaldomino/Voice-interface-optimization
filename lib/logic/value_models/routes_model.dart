@@ -9,4 +9,5 @@ class RoutesModel {
   static const String LOGIN = '/login';
   static const String REGISTER = '/register';
   static const String TTS_TEST = '/tts_test';
+  static const String STT_TEST = '/stt_test';
 }

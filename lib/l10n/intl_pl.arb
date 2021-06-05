@@ -20,6 +20,7 @@
   "accountCreatedSuccessfully": "Konto utworzono pomyślnie",
   "serverIsDown": "Serwer jest wyłączony",
   "ttsTest": "Test zamiany tekstu na mowę",
+  "sttTest": "Test rozpoznawania mowy",
   "previous": "Poprzedni",
   "next": "Następny",
   "logOut": "Wyloguj się",

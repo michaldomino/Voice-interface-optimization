@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/data/entities/stt_test.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
+import 'package:voice_interface_optimization/screens/stt_tests/stt_test_voice_recognizer.dart';
 
 class SttTestWizardStepper extends StatefulWidget {
   final List<SttTest> sttTests;
@@ -66,6 +67,7 @@ class _SttTestWizardStepperState extends State<SttTestWizardStepper> {
               child: Column(
                 children: [
                   Text(e.value.text),
+                  SttTestVoiceRecognizer(),
                   // SttTestSpeaker(sttTest: e.value),
                   // CustomRadio<bool?>(_buildRadioModels(), widget.results[e.key],
                   //     (value) {

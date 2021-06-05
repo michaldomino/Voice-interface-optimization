@@ -37,9 +37,10 @@ class _LoginScreenState extends State<LoginScreen> {
           {_onUnauthorized(state.loginUnauthenticatedResponse)}
         else if (state is AuthenticationServiceUnavailable)
           {_onServiceUnavailable()}
-        else if (state is AuthenticationUnknownError) {
-          _onUnknownError()
-            }
+        else if (state is AuthenticationNotVerified)
+            {_onNotVerified()}
+        else if (state is AuthenticationUnknownError)
+          {_onUnknownError()}
       },
       child: BlocBuilder<LocalizationCubit, LocalizationState>(
           builder: (context, state) {
@@ -112,26 +113,56 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _onUnauthorized(LoginUnauthorizedResponse loginUnauthenticatedResponse) {
-    SnackBar snackBar = SnackBar(
-      content: Text(loginUnauthenticatedResponse.detail),
-      backgroundColor: Colors.red,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    _showSnackBar(
+        text: loginUnauthenticatedResponse.detail, backgroundColor: Colors.red);
+    // SnackBar snackBar = SnackBar(
+    //   content: Text(loginUnauthenticatedResponse.detail),
+    //   backgroundColor: Colors.red,
+    // );
+    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   _onServiceUnavailable() {
-    SnackBar snackBar = SnackBar(
-      content: Text(S.of(context).serverIsDown),
-      backgroundColor: Colors.orange,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    _showSnackBar(
+        text: S.of(context).serverIsDown, backgroundColor: Colors.orange);
+    // SnackBar snackBar = SnackBar(
+    //   content: Text(S.of(context).serverIsDown),
+    //   backgroundColor: Colors.orange,
+    // );
+    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   _onUnknownError() {
+    _showSnackBar(
+        text: S.of(context).somethingWentWrong, backgroundColor: Colors.red);
+    // SnackBar snackBar = SnackBar(
+    //   content: Text(S.of(context).somethingWentWrong),
+    //   backgroundColor: Colors.red,
+    // );
+    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  _onNotVerified() {
+    _showSnackBar(
+        text: S.of(context).youAreNotVerifiedYet,
+        backgroundColor: Colors.yellow);
+    // SnackBar snackBar = SnackBar(
+    //   content: Text(
+    //     S.of(context).youAreNotVerifiedYet,
+    //     style: TextStyle(color: Colors.black),
+    //   ),
+    //   backgroundColor: Colors.yellow,
+    // );
+    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  _showSnackBar(
+      {required String text,
+      Color textColor = Colors.black,
+      required Color backgroundColor}) {
     SnackBar snackBar = SnackBar(
-      content: Text(S.of(context).somethingWentWrong),
-      backgroundColor: Colors.red,
-    );
+        content: Text(text, style: TextStyle(color: textColor)),
+        backgroundColor: backgroundColor);
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

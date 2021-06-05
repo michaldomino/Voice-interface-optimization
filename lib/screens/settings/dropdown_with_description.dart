@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class DropdownWithDescription extends StatefulWidget {
+class DropdownWithDescription<T> extends StatefulWidget {
   final String description;
-  final String initialValue;
+  final T initialValue;
   final List<TextDropdownMenuItem> items;
-  final Function(BuildContext, String) onChangedAction;
+  final void Function(BuildContext, dynamic) onChangedAction;
 
   DropdownWithDescription(
       {required this.description,
@@ -16,8 +16,8 @@ class DropdownWithDescription extends StatefulWidget {
   State<StatefulWidget> createState() => _DropdownWithDescriptionState();
 }
 
-class _DropdownWithDescriptionState extends State<DropdownWithDescription> {
-  late String _value;
+class _DropdownWithDescriptionState<T> extends State<DropdownWithDescription> {
+  late T _value;
 
   @override
   void initState() {
@@ -40,18 +40,18 @@ class _DropdownWithDescriptionState extends State<DropdownWithDescription> {
               isExpanded: true,
               value: _value,
               items: widget.items
-                  .map((item) => DropdownMenuItem(
+                  .map((item) => DropdownMenuItem<T>(
                         child: Text(item.text),
                         value: item.value,
                       ))
                   .toList(),
-              onChanged: (String? value) => onChanged(context, value),
+              onChanged: (T? value) => onChanged(context, value),
             ),
           ),
         ]);
   }
 
-  onChanged(BuildContext context, String? value) {
+  onChanged(BuildContext context, T? value) {
     if (value != null) {
       widget.onChangedAction(context, value);
       _value = value;
@@ -59,9 +59,9 @@ class _DropdownWithDescriptionState extends State<DropdownWithDescription> {
   }
 }
 
-class TextDropdownMenuItem {
+class TextDropdownMenuItem<T> {
   String text;
-  String value;
+  T value;
 
   TextDropdownMenuItem(this.text, this.value);
 }

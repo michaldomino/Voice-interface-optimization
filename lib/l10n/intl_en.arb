@@ -18,5 +18,15 @@
   "submit": "Submit",
   "somethingWentWrong": "Something went wrong",
   "accountCreatedSuccessfully": "Account created successfully",
-  "serverIsDown": "Server is down"
+  "serverIsDown": "Server is down",
+  "ttsTest": "Text to speech test",
+  "previous": "Previous",
+  "next": "Next",
+  "logOut": "Log out",
+  "yes": "Yes",
+  "no": "No",
+  "doYouWantToSendTheResults": "Do you want to send the results?",
+  "thankYouForParticipatingInTheStudy": "Thank you for participating in the study",
+  "youAreNotVerifiedYet": "You are not verified yet",
+  "isTextClearlyAudible": "Is text clearly audible?"
 }

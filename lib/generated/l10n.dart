@@ -250,6 +250,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Text to speech test`
+  String get ttsTest {
+    return Intl.message(
+      'Text to speech test',
+      name: 'ttsTest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Previous`
+  String get previous {
+    return Intl.message(
+      'Previous',
+      name: 'previous',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logOut {
+    return Intl.message(
+      'Log out',
+      name: 'logOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to send the results?`
+  String get doYouWantToSendTheResults {
+    return Intl.message(
+      'Do you want to send the results?',
+      name: 'doYouWantToSendTheResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for participating in the study`
+  String get thankYouForParticipatingInTheStudy {
+    return Intl.message(
+      'Thank you for participating in the study',
+      name: 'thankYouForParticipatingInTheStudy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not verified yet`
+  String get youAreNotVerifiedYet {
+    return Intl.message(
+      'You are not verified yet',
+      name: 'youAreNotVerifiedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Is text clearly audible?`
+  String get isTextClearlyAudible {
+    return Intl.message(
+      'Is text clearly audible?',
+      name: 'isTextClearlyAudible',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

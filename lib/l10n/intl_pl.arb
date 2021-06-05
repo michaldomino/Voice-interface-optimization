@@ -18,5 +18,15 @@
   "submit": "Wyślij",
   "somethingWentWrong": "Coś poszło nie tak",
   "accountCreatedSuccessfully": "Konto utworzono pomyślnie",
-  "serverIsDown": "Serwer jest wyłączony"
+  "serverIsDown": "Serwer jest wyłączony",
+  "ttsTest": "Test zamiany tekstu na mowę",
+  "previous": "Poprzedni",
+  "next": "Następny",
+  "logOut": "Wyloguj się",
+  "yes": "Tak",
+  "no": "Nie",
+  "doYouWantToSendTheResults": "Czy chcesz wysłać wyniki?",
+  "thankYouForParticipatingInTheStudy": "Dziękuję za udział w badaniu",
+  "youAreNotVerifiedYet": "Nie jesteś jeszcze zweryfikowany",
+  "isTextClearlyAudible": "Czy tekst jest dobrze słyszalny?"
 }

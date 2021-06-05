@@ -30,15 +30,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "customTextSpeaking":
             MessageLookupByLibrary.simpleMessage("Custom text speaking"),
+        "doYouWantToSendTheResults": MessageLookupByLibrary.simpleMessage(
+            "Do you want to send the results?"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
+        "isTextClearlyAudible":
+            MessageLookupByLibrary.simpleMessage("Is text clearly audible?"),
+        "logOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Login"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pl": MessageLookupByLibrary.simpleMessage("Polish"),
         "pleaseEnterSomeText":
             MessageLookupByLibrary.simpleMessage("Please enter some text"),
         "predefinedTextSpeaking":
             MessageLookupByLibrary.simpleMessage("Predefined text speaking"),
+        "previous": MessageLookupByLibrary.simpleMessage("Previous"),
         "recognizedText":
             MessageLookupByLibrary.simpleMessage("Recognized text:"),
         "registerAction": MessageLookupByLibrary.simpleMessage("Register"),
@@ -48,7 +56,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Texts language"),
+        "thankYouForParticipatingInTheStudy":
+            MessageLookupByLibrary.simpleMessage(
+                "Thank you for participating in the study"),
+        "ttsTest": MessageLookupByLibrary.simpleMessage("Text to speech test"),
         "voiceRecognition":
-            MessageLookupByLibrary.simpleMessage("Voice recognition")
+            MessageLookupByLibrary.simpleMessage("Voice recognition"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "youAreNotVerifiedYet":
+            MessageLookupByLibrary.simpleMessage("You are not verified yet")
       };
 }

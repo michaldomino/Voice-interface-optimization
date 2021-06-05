@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
+import 'package:voice_interface_optimization/screens/reusable/popup_menu_button_choice.dart';
 
 class CustomPopupMenuButton extends StatelessWidget {
-  static const List<_PopupMenuButtonChoice> _appBarButtonChoices =
-      const <_PopupMenuButtonChoice>[
-    const _PopupMenuButtonChoice(_PopupMenuChoicesTextModel.SETTINGS)
-  ];
+  final List<PopupMenuButtonChoice> _appBarButtonChoices;
 
-  void _select(BuildContext context, _PopupMenuButtonChoice value) {
+  const CustomPopupMenuButton(this._appBarButtonChoices, {Key? key})
+      : super(key: key);
+
+  _select(BuildContext context, PopupMenuButtonChoice value) {
     switch (value.text) {
-      case _PopupMenuChoicesTextModel.SETTINGS:
-        Navigator.pushNamed(context, RoutesModel.SETTINGS);
+      case PopupMenuChoicesTextModel.SETTINGS:
+        {
+          Navigator.pushNamed(context, RoutesModel.SETTINGS);
+        }
+        break;
+      case PopupMenuChoicesTextModel.LOG_OUT:
+        {
+          BlocProvider.of<AuthenticationCubit>(context).logout();
+          Navigator.popUntil(context, (route) {
+            var routeName = route.settings.name;
+            return routeName == RoutesModel.MENU;
+          });
+          Navigator.pushReplacementNamed(context, RoutesModel.LOGIN);
+        }
+        break;
     }
   }
 
@@ -21,25 +37,15 @@ class CustomPopupMenuButton extends StatelessWidget {
     return PopupMenuButton(
       itemBuilder: (context) {
         return _appBarButtonChoices.map((choice) {
-          return PopupMenuItem<_PopupMenuButtonChoice>(
+          return PopupMenuItem<PopupMenuButtonChoice>(
             value: choice,
             child: Text(Intl.message((choice.text))),
           );
         }).toList();
       },
-      onSelected: (_PopupMenuButtonChoice choice) {
+      onSelected: (PopupMenuButtonChoice choice) {
         _select(context, choice);
       },
     );
   }
-}
-
-class _PopupMenuButtonChoice {
-  const _PopupMenuButtonChoice(this.text);
-
-  final String text;
-}
-
-class _PopupMenuChoicesTextModel {
-  static const SETTINGS = 'settings';
 }

@@ -7,7 +7,7 @@ class SttTestResult {
   SttTestResult(this.sttTest, this.result);
 
   Map<String, dynamic> toJson() => {
-        'tts_test': sttTest.id,
+        'stt_test': sttTest.id,
         'result': result,
       };
 }

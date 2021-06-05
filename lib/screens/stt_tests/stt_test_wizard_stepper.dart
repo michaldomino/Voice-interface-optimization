@@ -67,7 +67,22 @@ class _SttTestWizardStepperState extends State<SttTestWizardStepper> {
               child: Column(
                 children: [
                   Text(e.value.text),
-                  SttTestVoiceRecognizer(),
+                  SttTestVoiceRecognizer(
+                    currentValue: widget.results[e.key],
+                    onValueChangedCallback: (value) {
+                      setState(() {
+                        widget.setResultsCallback(e.key, value);
+                        widget.setCompleteCallback(widget.results
+                            .every((element) => element.isNotEmpty));
+                        // if (widget.results
+                        //     .every((element) => element.isNotEmpty)) {
+                        //   widget.setCompleteCallback(true);
+                        // } else {
+                        //   widget.setCompleteCallback(false);
+                        // }
+                      });
+                    },
+                  ),
                   // SttTestSpeaker(sttTest: e.value),
                   // CustomRadio<bool?>(_buildRadioModels(), widget.results[e.key],
                   //     (value) {

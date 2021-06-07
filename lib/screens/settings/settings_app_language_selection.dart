@@ -14,15 +14,13 @@ class SettingsAppLanguageSelection extends StatelessWidget {
     return DropdownWithDescription<Language>(
         description: S.of(context).appLanguage,
         initialValue: Language.fromLanguageCode(Intl.defaultLocale),
-        onChangedAction: (context, targetLanguageCode) {
+        onChangedAction: (targetLanguageCode) {
           BlocProvider.of<LocalizationCubit>(context)
               .changeAppLanguage(context, targetLanguageCode);
         },
         items: LanguagesModel.supportedLanguages
-            .map(
-              (language) =>
-                  TextDropdownMenuItem(language.localizedName, language),
-            )
+            .map((language) =>
+                TextDropdownMenuItem(language.localizedName, language))
             .toList());
   }
 }

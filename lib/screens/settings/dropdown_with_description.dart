@@ -4,7 +4,7 @@ class DropdownWithDescription<T> extends StatefulWidget {
   final String description;
   final T initialValue;
   final List<TextDropdownMenuItem> items;
-  final void Function(BuildContext, dynamic) onChangedAction;
+  final void Function(T) onChangedAction;
 
   DropdownWithDescription(
       {required this.description,
@@ -13,10 +13,11 @@ class DropdownWithDescription<T> extends StatefulWidget {
       required this.onChangedAction});
 
   @override
-  State<StatefulWidget> createState() => _DropdownWithDescriptionState();
+  State<StatefulWidget> createState() => _DropdownWithDescriptionState<T>();
 }
 
-class _DropdownWithDescriptionState<T> extends State<DropdownWithDescription> {
+class _DropdownWithDescriptionState<T>
+    extends State<DropdownWithDescription<T>> {
   late T _value;
 
   @override
@@ -36,7 +37,7 @@ class _DropdownWithDescriptionState<T> extends State<DropdownWithDescription> {
           ),
           Flexible(
             flex: 2,
-            child: DropdownButton(
+            child: DropdownButton<T>(
               isExpanded: true,
               value: _value,
               items: widget.items
@@ -45,15 +46,15 @@ class _DropdownWithDescriptionState<T> extends State<DropdownWithDescription> {
                         value: item.value,
                       ))
                   .toList(),
-              onChanged: (T? value) => onChanged(context, value),
+              onChanged: (T? value) => onChanged(value),
             ),
           ),
         ]);
   }
 
-  onChanged(BuildContext context, T? value) {
+  onChanged(T? value) {
     if (value != null) {
-      widget.onChangedAction(context, value);
+      widget.onChangedAction(value);
       _value = value;
     }
   }

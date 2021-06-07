@@ -16,7 +16,7 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
   final TextsLanguageCubit _textsLanguageCubit;
   final AuthenticationCubit _authenticationCubit;
   final TtsTestsService _ttsTestsService;
-  late StreamSubscription _textsLanguageSubscription;
+  late final StreamSubscription _textsLanguageSubscription;
 
   List<TtsTest> _ttsTestList = [];
 

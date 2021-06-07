@@ -20,6 +20,7 @@
   "accountCreatedSuccessfully": "Account created successfully",
   "serverIsDown": "Server is down",
   "ttsTest": "Text to speech test",
+  "sttTest": "Speech to text test",
   "previous": "Previous",
   "next": "Next",
   "logOut": "Log out",
@@ -28,5 +29,6 @@
   "doYouWantToSendTheResults": "Do you want to send the results?",
   "thankYouForParticipatingInTheStudy": "Thank you for participating in the study",
   "youAreNotVerifiedYet": "You are not verified yet",
-  "isTextClearlyAudible": "Is text clearly audible?"
+  "isTextClearlyAudible": "Click the button to play the text and check if the text is clearly audible",
+  "clickTheButtonToRecordTheVoice": "Click the button to record the voice"
 }

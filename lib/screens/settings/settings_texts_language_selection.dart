@@ -25,19 +25,15 @@ class _SettingsTextsLanguageSelectionState
         return DropdownWithDescription<Language>(
             description: S.of(context).textsLanguage,
             initialValue: state.language,
-            onChangedAction: (context, targetLanguage) {
+            onChangedAction: (targetLanguage) {
               BlocProvider.of<TextsLanguageCubit>(context)
                   .changeTextsLanguage(context, targetLanguage);
             },
             items: LanguagesModel.supportedLanguages
-
-                .map(
-                  (language) => TextDropdownMenuItem(
-                      Intl.message(language.code), language),
-                )
+                .map((language) =>
+                    TextDropdownMenuItem(Intl.message(language.code), language))
                 .toList());
-      }
-      else {
+      } else {
         return CircularProgressIndicator();
       }
     });

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TtsTestRadioElement extends StatelessWidget {
-  static const double _BOX_HEIGHT = 30.0;
-  static const double _BOX_WIDTH = 50.0;
+  static const double _BOX_HEIGHT = 50.0;
+  static const double _BOX_WIDTH = 100.0;
 
   final Color boxColor;
   final String text;
@@ -25,8 +25,7 @@ class TtsTestRadioElement extends StatelessWidget {
         border: Border.all(width: 1),
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
-      child: Center(child: Text(text, style: TextStyle(color: textColor))),
-      // style: ButtonStyle(backgroundColor: ),
+      child: Center(child: Text(text, style: TextStyle(fontSize: 30, color: textColor))),
     );
   }
 }

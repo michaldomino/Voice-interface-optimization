@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/blocs/stt_tests/stt_tests_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
 import 'package:voice_interface_optimization/logic/language.dart';
@@ -13,7 +14,7 @@ import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/splash/splash_screen.dart';
 
 class InitialScreen extends StatelessWidget {
-  static const int _SPLASH_SCREEN_DURATION_TIME_SEC = 3;
+  static const int _SPLASH_SCREEN_DURATION_TIME_SEC = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,11 @@ class InitialScreen extends StatelessWidget {
       _loadTextsLanguage(context, textsLanguage),
       _refreshToken(context),
     ]);
-    await Future.wait([_loadTtsTests(context), splashScreenLoading]);
+    await Future.wait([
+      _loadTtsTests(context),
+      _loadSttTests(context),
+      splashScreenLoading,
+    ]);
   }
 
   Future _loadAppLanguage(BuildContext context, String appLanguageCode) {
@@ -70,5 +75,9 @@ class InitialScreen extends StatelessWidget {
 
   Future _loadTtsTests(BuildContext context) {
     return BlocProvider.of<TtsTestsCubit>(context).fetchTtsTests();
+  }
+
+  Future _loadSttTests(BuildContext context) {
+    return BlocProvider.of<SttTestsCubit>(context).fetchSttTests();
   }
 }

@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appLanguage": MessageLookupByLibrary.simpleMessage("Język aplikacji"),
         "appTitle": MessageLookupByLibrary.simpleMessage(
             "Optymalizacja interfejsu głosowego"),
+        "clickTheButtonToRecordTheVoice": MessageLookupByLibrary.simpleMessage(
+            "Naciśnij przycisk, aby rozpocząć nagrywanie"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
@@ -34,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Czy chcesz wysłać wyniki?"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
         "isTextClearlyAudible": MessageLookupByLibrary.simpleMessage(
-            "Czy tekst jest dobrze słyszalny?"),
+            "Naciśnij przycisk aby odtworzyć wypowiedź, następnie zaznacz czy tekst jest dobrze słyszalny"),
         "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
@@ -56,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
+        "sttTest":
+            MessageLookupByLibrary.simpleMessage("Test rozpoznawania mowy"),
         "submit": MessageLookupByLibrary.simpleMessage("Wyślij"),
         "textsLanguage": MessageLookupByLibrary.simpleMessage("Język tekstów"),
         "thankYouForParticipatingInTheStudy":

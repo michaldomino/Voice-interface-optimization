@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:voice_interface_optimization/blocs/authentication/authentication_cubit.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
+import 'package:voice_interface_optimization/blocs/stt_tests/stt_tests_cubit.dart';
 import 'package:voice_interface_optimization/blocs/texts_language/texts_language_cubit.dart';
 import 'package:voice_interface_optimization/blocs/tts_tests/tts_tests_cubit.dart';
 import 'package:voice_interface_optimization/data/services/authentication_service.dart';
+import 'package:voice_interface_optimization/data/services/stt_tests_service.dart';
 import 'package:voice_interface_optimization/data/services/tts_tests_service.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
@@ -15,6 +17,7 @@ import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/register/register_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
 import 'package:voice_interface_optimization/screens/splash/splash_screen.dart';
+import 'package:voice_interface_optimization/screens/stt_tests/stt_test_screen.dart';
 import 'package:voice_interface_optimization/screens/text_speaking/custom_text_speaking/custom_text_speaking_screen.dart';
 import 'package:voice_interface_optimization/screens/tts_test/tts_test_screen.dart';
 import 'package:voice_interface_optimization/screens/voice_recognition/voice_recogniton_screen.dart';
@@ -36,7 +39,13 @@ class MyApp extends StatelessWidget {
                     BlocProvider.of<TextsLanguageCubit>(context),
                     BlocProvider.of<AuthenticationCubit>(context),
                     TtsTestsService(),
-                  ))
+                  )),
+          BlocProvider(
+              create: (context) => SttTestsCubit(
+                    BlocProvider.of<TextsLanguageCubit>(context),
+                    BlocProvider.of<AuthenticationCubit>(context),
+                    SttTestsService(),
+                  )),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
@@ -62,6 +71,7 @@ class MyApp extends StatelessWidget {
             RoutesModel.LOGIN: (context) => LoginScreen(),
             RoutesModel.REGISTER: (context) => RegisterScreen(),
             RoutesModel.TTS_TEST: (context) => TtsTestScreen(),
+            RoutesModel.STT_TEST: (context) => SttTestScreen(),
           },
           initialRoute: RoutesModel.INITIAL,
         ));

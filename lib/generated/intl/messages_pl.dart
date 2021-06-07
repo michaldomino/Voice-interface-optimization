@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pl": MessageLookupByLibrary.simpleMessage("Polski"),
         "pleaseEnterSomeText":
             MessageLookupByLibrary.simpleMessage("Proszę wpisać tekst"),
+        "pleaseSetTheVolumeToMaximum": MessageLookupByLibrary.simpleMessage(
+            "Proszę ustawić głośność na maksymalną"),
         "predefinedTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie predefiniowanego tekstu"),
         "previous": MessageLookupByLibrary.simpleMessage("Poprzedni"),

@@ -370,6 +370,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Please set the volume to maximum`
+  String get pleaseSetTheVolumeToMaximum {
+    return Intl.message(
+      'Please set the volume to maximum',
+      name: 'pleaseSetTheVolumeToMaximum',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

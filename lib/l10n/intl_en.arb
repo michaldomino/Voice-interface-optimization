@@ -30,5 +30,6 @@
   "thankYouForParticipatingInTheStudy": "Thank you for participating in the study",
   "youAreNotVerifiedYet": "You are not verified yet",
   "isTextClearlyAudible": "Click the button to play the text and check if the text is clearly audible",
-  "clickTheButtonToRecordTheVoice": "Click the button to record the voice"
+  "clickTheButtonToRecordTheVoice": "Click the button to record the voice",
+  "pleaseSetTheVolumeToMaximum": "Please set the volume to maximum"
 }

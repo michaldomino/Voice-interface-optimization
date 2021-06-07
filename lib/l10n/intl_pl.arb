@@ -30,5 +30,6 @@
   "thankYouForParticipatingInTheStudy": "Dziękuję za udział w badaniu",
   "youAreNotVerifiedYet": "Nie jesteś jeszcze zweryfikowany",
   "isTextClearlyAudible": "Naciśnij przycisk aby odtworzyć wypowiedź, następnie zaznacz czy tekst jest dobrze słyszalny",
-  "clickTheButtonToRecordTheVoice": "Naciśnij przycisk, aby rozpocząć nagrywanie"
+  "clickTheButtonToRecordTheVoice": "Naciśnij przycisk, aby rozpocząć nagrywanie",
+  "pleaseSetTheVolumeToMaximum": "Proszę ustawić głośność na maksymalną"
 }

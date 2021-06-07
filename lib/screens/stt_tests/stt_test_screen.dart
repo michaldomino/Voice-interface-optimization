@@ -9,14 +9,14 @@ class SttTestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<SttTest>?>(
-      future: _load(context),
+      future: _loadSttTests(context),
       builder: (context, snapshot) {
         return _buildScreen(snapshot);
       },
     );
   }
 
-  Future<List<SttTest>?> _load(BuildContext context) {
+  Future<List<SttTest>?> _loadSttTests(BuildContext context) {
     return BlocProvider.of<SttTestsCubit>(context).getSttTests();
   }
 

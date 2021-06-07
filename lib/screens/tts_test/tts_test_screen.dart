@@ -9,18 +9,14 @@ class TtsTestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<TtsTest>?>(
-      future: _load(context),
+      future: _loadTtsTests(context),
       builder: (context, snapshot) {
         return _buildScreen(snapshot);
-        // return Scaffold(
-        //   appBar: AppBar(title: Text('Test')),
-        //   body: _buildBody(snapshot),
-        // );
       },
     );
   }
 
-  Future<List<TtsTest>?> _load(BuildContext context) {
+  Future<List<TtsTest>?> _loadTtsTests(BuildContext context) {
     return BlocProvider.of<TtsTestsCubit>(context).getTtsTests();
   }
 
@@ -29,7 +25,7 @@ class TtsTestScreen extends StatelessWidget {
       return TtsTestWizard(snapshot.data!);
     } else {
       return Scaffold(
-        appBar: AppBar(title: Text('Test')),
+          appBar: AppBar(title: Text('Test')),
           body: Center(child: CircularProgressIndicator()));
     }
   }

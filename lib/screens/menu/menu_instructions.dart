@@ -8,12 +8,14 @@ class MenuInstructions extends StatelessWidget {
       appBar: AppBar(title: Text(S.of(context).instruction)),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: Text(S.of(context).instructionContent,
-            textAlign: TextAlign.justify,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            )),
+        child: SingleChildScrollView(
+          child: Text(S.of(context).instructionContent,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              )),
+        ),
       ),
       backgroundColor: Colors.blue,
     );

@@ -13,6 +13,7 @@ import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/value_models/routes_model.dart';
 import 'package:voice_interface_optimization/screens/initial/initial_screen.dart';
 import 'package:voice_interface_optimization/screens/login/login_screen.dart';
+import 'package:voice_interface_optimization/screens/menu/menu_instructions.dart';
 import 'package:voice_interface_optimization/screens/menu/menu_screen.dart';
 import 'package:voice_interface_optimization/screens/register/register_screen.dart';
 import 'package:voice_interface_optimization/screens/settings/settings.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
             RoutesModel.REGISTER: (context) => RegisterScreen(),
             RoutesModel.TTS_TEST: (context) => TtsTestScreen(),
             RoutesModel.STT_TEST: (context) => SttTestScreen(),
+            RoutesModel.MENU_INSTRUCTIONS: (context) => MenuInstructions(),
           },
           initialRoute: RoutesModel.INITIAL,
         ));

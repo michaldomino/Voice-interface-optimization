@@ -83,6 +83,7 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
           .where(
               (element) => element.language == textsLanguageState.language.code)
           .toList();
+      currentTextLanguageTtsTestList.sort((a, b) => b.rate.compareTo(a.rate));
       emit(TtsTestsLoaded(currentTextLanguageTtsTestList));
       return currentTextLanguageTtsTestList;
     }

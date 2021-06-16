@@ -23,9 +23,6 @@ class _TtsTestSpeakerState extends State<TtsTestSpeaker> {
   void initState() {
     super.initState();
     _speaker = Speaker();
-    _speaker.volume = widget.ttsTest.volume;
-    _speaker.pitch = widget.ttsTest.pitch;
-    _speaker.rate = widget.ttsTest.rate;
   }
 
   @override
@@ -59,6 +56,9 @@ class _TtsTestSpeakerState extends State<TtsTestSpeaker> {
     if (volume < MAXIMUM_VOLUME) {
       _showVolumeSnackBar();
     } else {
+      _speaker.volume = widget.ttsTest.volume;
+      _speaker.pitch = widget.ttsTest.pitch;
+      _speaker.rate = widget.ttsTest.rate;
       _speaker.speak(widget.ttsTest.text);
     }
   }

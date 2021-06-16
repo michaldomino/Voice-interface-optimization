@@ -46,56 +46,58 @@ class _LoginScreenState extends State<LoginScreen> {
           builder: (context, state) {
         return Scaffold(
           appBar: LoginScreenAppbar(context).get(),
-          body: Container(
-            margin: const EdgeInsets.only(
-                top: _TOP_FORM_MARGIN,
-                left: _HORIZONTAL_FORM_MARGIN,
-                right: _HORIZONTAL_FORM_MARGIN),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    controller: _userNameEditingController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: S.of(context).login,
-                    ),
-                    validator: (String? value) {
-                      return _userNameErrors;
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
-                    child: TextFormField(
-                      obscureText: true,
-                      controller: _passwordEditingController,
+          body: SingleChildScrollView(
+            child: Container(
+              margin: const EdgeInsets.only(
+                  top: _TOP_FORM_MARGIN,
+                  left: _HORIZONTAL_FORM_MARGIN,
+                  right: _HORIZONTAL_FORM_MARGIN),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      controller: _userNameEditingController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: S.of(context).password,
+                        labelText: S.of(context).login,
                       ),
                       validator: (String? value) {
-                        return _passwordErrors;
+                        return _userNameErrors;
                       },
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          _userNameErrors = null;
-                          _passwordErrors = null;
-                          _formKey.currentState!.validate();
-                        });
-                        BlocProvider.of<AuthenticationCubit>(context).login(
-                            _userNameEditingController.text,
-                            _passwordEditingController.text);
-                      },
-                      child: Text(S.of(context).submit),
+                    Padding(
+                      padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                      child: TextFormField(
+                        obscureText: true,
+                        controller: _passwordEditingController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: S.of(context).password,
+                        ),
+                        validator: (String? value) {
+                          return _passwordErrors;
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _userNameErrors = null;
+                            _passwordErrors = null;
+                            _formKey.currentState!.validate();
+                          });
+                          BlocProvider.of<AuthenticationCubit>(context).login(
+                              _userNameEditingController.text,
+                              _passwordEditingController.text);
+                        },
+                        child: Text(S.of(context).submit),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

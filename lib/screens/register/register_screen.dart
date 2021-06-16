@@ -38,74 +38,76 @@ class _RegisterScreenState extends State<RegisterScreen> {
         builder: (context, state) {
       return Scaffold(
         appBar: RegisterScreenAppbar(context).get(),
-        body: Container(
-          margin: const EdgeInsets.only(
-              top: _TOP_FORM_MARGIN,
-              left: _HORIZONTAL_FORM_MARGIN,
-              right: _HORIZONTAL_FORM_MARGIN),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: _userNameEditingController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: S.of(context).login,
-                  ),
-                  validator: (String? value) {
-                    return _userNameErrors;
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
-                  child: TextFormField(
-                    obscureText: true,
-                    controller: _passwordEditingController,
+        body: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.only(
+                top: _TOP_FORM_MARGIN,
+                left: _HORIZONTAL_FORM_MARGIN,
+                right: _HORIZONTAL_FORM_MARGIN),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: _userNameEditingController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: S.of(context).password,
+                      labelText: S.of(context).login,
                     ),
                     validator: (String? value) {
-                      return _passwordErrors;
+                      return _userNameErrors;
                     },
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
-                  child: TextFormField(
-                    obscureText: true,
-                    controller: _confirmPasswordEditingController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: S.of(context).confirmPassword,
+                  Padding(
+                    padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: _passwordEditingController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: S.of(context).password,
+                      ),
+                      validator: (String? value) {
+                        return _passwordErrors;
+                      },
                     ),
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty)
-                        return S.of(context).pleaseEnterSomeText;
-                      if (value != _passwordEditingController.text)
-                        return 'Passwords do not match';
-                      return null;
-                    },
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _userNameErrors = null;
-                        _passwordErrors = null;
-                      });
-                      if (_formKey.currentState!.validate()) {
-                        _register(_userNameEditingController.text,
-                            _passwordEditingController.text);
-                      }
-                    },
-                    child: Text(S.of(context).submit),
+                  Padding(
+                    padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: _confirmPasswordEditingController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: S.of(context).confirmPassword,
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty)
+                          return S.of(context).pleaseEnterSomeText;
+                        if (value != _passwordEditingController.text)
+                          return 'Passwords do not match';
+                        return null;
+                      },
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _userNameErrors = null;
+                          _passwordErrors = null;
+                        });
+                        if (_formKey.currentState!.validate()) {
+                          _register(_userNameEditingController.text,
+                              _passwordEditingController.text);
+                        }
+                      },
+                      child: Text(S.of(context).submit),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

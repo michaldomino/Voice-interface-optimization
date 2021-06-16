@@ -22,10 +22,6 @@ class CustomPopupMenuButton extends StatelessWidget {
       case PopupMenuChoicesTextModel.LOG_OUT:
         {
           BlocProvider.of<AuthenticationCubit>(context).logout();
-          Navigator.popUntil(context, (route) {
-            var routeName = route.settings.name;
-            return routeName == RoutesModel.MENU;
-          });
           Navigator.pushReplacementNamed(context, RoutesModel.LOGIN);
         }
         break;

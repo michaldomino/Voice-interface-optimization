@@ -101,6 +101,16 @@ class S {
     );
   }
 
+  /// `French`
+  String get fr {
+    return Intl.message(
+      'French',
+      name: 'fr',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Texts language`
   String get textsLanguage {
     return Intl.message(

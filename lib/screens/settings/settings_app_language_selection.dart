@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:voice_interface_optimization/blocs/localization/localization_cubit.dart';
 import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/language.dart';
-import 'package:voice_interface_optimization/logic/value_models/languages_model.dart';
 
 import 'dropdown_with_description.dart';
 
@@ -18,7 +17,9 @@ class SettingsAppLanguageSelection extends StatelessWidget {
           BlocProvider.of<LocalizationCubit>(context)
               .changeAppLanguage(context, targetLanguageCode);
         },
-        items: LanguagesModel.supportedLanguages
+        items: AppLocalizationDelegate()
+            .supportedLocales
+            .map((locale) => Language.fromLanguageCode(locale.languageCode))
             .map((language) =>
                 TextDropdownMenuItem(language.localizedName, language))
             .toList());

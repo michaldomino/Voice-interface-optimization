@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "doYouWantToSendTheResults":
             MessageLookupByLibrary.simpleMessage("Czy chcesz wysłać wyniki?"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "fr": MessageLookupByLibrary.simpleMessage("Francuski"),
         "instruction": MessageLookupByLibrary.simpleMessage("Instrukcja"),
         "instructionContent": MessageLookupByLibrary.simpleMessage(
             "Badanie składa się z dwóch testów, które są dostępne z menu.\n\nW pierwszym teście (Test zamiany tekstu na mowę) należy odtworzyć wypowiedź, a następnie zaznaczyć, czy jest ona wyraźnie słyszalna.\n\nW drugim teście (Test rozpoznawania mowy) należy nagrać wyrażenie napisane nad przyciskiem. Aby nagrać wypowiedź, należy nacisnąć przycisk z mikrofonem.\n\nAby test był zaliczony należy wykonać wszystkie etapy. Etapy można wykonywać w różnej kolejności. Jeśli etap jest zaliczony zamiast numerka pojawia się znaczek ptaszka. Po skończeniu wszystkich etapów pojawi się przycisk, dzięki któremu można wysłać wyniki."),

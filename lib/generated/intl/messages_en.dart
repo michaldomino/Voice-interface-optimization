@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "doYouWantToSendTheResults": MessageLookupByLibrary.simpleMessage(
             "Do you want to send the results?"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
+        "fr": MessageLookupByLibrary.simpleMessage("French"),
         "instruction": MessageLookupByLibrary.simpleMessage("Instruction"),
         "instructionContent": MessageLookupByLibrary.simpleMessage(
             "The study consists of two tests that are available from the menu.\n\nIn the first test (Text-to-Speech Test), play the statement and then select whether it is clearly audible.\n\nIn the second test (Speech-to-Text Test), you should record the phrase written above the button. Press the microphone button to record your speech.\n\nAll steps must be completed to pass the test. The steps can be done in any order. If a test step is passed, a checkmark appears instead of the step number. After completing all steps, a button will appear allowing you to send the results."),

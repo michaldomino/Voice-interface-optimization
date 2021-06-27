@@ -4,6 +4,7 @@ import 'package:voice_interface_optimization/logic/value_models/languages_codes_
 class LanguagesModel {
   static const ENGLISH = Language(LanguagesCodesModel.ENGLISH, 'English');
   static const POLISH = Language(LanguagesCodesModel.POLISH, 'Polski');
+  static const FRENCH = Language(LanguagesCodesModel.FRENCH, 'Français');
 
-  static List<Language> get supportedLanguages => [ENGLISH, POLISH];
+  static List<Language> get supportedLanguages => [ENGLISH, POLISH, FRENCH];
 }

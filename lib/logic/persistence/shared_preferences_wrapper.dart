@@ -30,7 +30,7 @@ class SharedPreferencesWrapper {
   }
 
   String getAppLanguageCode() {
-    return _getString(_APP_LANGUAGE_CODE_KEY, LanguagesCodesModel.ENGLISH);
+    return _getString(_APP_LANGUAGE_CODE_KEY, LanguagesCodesModel.POLISH);
   }
 
   Future setAppLanguageCode(String value) async {
@@ -38,7 +38,7 @@ class SharedPreferencesWrapper {
   }
 
   String getTextsLanguage() {
-    return _getString(_TEXTS_LANGUAGE_CODE_KEY, LanguagesCodesModel.ENGLISH);
+    return _getString(_TEXTS_LANGUAGE_CODE_KEY, LanguagesCodesModel.POLISH);
   }
 
   Future setTextsLanguageCode(String value) async {

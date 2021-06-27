@@ -27,6 +27,11 @@ class _MenuScreenState extends State<MenuScreen> {
         builder: (context, state) {
       return Scaffold(
         appBar: CustomAppBar(context).get(),
+        floatingActionButton: FloatingActionButton(
+          child: Text('i', style: TextStyle(fontSize: 25)),
+          onPressed: () =>
+              Navigator.pushNamed(context, RoutesModel.MENU_INSTRUCTIONS),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.separated(

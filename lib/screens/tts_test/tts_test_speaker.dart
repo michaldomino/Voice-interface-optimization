@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voice_interface_optimization/data/entities/tts_test.dart';
+import 'package:voice_interface_optimization/generated/l10n.dart';
 import 'package:voice_interface_optimization/logic/speaker.dart';
+import 'package:volume_control/volume_control.dart';
 
 class TtsTestSpeaker extends StatefulWidget {
   final TtsTest ttsTest;
@@ -13,15 +15,14 @@ class TtsTestSpeaker extends StatefulWidget {
 }
 
 class _TtsTestSpeakerState extends State<TtsTestSpeaker> {
+  static const double MAXIMUM_VOLUME = 1.0;
+
   late Speaker _speaker;
 
   @override
   void initState() {
     super.initState();
     _speaker = Speaker();
-    _speaker.volume = widget.ttsTest.volume;
-    _speaker.pitch = widget.ttsTest.pitch;
-    _speaker.rate = widget.ttsTest.rate;
   }
 
   @override
@@ -51,6 +52,23 @@ class _TtsTestSpeakerState extends State<TtsTestSpeaker> {
   }
 
   _playSound() async {
-    _speaker.speak(widget.ttsTest.text);
+    var volume = await VolumeControl.volume;
+    if (volume < MAXIMUM_VOLUME) {
+      _showVolumeSnackBar();
+    } else {
+      _speaker.volume = widget.ttsTest.volume;
+      _speaker.pitch = widget.ttsTest.pitch;
+      _speaker.rate = widget.ttsTest.rate;
+      _speaker.speak(widget.ttsTest.text);
+    }
+  }
+
+  void _showVolumeSnackBar() {
+    SnackBar snackBar = SnackBar(
+      content: Text(S.of(context).pleaseSetTheVolumeToMaximum,
+          style: TextStyle(color: Colors.black)),
+      backgroundColor: Colors.yellow,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

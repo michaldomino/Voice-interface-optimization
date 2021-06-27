@@ -101,6 +101,16 @@ class S {
     );
   }
 
+  /// `French`
+  String get fr {
+    return Intl.message(
+      'French',
+      name: 'fr',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Texts language`
   String get textsLanguage {
     return Intl.message(
@@ -251,20 +261,20 @@ class S {
     );
   }
 
-  /// `Text to speech test`
+  /// `Text-to-Speech test`
   String get ttsTest {
     return Intl.message(
-      'Text to speech test',
+      'Text-to-Speech test',
       name: 'ttsTest',
       desc: '',
       args: [],
     );
   }
 
-  /// `Speech to text test`
+  /// `Speech-to-Text test`
   String get sttTest {
     return Intl.message(
-      'Speech to text test',
+      'Speech-to-Text test',
       name: 'sttTest',
       desc: '',
       args: [],
@@ -361,11 +371,41 @@ class S {
     );
   }
 
-  /// `Click the button to record the voice`
+  /// `(Click the button to record the voice)`
   String get clickTheButtonToRecordTheVoice {
     return Intl.message(
-      'Click the button to record the voice',
+      '(Click the button to record the voice)',
       name: 'clickTheButtonToRecordTheVoice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please set the volume to maximum`
+  String get pleaseSetTheVolumeToMaximum {
+    return Intl.message(
+      'Please set the volume to maximum',
+      name: 'pleaseSetTheVolumeToMaximum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instruction`
+  String get instruction {
+    return Intl.message(
+      'Instruction',
+      name: 'instruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The study consists of two tests that are available from the menu.\n\nIn the first test (Text-to-Speech Test), play the statement and then select whether it is clearly audible.\n\nIn the second test (Speech-to-Text Test), you should record the phrase written above the button. Press the microphone button to record your speech.\n\nAll steps must be completed to pass the test. The steps can be done in any order. If a test step is passed, a checkmark appears instead of the step number. After completing all steps, a button will appear allowing you to send the results.`
+  String get instructionContent {
+    return Intl.message(
+      'The study consists of two tests that are available from the menu.\n\nIn the first test (Text-to-Speech Test), play the statement and then select whether it is clearly audible.\n\nIn the second test (Speech-to-Text Test), you should record the phrase written above the button. Press the microphone button to record your speech.\n\nAll steps must be completed to pass the test. The steps can be done in any order. If a test step is passed, a checkmark appears instead of the step number. After completing all steps, a button will appear allowing you to send the results.',
+      name: 'instructionContent',
       desc: '',
       args: [],
     );

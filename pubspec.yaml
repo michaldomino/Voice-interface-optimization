@@ -29,6 +29,7 @@ dependencies:
   http: ^0.13.3
   speech_to_text: ^4.1.1-nullsafety
   flutter_secure_storage: ^4.2.0
+  volume_control: ^0.1.5
 
   intl_translation: ^0.17.10
 

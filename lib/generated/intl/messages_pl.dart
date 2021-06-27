@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage(
             "Optymalizacja interfejsu głosowego"),
         "clickTheButtonToRecordTheVoice": MessageLookupByLibrary.simpleMessage(
-            "Naciśnij przycisk, aby rozpocząć nagrywanie"),
+            "(Naciśnij przycisk, aby rozpocząć nagrywanie)"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
@@ -35,8 +35,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "doYouWantToSendTheResults":
             MessageLookupByLibrary.simpleMessage("Czy chcesz wysłać wyniki?"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "fr": MessageLookupByLibrary.simpleMessage("Francuski"),
+        "instruction": MessageLookupByLibrary.simpleMessage("Instrukcja"),
+        "instructionContent": MessageLookupByLibrary.simpleMessage(
+            "Badanie składa się z dwóch testów, które są dostępne z menu.\n\nW pierwszym teście (Test zamiany tekstu na mowę) należy odtworzyć wypowiedź, a następnie zaznaczyć, czy jest ona wyraźnie słyszalna.\n\nW drugim teście (Test rozpoznawania mowy) należy nagrać wyrażenie napisane nad przyciskiem. Aby nagrać wypowiedź, należy nacisnąć przycisk z mikrofonem.\n\nAby test był zaliczony należy wykonać wszystkie etapy. Etapy można wykonywać w różnej kolejności. Jeśli etap jest zaliczony zamiast numerka pojawia się znaczek ptaszka. Po skończeniu wszystkich etapów pojawi się przycisk, dzięki któremu można wysłać wyniki."),
         "isTextClearlyAudible": MessageLookupByLibrary.simpleMessage(
-            "Naciśnij przycisk aby odtworzyć wypowiedź, następnie zaznacz czy tekst jest dobrze słyszalny"),
+            "Naciśnij przycisk aby odtworzyć wypowiedź, następnie zaznacz czy tekst jest wyraźnie słyszalny"),
         "logOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginAction": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
@@ -46,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pl": MessageLookupByLibrary.simpleMessage("Polski"),
         "pleaseEnterSomeText":
             MessageLookupByLibrary.simpleMessage("Proszę wpisać tekst"),
+        "pleaseSetTheVolumeToMaximum": MessageLookupByLibrary.simpleMessage(
+            "Proszę ustawić głośność na maksymalną"),
         "predefinedTextSpeaking": MessageLookupByLibrary.simpleMessage(
             "Odsłuchiwanie predefiniowanego tekstu"),
         "previous": MessageLookupByLibrary.simpleMessage("Poprzedni"),

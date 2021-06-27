@@ -83,6 +83,8 @@ class SttTestsCubit extends Cubit<SttTestsState> {
           .where(
               (element) => element.language == textsLanguageState.language.code)
           .toList();
+      currentTextLanguageSttTestList
+          .sort((a, b) => a.text.length.compareTo(b.text.length));
       emit(SttTestsLoaded(currentTextLanguageSttTestList));
       return currentTextLanguageSttTestList;
     }

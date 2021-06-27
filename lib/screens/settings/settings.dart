@@ -22,7 +22,6 @@ class _SettingsState extends State<Settings> {
               SettingsAppLanguageSelection(),
               SettingsTextsLanguageSelection(),
             ]));
-        // )
       },
     );
   }

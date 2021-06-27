@@ -96,11 +96,6 @@ List<_ListViewItem> _listViewItems = [
       iconData: Icons.mic_rounded,
       routeName: RoutesModel.STT_TEST),
   // _ListViewItem(
-  //     text: 'customTextSpeaking',
-  //     color: Colors.green,
-  //     iconData: Icons.edit,
-  //     routeName: RoutesModel.CUSTOM_TEXT_SPEAKING),
-  // _ListViewItem(
   //     text: 'predefinedTextSpeaking',
   //     color: Colors.blue,
   //     iconData: Icons.list,

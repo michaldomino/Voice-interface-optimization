@@ -20,7 +20,6 @@ class SttTestWizard extends StatefulWidget {
 class _SttTestWizardState extends State<SttTestWizard> {
   bool _complete = false;
   late List<String> _results;
-  StepperType stepperType = StepperType.horizontal;
 
   late final void Function(int, String) _setResultsCallback;
   late final void Function(bool) _setCompleteCallback;

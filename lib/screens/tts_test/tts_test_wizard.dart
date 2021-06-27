@@ -20,7 +20,6 @@ class TtsTestWizard extends StatefulWidget {
 class _TtsTestWizardState extends State<TtsTestWizard> {
   bool _complete = false;
   late List<bool?> _results;
-  StepperType stepperType = StepperType.horizontal;
 
   late final void Function(int, bool?) _setResultsCallback;
   late final void Function(bool) _setCompleteCallback;

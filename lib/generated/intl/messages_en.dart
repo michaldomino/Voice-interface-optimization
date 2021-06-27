@@ -30,8 +30,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "(Click the button to record the voice)"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
-        "customTextSpeaking":
-            MessageLookupByLibrary.simpleMessage("Custom text speaking"),
         "doYouWantToSendTheResults": MessageLookupByLibrary.simpleMessage(
             "Do you want to send the results?"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
@@ -52,11 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter some text"),
         "pleaseSetTheVolumeToMaximum": MessageLookupByLibrary.simpleMessage(
             "Please set the volume to maximum"),
-        "predefinedTextSpeaking":
-            MessageLookupByLibrary.simpleMessage("Predefined text speaking"),
         "previous": MessageLookupByLibrary.simpleMessage("Previous"),
-        "recognizedText":
-            MessageLookupByLibrary.simpleMessage("Recognized text:"),
         "registerAction": MessageLookupByLibrary.simpleMessage("Register"),
         "serverIsDown": MessageLookupByLibrary.simpleMessage("Server is down"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -69,8 +63,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Thank you for participating in the study"),
         "ttsTest": MessageLookupByLibrary.simpleMessage("Text-to-Speech test"),
-        "voiceRecognition":
-            MessageLookupByLibrary.simpleMessage("Voice recognition"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "youAreNotVerifiedYet":
             MessageLookupByLibrary.simpleMessage("You are not verified yet")

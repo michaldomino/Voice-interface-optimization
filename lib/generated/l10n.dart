@@ -121,46 +121,6 @@ class S {
     );
   }
 
-  /// `Custom text speaking`
-  String get customTextSpeaking {
-    return Intl.message(
-      'Custom text speaking',
-      name: 'customTextSpeaking',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Predefined text speaking`
-  String get predefinedTextSpeaking {
-    return Intl.message(
-      'Predefined text speaking',
-      name: 'predefinedTextSpeaking',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Voice recognition`
-  String get voiceRecognition {
-    return Intl.message(
-      'Voice recognition',
-      name: 'voiceRecognition',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Recognized text:`
-  String get recognizedText {
-    return Intl.message(
-      'Recognized text:',
-      name: 'recognizedText',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Login`
   String get login {
     return Intl.message(

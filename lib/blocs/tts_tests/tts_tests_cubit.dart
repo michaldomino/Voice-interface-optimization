@@ -92,8 +92,18 @@ class TtsTestsCubit extends Cubit<TtsTestsState> {
   Future sendResults(List<TtsTestResult> ttsTestResults) async {
     AuthenticationState authenticationState = _authenticationCubit.state;
     if (authenticationState is AuthenticationAuthenticated) {
-      await _ttsTestsService.postTtsTestResults(
+      var response = await _ttsTestsService.postTtsTestResults(
           ttsTestResults, authenticationState.token.access);
+      if (response.statusCode == HttpStatus.unauthorized) {
+        await _authenticationCubit
+            .refreshToken(authenticationState.token.refresh);
+        AuthenticationState authenticationStateRefreshed =
+            _authenticationCubit.state;
+        if (authenticationStateRefreshed is AuthenticationAuthenticated) {
+          await _ttsTestsService.postTtsTestResults(
+              ttsTestResults, authenticationState.token.access);
+        }
+      }
     }
   }
 

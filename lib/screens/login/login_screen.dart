@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         else if (state is AuthenticationServiceUnavailable)
           {_onServiceUnavailable()}
         else if (state is AuthenticationNotVerified)
-            {_onNotVerified()}
+          {_onNotVerified()}
         else if (state is AuthenticationUnknownError)
           {_onUnknownError()}
       },
@@ -67,7 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                      padding:
+                          const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                       child: TextFormField(
                         obscureText: true,
                         controller: _passwordEditingController,
@@ -81,7 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
+                      padding:
+                          const EdgeInsets.only(top: _TOP_FORM_FIELD_MARGIN),
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -117,45 +119,22 @@ class _LoginScreenState extends State<LoginScreen> {
   _onUnauthorized(LoginUnauthorizedResponse loginUnauthenticatedResponse) {
     _showSnackBar(
         text: loginUnauthenticatedResponse.detail, backgroundColor: Colors.red);
-    // SnackBar snackBar = SnackBar(
-    //   content: Text(loginUnauthenticatedResponse.detail),
-    //   backgroundColor: Colors.red,
-    // );
-    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   _onServiceUnavailable() {
     _showSnackBar(
         text: S.of(context).serverIsDown, backgroundColor: Colors.orange);
-    // SnackBar snackBar = SnackBar(
-    //   content: Text(S.of(context).serverIsDown),
-    //   backgroundColor: Colors.orange,
-    // );
-    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   _onUnknownError() {
     _showSnackBar(
         text: S.of(context).somethingWentWrong, backgroundColor: Colors.red);
-    // SnackBar snackBar = SnackBar(
-    //   content: Text(S.of(context).somethingWentWrong),
-    //   backgroundColor: Colors.red,
-    // );
-    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   _onNotVerified() {
     _showSnackBar(
         text: S.of(context).youAreNotVerifiedYet,
         backgroundColor: Colors.yellow);
-    // SnackBar snackBar = SnackBar(
-    //   content: Text(
-    //     S.of(context).youAreNotVerifiedYet,
-    //     style: TextStyle(color: Colors.black),
-    //   ),
-    //   backgroundColor: Colors.yellow,
-    // );
-    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   _showSnackBar(

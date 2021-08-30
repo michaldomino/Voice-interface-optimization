@@ -30,8 +30,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "(Naciśnij przycisk, aby rozpocząć nagrywanie)"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
-        "customTextSpeaking": MessageLookupByLibrary.simpleMessage(
-            "Odsłuchiwanie dowolnego tekstu"),
         "doYouWantToSendTheResults":
             MessageLookupByLibrary.simpleMessage("Czy chcesz wysłać wyniki?"),
         "en": MessageLookupByLibrary.simpleMessage("Angielski"),
@@ -52,11 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Proszę wpisać tekst"),
         "pleaseSetTheVolumeToMaximum": MessageLookupByLibrary.simpleMessage(
             "Proszę ustawić głośność na maksymalną"),
-        "predefinedTextSpeaking": MessageLookupByLibrary.simpleMessage(
-            "Odsłuchiwanie predefiniowanego tekstu"),
         "previous": MessageLookupByLibrary.simpleMessage("Poprzedni"),
-        "recognizedText":
-            MessageLookupByLibrary.simpleMessage("Rozpoznany tekst:"),
         "registerAction":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "serverIsDown":
@@ -73,8 +67,6 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Dziękuję za udział w badaniu"),
         "ttsTest":
             MessageLookupByLibrary.simpleMessage("Test zamiany tekstu na mowę"),
-        "voiceRecognition":
-            MessageLookupByLibrary.simpleMessage("Rozpoznawanie wypowiedzi"),
         "yes": MessageLookupByLibrary.simpleMessage("Tak"),
         "youAreNotVerifiedYet": MessageLookupByLibrary.simpleMessage(
             "Nie jesteś jeszcze zweryfikowany")

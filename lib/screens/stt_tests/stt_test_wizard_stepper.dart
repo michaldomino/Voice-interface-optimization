@@ -23,7 +23,7 @@ class SttTestWizardStepper extends StatefulWidget {
 
 class _SttTestWizardStepperState extends State<SttTestWizardStepper> {
   int _currentStep = 0;
-  StepperType stepperType = StepperType.horizontal;
+  StepperType stepperType = StepperType.vertical;
 
   @override
   Widget build(BuildContext context) {
